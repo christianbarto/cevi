@@ -20,23 +20,19 @@ Route::get('/', function () {
 });
 
 //Rutas de autentificacion
-//Auth::routes();
+Auth::routes();
 
 //Rutas de login
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Rutas Usuario
-//if ($user->esAdmin()) {
 Route::get('/alta', 'UserController@formulario');
 Route::post('/altaUser', 'UserController@store')->name('empleado.store');
 Route::get('/usuarios', 'UserController@index');
 Route::get('/EditUser/{id}', 'UserController@edit');
 Route::put('/usuario/{user}/update', 'UserController@update')->name('user.update');
 Route::POST('/DeleteUsuarios/{id}', 'UserController@destroy');
-/*}else{
- echo "no estas autorizado";
- return view('/home');
-}*/
+
 
 //Rutas Empleado
-Route::get('/altaEmpleado', 'EmpleadoController@RegistrarEmpleado');
+Route::get('/IndexEmpleado', 'EmpleadoController@index');

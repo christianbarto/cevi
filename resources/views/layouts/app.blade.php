@@ -38,7 +38,7 @@
     </head>
     <body>
         <div class="row">
-            <img alt="Comisión Estatal de Vivienda" class="img-fluid logo-dep" height="100" src="img/texturaSuperior.png" width="1566">
+            <img alt="Comisión Estatal de Vivienda" class="img-fluid" height="100" src="img/texturaSuperior.png" width="1566">
             </img>
         </div>
         <main class="py-3">

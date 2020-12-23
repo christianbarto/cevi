@@ -22,4 +22,12 @@ td {
 button {
     color: #FDFCFC;
 }
+.logo-dep {
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#mycontainer {
+    max-width: 1280px !important;
 }

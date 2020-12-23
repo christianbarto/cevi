@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 class EmpleadoController extends Controller
 {
-    public function formulario()
+    public function index()
     {
-        return view('RegistrarUsuario');
+        return view('Empleados/createEmpleados');
     }
 
     public function RegistrarEmpleado()
