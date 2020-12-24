@@ -31,3 +31,6 @@ button {
 #mycontainer {
     max-width: 1280px !important;
 }
+.inputstyle {
+    font: sans-serif;
+}

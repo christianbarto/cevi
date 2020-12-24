@@ -9,13 +9,36 @@ class EmpleadoController extends Controller
         return view('Empleados/createEmpleados');
     }
 
-    public function RegistrarEmpleado()
+    public function store(Request $request)
     {
-        return view('RegistrarEmpleado');
+        User::create([
+            'name'     => request('name'),
+            'email'    => request('email'),
+            'password' => bcrypt(request('password')),
+            'role_id'  => request('role_id'),
+        ]);
+        return redirect('/usuarios');
     }
 
-    public function store()
+    public function edit($id)
     {
-        return request();
+        $usuarios = User::findOrFail($id);
+        return view('user/EditarUsuario', compact('usuarios'));
+    }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+        return redirect('/usuarios');
+
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $request->merge([
+            'password' => Hash::make($request->input('password')),
+        ]);
+        $user->update($request->all());
+        return redirect('/usuarios');
     }
 }

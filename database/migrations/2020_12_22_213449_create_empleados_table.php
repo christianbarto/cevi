@@ -16,15 +16,15 @@ class CreateEmpleadosTable extends Migration
         Schema::create('empleados', function (Blueprint $table) {
             $table->integer('id');
             $table->date('fecha_alta');
-            $table->string('RFC');
-            $table->string('telefono');
-            $table->char('genero');
             $table->string('ap_paterno');
             $table->string('ap_materno');
             $table->string('nombre');
+            $table->string('RFC');
+            $table->string('telefono');
+            $table->char('genero');
             $table->string('correo');
-            $table->string('avatar');
-            $table->string('estatus');
+            $table->string('avatar')->nullable();
+            $table->string('estatus')->default('activo');
             $table->string('puesto');
             $table->string('Tcontrato');
             //Documentos Escaneados
