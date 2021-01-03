@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
 <div>
     <h1 class="text-center" style="color:#FDFCFC">

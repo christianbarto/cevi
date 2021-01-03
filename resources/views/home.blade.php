@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,6 +7,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Bienvenido
+                        
                     </a>
                     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
                         <span class="navbar-toggler-icon">

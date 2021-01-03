@@ -43,7 +43,8 @@ class User extends Authenticatable
 
     public function esAdmin()
     {
-        if ($this->role->id == 2) {
+        if ($this->role_id == 2) {
+            echo "administrador";
             return true;
         }
         return false;
