@@ -10,7 +10,7 @@ class AdminController extends Controller
     $usuario = Auth::User();
     $role_id=$usuario->role_id;
     if($role_id==1){
-     return redirect('/');
+     return redirect('/homeUser');
     }else{
      return redirect('/homeAdmin');
     }

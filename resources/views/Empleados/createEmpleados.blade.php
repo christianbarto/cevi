@@ -101,8 +101,203 @@
                             <label class="control-label text-muted" for="Tcontrato">
                                 Tipo de contrato
                             </label>
-                            <input class="form-control" id="Tcontrato" name="Tcontrato" required="" type="text">
-                            </input>
+                            <select class="form-control" id="Tcontrato" name="Tcontrato">
+                                <option value="confianza">
+                                    Personal de Confianza
+                                </option>
+                                <option value="base">
+                                    Personal de base
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="contrato">
+                                    Contrato
+                                </label>
+                                <input name="contrato" type="file">
+                                    <label for="contrato">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="creden_elect">
+                                    Credencial de Elector
+                                </label>
+                                <input name="creden_elect" type="file">
+                                    <label for="creden_elect">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="acta_nac">
+                                    Acta de nacimiento
+                                </label>
+                                <input name="acta_nac" type="file">
+                                    <label for="acta_nac">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="curriculum">
+                                    Curriculum
+                                </label>
+                                <input name="curriculum" type="file">
+                                    <label for="curriculum">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="solicitud">
+                                    Solicitud de Empleo
+                                </label>
+                                <input name="solicitud" type="file">
+                                    <label for="solicitud">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="cert_medico">
+                                    Certificado Medico
+                                </label>
+                                <input name="cert_medico" type="file">
+                                    <label for="cert_medico">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="cart_recomend">
+                                    Carta de Recomendacion
+                                </label>
+                                <input name="cart_recomend" type="file">
+                                    <label for="cart_recomend">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="fotografia">
+                                    Fotografia
+                                </label>
+                                <input name="fotografia" type="file">
+                                    <label for="fotografia">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="const_Noinhab">
+                                    Constancia de No Inhabilitacion
+                                </label>
+                                <input name="const_Noinhab" type="file">
+                                    <label for="const_Noinhab">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="comp_Dom">
+                                    Comprobante de Domicilio
+                                </label>
+                                <input name="comp_Dom" type="file">
+                                    <label for="comp_Dom">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="licencia">
+                                    Licencia de Conducir
+                                </label>
+                                <input name="licencia" type="file">
+                                    <label for="licencia">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="nss">
+                                    Numero de Seguro Social
+                                </label>
+                                <input name="nss" type="file">
+                                    <label for="nss">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="infonavit">
+                                    Infonavit
+                                </label>
+                                <input name="infonavit" type="file">
+                                    <label for="infonavit">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="rfc_doc">
+                                    Comprobante de RFC
+                                </label>
+                                <input name="rfc_doc" type="file">
+                                    <label for="rfc_doc">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="cartilla">
+                                    Cartilla Militar Liberada
+                                </label>
+                                <input name="cartilla" type="file">
+                                    <label for="cartilla">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="curp">
+                                    Comprobante de CURP
+                                </label>
+                                <input name="curp" type="file">
+                                    <label for="curp">
+                                    </label>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <div class="text-dark">
+                                <label class="control-label text-muted" for="diploma">
+                                    Diploma de Grado de estudio
+                                </label>
+                                <input name="diploma" type="file">
+                                    <label for="diploma">
+                                    </label>
+                                </input>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group text-center">

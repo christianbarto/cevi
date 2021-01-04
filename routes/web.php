@@ -10,6 +10,7 @@ Auth::routes();
 
 //Rutas de login
 Route::get('/homeAdmin', 'HomeController@index2');
+Route::get('/homeUser', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
 //Rutas Usuario
 Route::get('/alta', 'UserController@formulario');
