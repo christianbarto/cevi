@@ -23,7 +23,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('telefono');
             $table->char('genero');
             $table->string('correo');
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('/storage/avatardefalut.png');
             $table->string('estatus')->default('activo');
             $table->string('puesto');
             $table->string('Tcontrato');

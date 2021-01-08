@@ -7,14 +7,19 @@
     <div class="card">
         <div class="card-body">
             <div class="row justify-content-center">
-                <form action="{{route('empleado.store')}}" method="POST">
+                <form action="{{route('empleados.store')}}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="mb-3">
                         <div class="text-dark">
                             <label class="control-label text-muted" for="id">
                                 Avatar
                             </label>
-                            <input name="avatar" type="file">
+                            <input accept="image/*" name="avatar" type="file">
+                                @error ('avatar')
+                                <small class="text-danger">
+                                    {{$message}}
+                                </small>
+                                @enderror
                                 <label for="avatar">
                                 </label>
                             </input>
@@ -32,7 +37,7 @@
                             <label class="control-label text-muted" for="nombre">
                                 Nombre
                             </label>
-                            <input class="form-control" id="name" name="name" required="" type="text">
+                            <input class="form-control" id="nombre" name="nombre" required="" type="text">
                             </input>
                         </div>
                         <div class="form-group col-md-3" style="">
@@ -53,7 +58,7 @@
                             <label class="control-label text-muted" for="fecha_alta">
                                 Fecha de Alta
                             </label>
-                            <input class="form-control" disabled="" id="fecha_alta" name="fecha_alta" required="" type="text" value="{{date('Y-m-d')}}">
+                            <input class="form-control" id="fecha_alta" name="fecha_alta" required="" type="date" value="{{date('Y-m-d')}}">
                             </input>
                         </div>
                         <div class="form-group col-md-3">
@@ -111,13 +116,14 @@
                             </select>
                         </div>
                     </div>
+                    {{-- aqui inicia la parte de los archivos --}}
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <div class="text-dark">
                                 <label class="control-label text-muted" for="contrato">
                                     Contrato
                                 </label>
-                                <input name="contrato" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="contrato" type="file">
                                     <label for="contrato">
                                     </label>
                                 </input>
@@ -128,7 +134,7 @@
                                 <label class="control-label text-muted" for="creden_elect">
                                     Credencial de Elector
                                 </label>
-                                <input name="creden_elect" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="creden_elect" type="file">
                                     <label for="creden_elect">
                                     </label>
                                 </input>
@@ -139,7 +145,7 @@
                                 <label class="control-label text-muted" for="acta_nac">
                                     Acta de nacimiento
                                 </label>
-                                <input name="acta_nac" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="acta_nac" type="file">
                                     <label for="acta_nac">
                                     </label>
                                 </input>
@@ -150,7 +156,7 @@
                                 <label class="control-label text-muted" for="curriculum">
                                     Curriculum
                                 </label>
-                                <input name="curriculum" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="curriculum" type="file">
                                     <label for="curriculum">
                                     </label>
                                 </input>
@@ -161,7 +167,7 @@
                                 <label class="control-label text-muted" for="solicitud">
                                     Solicitud de Empleo
                                 </label>
-                                <input name="solicitud" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="solicitud" type="file">
                                     <label for="solicitud">
                                     </label>
                                 </input>
@@ -172,7 +178,7 @@
                                 <label class="control-label text-muted" for="cert_medico">
                                     Certificado Medico
                                 </label>
-                                <input name="cert_medico" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="cert_medico" type="file">
                                     <label for="cert_medico">
                                     </label>
                                 </input>
@@ -183,7 +189,7 @@
                                 <label class="control-label text-muted" for="cart_recomend">
                                     Carta de Recomendacion
                                 </label>
-                                <input name="cart_recomend" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="cart_recomend" type="file">
                                     <label for="cart_recomend">
                                     </label>
                                 </input>
@@ -194,7 +200,7 @@
                                 <label class="control-label text-muted" for="fotografia">
                                     Fotografia
                                 </label>
-                                <input name="fotografia" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="fotografia" type="file">
                                     <label for="fotografia">
                                     </label>
                                 </input>
@@ -205,7 +211,7 @@
                                 <label class="control-label text-muted" for="const_Noinhab">
                                     Constancia de No Inhabilitacion
                                 </label>
-                                <input name="const_Noinhab" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="const_Noinhab" type="file">
                                     <label for="const_Noinhab">
                                     </label>
                                 </input>
@@ -216,7 +222,7 @@
                                 <label class="control-label text-muted" for="comp_Dom">
                                     Comprobante de Domicilio
                                 </label>
-                                <input name="comp_Dom" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="comp_Dom" type="file">
                                     <label for="comp_Dom">
                                     </label>
                                 </input>
@@ -227,7 +233,7 @@
                                 <label class="control-label text-muted" for="licencia">
                                     Licencia de Conducir
                                 </label>
-                                <input name="licencia" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="licencia" type="file">
                                     <label for="licencia">
                                     </label>
                                 </input>
@@ -238,7 +244,7 @@
                                 <label class="control-label text-muted" for="nss">
                                     Numero de Seguro Social
                                 </label>
-                                <input name="nss" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="nss" type="file">
                                     <label for="nss">
                                     </label>
                                 </input>
@@ -249,7 +255,7 @@
                                 <label class="control-label text-muted" for="infonavit">
                                     Infonavit
                                 </label>
-                                <input name="infonavit" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="infonavit" type="file">
                                     <label for="infonavit">
                                     </label>
                                 </input>
@@ -260,7 +266,7 @@
                                 <label class="control-label text-muted" for="rfc_doc">
                                     Comprobante de RFC
                                 </label>
-                                <input name="rfc_doc" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="rfc_doc" type="file">
                                     <label for="rfc_doc">
                                     </label>
                                 </input>
@@ -271,7 +277,7 @@
                                 <label class="control-label text-muted" for="cartilla">
                                     Cartilla Militar Liberada
                                 </label>
-                                <input name="cartilla" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="cartilla" type="file">
                                     <label for="cartilla">
                                     </label>
                                 </input>
@@ -282,7 +288,7 @@
                                 <label class="control-label text-muted" for="curp">
                                     Comprobante de CURP
                                 </label>
-                                <input name="curp" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="curp" type="file">
                                     <label for="curp">
                                     </label>
                                 </input>
@@ -293,7 +299,7 @@
                                 <label class="control-label text-muted" for="diploma">
                                     Diploma de Grado de estudio
                                 </label>
-                                <input name="diploma" type="file">
+                                <input accept="application/pdf, .doc, .docx, .odf" name="diploma" type="file">
                                     <label for="diploma">
                                     </label>
                                 </input>

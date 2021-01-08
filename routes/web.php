@@ -1,5 +1,5 @@
 <?php
-
+use App\Empleado;
 
 Route::get('/', function () {
         return view('welcomec');
@@ -12,6 +12,7 @@ Auth::routes();
 Route::get('/homeAdmin', 'HomeController@index2');
 Route::get('/homeUser', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
+
 //Rutas Usuario
 Route::get('/alta', 'UserController@formulario');
 Route::post('/altaUser', 'UserController@store')->name('empleado.store');
@@ -23,3 +24,6 @@ Route::POST('/DeleteUsuarios/{id}', 'UserController@destroy');
 
 //Rutas Empleado
 Route::get('/IndexEmpleado', 'EmpleadoController@index')->name('empleados.index');
+Route::get('/Empleado/{id}', 'EmpleadoController@show')->name('empleados.busqueda');
+Route::get('/createEmpleado', 'EmpleadoController@create')->name('empleados.create');
+Route::post('/StoreEmpleado', 'EmpleadoController@store')->name('empleados.store');
