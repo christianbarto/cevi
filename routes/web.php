@@ -1,15 +1,16 @@
 <?php
 use App\Empleado;
 
-Route::get('/', function () {
-        return view('welcomec');
-});
+
 
 //Rutas de autentificacion
 Auth::routes();
+Route::get('/', function () {
+        return redirect('/login');
+});
 
 //Rutas de login
-Route::get('/homeAdmin', 'HomeController@index2');
+Route::get('/homeAdmin', 'HomeController@index2')->name('home');
 Route::get('/homeUser', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
 

@@ -80,10 +80,10 @@
                                 Genero
                             </label>
                             <select class="form-control" id="genero" name="genero">
-                                <option value="H">
+                                <option value="Hombre">
                                     Hombre
                                 </option>
-                                <option value="M">
+                                <option value="Mujer">
                                     Mujer
                                 </option>
                             </select>

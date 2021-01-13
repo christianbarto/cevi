@@ -21,9 +21,9 @@ class CreateEmpleadosTable extends Migration
             $table->string('nombre');
             $table->string('RFC');
             $table->string('telefono');
-            $table->char('genero');
+            $table->string('genero');
             $table->string('correo');
-            $table->string('avatar')->default('/storage/avatardefalut.png');
+            $table->string('avatar')->default('/storage/avatardefalut.png')->nullable('yes');
             $table->string('estatus')->default('activo');
             $table->string('puesto');
             $table->string('Tcontrato');

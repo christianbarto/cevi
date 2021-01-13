@@ -53,6 +53,11 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{route('usuarios')}}">
                                         Usuarios
                                     </a>
@@ -87,13 +92,6 @@
                                         {{ __('Login') }}
                                     </a>
                                 </li>
-                                @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">
-                                        {{ __('Register') }}
-                                    </a>
-                                </li>
-                                @endif
                         @else
                                 <li class="nav-item dropdown">
                                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button" v-pre="">

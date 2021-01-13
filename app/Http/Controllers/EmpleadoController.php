@@ -28,7 +28,7 @@ class EmpleadoController extends Controller
 
     public function store(Request $request)
     {
-        $urlAvatar=null;
+        $urlAvatar='/storage/avatardefalut.png';
         $request->validate([
             'contrato'      => 'required',
             'creden_elect'  => 'required',
@@ -135,6 +135,7 @@ class EmpleadoController extends Controller
             'curp'          => $urlcurp,
             'diploma'       => $urldiploma,
         ]);
+        return redirect('/IndexEmpleado');
 
     }
 
