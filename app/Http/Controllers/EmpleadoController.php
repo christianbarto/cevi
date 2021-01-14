@@ -160,67 +160,150 @@ class EmpleadoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $empleado = Empleado::findOrFail($id);
+        $Empleado = Empleado::findOrFail($id);
+        
         if ($request->hasFile('contrato')) {
             $contrato    = $request->file('contrato')->store('public');
             $urlcontrato = Storage::url($contrato);
         }else{
-            $urlcontrato = $empleado->contrato;
+            $urlcontrato = $Empleado->contrato;
+        }
+
+        if ($request->hasFile('creden_elect')) {
+            $creden_elect    = $request->file('creden_elect')->store('public');
+            $urlcreden_elect = Storage::url($creden_elect);
+        }else{
+            $urlcreden_elect = $Empleado->creden_elect;
         }
         
+        if ($request->hasFile('acta_nac')) {
+            $acta_nac    = $request->file('acta_nac')->store('public');
+            $urlacta_nac = Storage::url($acta_nac);
+        }else{
+            $urlacta_nac = $Empleado->acta_nac;
+        }
 
-        $creden_elect    = $request->file('creden_elect')->store('public');
-        $urlcreden_elect = Storage::url($creden_elect);
+        if ($request->hasFile('curriculum')) {
+            $curriculum    = $request->file('curriculum')->store('public');
+            $urlcurriculum = Storage::url($curriculum);
+        }else{
+            $urlcurriculum = $Empleado->curriculum;
+        }
 
-        $acta_nac    = $request->file('acta_nac')->store('public');
-        $urlacta_nac = Storage::url($acta_nac);
+        if ($request->hasFile('solicitud')) {
+            $solicitud    = $request->file('solicitud')->store('public');
+            $urlsolicitud = Storage::url($solicitud);
+        }else{
+            $urlsolicitud = $Empleado->solicitud;
+        }
 
-        $curriculum    = $request->file('curriculum')->store('public');
-        $urlcurriculum = Storage::url($curriculum);
+        if ($request->hasFile('cert_medico')) {
+            $cert_medico    = $request->file('cert_medico')->store('public');
+            $urlcert_medico = Storage::url($cert_medico);
+        }else{
+            $urlcert_medico = $Empleado->cert_medico;
+        }
 
-        $solicitud    = $request->file('solicitud')->store('public');
-        $urlsolicitud = Storage::url($solicitud);
+        if ($request->hasFile('cart_recomend')) {
+            $cart_recomend    = $request->file('cart_recomend')->store('public');
+            $urlcart_recomend = Storage::url($cart_recomend);
+        }else{
+            $urlcart_recomend = $Empleado->cart_recomend;
+        }
 
-        $cert_medico    = $request->file('cert_medico')->store('public');
-        $urlcert_medico = Storage::url($cert_medico);
+        if ($request->hasFile('fotografia')) {
+            $fotografia    = $request->file('fotografia')->store('public');
+            $urlfotografia = Storage::url($fotografia);
+        }else{
+            $urlfotografia = $Empleado->fotografia;
+        }
 
-        $cart_recomend    = $request->file('cart_recomend')->store('public');
-        $urlcart_recomend = Storage::url($cart_recomend);
+        if ($request->hasFile('const_Noinhab')) {
+            $const_Noinhab    = $request->file('const_Noinhab')->store('public');
+            $urlconst_Noinhab = Storage::url($const_Noinhab);
+        }else{
+            $urlconst_Noinhab = $Empleado->const_Noinhab;
+        }
 
-        $fotografia    = $request->file('fotografia')->store('public');
-        $urlfotografia = Storage::url($fotografia);
+        if ($request->hasFile('comp_Dom')) {
+            $comp_Dom    = $request->file('comp_Dom')->store('public');
+            $urlcomp_Dom = Storage::url($comp_Dom);
+        }else{
+            $urlcomp_Dom = $Empleado->comp_Dom;
+        }
 
-        $const_Noinhab    = $request->file('const_Noinhab')->store('public');
-        $urlconst_Noinhab = Storage::url($const_Noinhab);
+        if ($request->hasFile('licencia')) {
+            $licencia    = $request->file('licencia')->store('public');
+            $urllicencia = Storage::url($licencia);
+        }else{
+            $urllicencia = $Empleado->licencia;
+        }
 
-        $comp_Dom    = $request->file('comp_Dom')->store('public');
-        $urlcomp_Dom = Storage::url($comp_Dom);
+        if ($request->hasFile('nss')) {
+            $nss    = $request->file('nss')->store('public');
+            $urlnss = Storage::url($nss);
+        }else{
+            $urlnss = $Empleado->nss;
+        }
 
-        $licencia    = $request->file('licencia')->store('public');
-        $urllicencia = Storage::url($licencia);
+        if ($request->hasFile('infonavit')) {
+            $infonavit    = $request->file('infonavit')->store('public');
+            $urlinfonavit = Storage::url($infonavit);
+        }else{
+            $urlinfonavit = $Empleado->infonavit;
+        }
 
-        $nss    = $request->file('nss')->store('public');
-        $urlnss = Storage::url($nss);
+        if ($request->hasFile('rfc_doc')) {
+            $rfc_doc    = $request->file('rfc_doc')->store('public');
+            $urlrfc_doc = Storage::url($rfc_doc);
+        }else{
+            $urlrfc_doc = $Empleado->rfc_doc;
+        }
 
-        $infonavit    = $request->file('infonavit')->store('public');
-        $urlinfonavit = Storage::url($infonavit);
+        if ($request->hasFile('cartilla')) {
+            $cartilla    = $request->file('cartilla')->store('public');
+            $urlcartilla = Storage::url($cartilla);
+        }else{
+            $urlcartilla = $Empleado->cartilla;
+        }
 
-        $rfc_doc    = $request->file('rfc_doc')->store('public');
-        $urlrfc_doc = Storage::url($rfc_doc);
+        if ($request->hasFile('curp')) {
+            $curp    = $request->file('curp')->store('public');
+            $urlcurp = Storage::url($curp);
+        }else{
+            $urlcurp = $Empleado->curp;
+        }
 
-        $cartilla    = $request->file('cartilla')->store('public');
-        $urlcartilla = Storage::url($cartilla);
+        if ($request->hasFile('diploma')) {
+            $diploma    = $request->file('diploma')->store('public');
+            $urldiploma= Storage::url($diploma);
+        }else{
+            $urldiploma = $Empleado->diploma;
+        }
 
-        $curp    = $request->file('curp')->store('public');
-        $urlcurp = Storage::url($curp);
-
-        $diploma    = $request->file('diploma')->store('public');
-        $urldiploma = Storage::url($diploma);
 
 
         $Empleado->update($request->only('fecha_alta','RFC', 'telefono', 'genero',
         'ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato'));
-        $Empleado->$urlcontrato;
+
+        $Empleado->contrato         = $urlcontrato;
+        $Empleado->creden_elect     = $urlcreden_elect;
+        $Empleado->acta_nac         = $urlacta_nac;
+        $Empleado->curriculum       = $urlcurriculum;
+        $Empleado->solicitud        = $urlsolicitud;
+        $Empleado->cert_medico      = $urlcert_medico;
+        $Empleado->cart_recomend    = $urlcart_recomend;
+        $Empleado->fotografia       = $urlfotografia;
+        $Empleado->const_Noinhab    = $urlconst_Noinhab;
+        $Empleado->comp_Dom         = $urlcomp_Dom;
+        $Empleado->licencia         = $urllicencia;
+        $Empleado->nss              = $urlnss;
+        $Empleado->infonavit        = $urlinfonavit;
+        $Empleado->rfc_doc          = $urlrfc_doc;
+        $Empleado->cartilla         = $urlcartilla;
+        $Empleado->curp             = $urlcurp;
+        $Empleado->diploma          = $urldiploma;
+        $Empleado->save();
         return redirect('/IndexEmpleado');
     }
 }

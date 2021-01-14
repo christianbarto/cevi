@@ -303,7 +303,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{route ('empleado.update',$Empleado->id)}}" method="post">
+                                                    <form action="{{route ('empleado.update',$Empleado->id)}}"  enctype="multipart/form-data" method="post">
                                                     {{csrf_field()}} {{method_field('put')}}
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="id">
@@ -344,7 +344,7 @@
                                                             <label class="control-label text-muted" for="fecha_alta">
                                                                 {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
                                                             </label>
-                                                            <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value="{{$Empleado->fecha_alta}}">
+                                                            <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
                                                             </input>
                                                         </div>
                                                         <div class="form-group">
