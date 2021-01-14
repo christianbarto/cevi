@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'v5.8.35',
-    'version' => '5.8.35.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '153d2fefb88358b0d56f436be2ca2249c3c834e1',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -347,6 +347,15 @@
       ),
       'reference' => '9f7a229a69d52506914b4bc61bfdb199d90c5547',
     ),
+    'jenssegers/date' => 
+    array (
+      'pretty_version' => 'v4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '506f86096e0b512f9ece6ad0ccae62b03c125771',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -365,12 +374,12 @@
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => 'v5.8.35',
-      'version' => '5.8.35.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '153d2fefb88358b0d56f436be2ca2249c3c834e1',
     ),
     'laravel/tinker' => 
     array (
@@ -432,12 +441,12 @@
     ),
     'nesbot/carbon' => 
     array (
-      'pretty_version' => '2.42.0',
-      'version' => '2.42.0.0',
+      'pretty_version' => '2.43.0',
+      'version' => '2.43.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd0463779663437392fe42ff339ebc0213bd55498',
+      'reference' => 'd32c57d8389113742f4a88725a170236470012e2',
     ),
     'nikic/php-parser' => 
     array (
@@ -621,8 +630,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 

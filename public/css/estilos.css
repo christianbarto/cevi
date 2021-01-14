@@ -34,3 +34,6 @@ button {
 .inputstyle {
     font: sans-serif;
 }
+input, select, option {
+    text-align: center
+}
