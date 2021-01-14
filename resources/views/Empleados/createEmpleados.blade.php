@@ -9,22 +9,6 @@
             <div class="row justify-content-center">
                 <form action="{{route('empleados.store')}}" enctype="multipart/form-data" method="POST">
                     @csrf
-                    <div class="mb-3">
-                        <div class="text-dark">
-                            <label class="control-label text-muted" for="id">
-                                Avatar
-                            </label>
-                            <input accept="image/*" name="avatar" type="file">
-                                @error ('avatar')
-                                <small class="text-danger">
-                                    {{$message}}
-                                </small>
-                                @enderror
-                                <label for="avatar">
-                                </label>
-                            </input>
-                        </div>
-                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label class="control-label text-muted" for="id">

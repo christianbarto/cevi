@@ -29,3 +29,5 @@ Route::get('/Empleado/{id}', 'EmpleadoController@show')->name('empleados.busqued
 Route::get('/createEmpleado', 'EmpleadoController@create')->name('empleados.create');
 Route::post('/StoreEmpleado', 'EmpleadoController@store')->name('empleados.store');
 Route::put('/empleado/{empleado}/update', 'EmpleadoController@update')->name('empleado.update');
+Route::put('/empleado/{empleado}/disable', 'EmpleadoController@disable')->name('empleado.disable');
+Route::put('/empleado/{empleado}/enable', 'EmpleadoController@enable')->name('empleado.enable');

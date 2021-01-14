@@ -148,14 +148,21 @@ class EmpleadoController extends Controller
 
     }
 
-    public function edit($id)
-    {
 
+    public function disable($id)
+    {
+        $Empleado = Empleado::findOrFail($id);
+        $Empleado->estatus='inactivo';
+        $Empleado->save();
+        return redirect('/IndexEmpleado');
     }
 
-    public function destroy($id)
+    public function enable($id)
     {
-
+        $Empleado = Empleado::findOrFail($id);
+        $Empleado->estatus='activo';
+        $Empleado->save();
+        return redirect('/IndexEmpleado');
     }
 
     public function update(Request $request, $id)
