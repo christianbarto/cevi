@@ -1,10 +1,8 @@
 @extends('layouts.app2')
 @section('content')
-<div>
     <h1 class="text-center" style="color:#FDFCFC">
         Empleados Activos
     </h1>
-</div>
 <div class="row justify-content-center">
     <div class="form-group col-md-9">
         @include('user.forms.edit')
@@ -642,11 +640,9 @@
                                 {{-- Tabla de empleados inactivos --}}
 
 
-<div>
     <h1 class="text-center" style="color:#FDFCFC">
         Empleados Inactivos
     </h1>
-</div>
 <div class="row justify-content-center">
     <div class="form-group col-md-9">
                 <div class="table-responsive">

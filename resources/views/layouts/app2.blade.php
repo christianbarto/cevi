@@ -68,12 +68,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{route('checador.index')}}">
                                         Reloj
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" >
+                                    <a class="nav-link" href="# " >
                                         Reportes
                                     </a>
                                 </li>

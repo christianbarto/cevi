@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Incidencia;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,8 @@ class HomeController extends Controller
         return view('HomeUsuario');
     }
     public function index2(){
-        return view('HomeAdmin');
+
+      $Incidencias = Incidencia::all();
+    return view('HomeAdmin')->with('Incidencias',$Incidencias);
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app2')
 @section('content')
-<div class="container-fluid" style="background-color:#7D3C98">
+<div class="container-fluid" >
     <h1>
         Nuevo Empleado
     </h1>
