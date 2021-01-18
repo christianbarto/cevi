@@ -1,13 +1,16 @@
 @extends('layouts.app2')
 @section('content')
-<div>
-    <h1 class="text-center" style="color:#FDFCFC">
-        Usuarios
-    </h1>
-</div>
+
 <div class="row justify-content-center">
     <div class="form-group col-md-9">
-        @include('user.forms.edit')
+        <div class="card">
+                <div class="card-header" style="color:black">
+                    <h1>
+                    Usuarios
+                    </h1>
+                </div>
+        </div>
+        <br>
         <form action="{{ url('/alta')}}" method="get">
             <button class="btn btn-primary btn-sm float-left" type="submit">
                 + Agregar

@@ -1,11 +1,14 @@
 @extends('layouts.app2')
 @section('content')
-<div class="container-fluid">
-    <div class="card">
-        <div class="card-header" style="color:black">
-            Registro de Incidencias
-        </div>
-        <div class="card-body">
+<div class="row justify-content-center">
+    <div class="form-group col-md-9">
+            <div class="card">
+                <div class="card-header" style="color:black">
+                    <h1>
+                    Registro de Incidencias
+                    </h1>
+                </div>
+            </div>
         <div class="table-responsive">
             <table class="table table-dark ">
                 <thead class="thead-light">

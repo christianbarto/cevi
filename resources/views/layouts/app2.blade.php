@@ -42,9 +42,8 @@
         </img>
     </div>
     <br>
-    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-11">
+            <div class="col-md-9">
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                     <div class="container-fluid">
                         <a class="navbar-brand text-dark">
@@ -73,7 +72,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="# " >
+                                    <a class="nav-link" href="# ">
                                         Reportes
                                     </a>
                                 </li>
@@ -92,7 +91,7 @@
                                         {{ __('Login') }}
                                     </a>
                                 </li>
-                        @else
+                                @else
                                 <li class="nav-item dropdown">
                                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button" v-pre="">
                                         {{ Auth::user()->name }}
@@ -116,8 +115,8 @@
                 </nav>
             </div>
         </div>
-    </div>
-    <main class="py-3">
-        @yield('content')
-    </main>
+        <main class="py-3">
+            @yield('content')
+        </main>
+    </br>
 </body>
