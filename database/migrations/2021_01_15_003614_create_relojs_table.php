@@ -17,8 +17,10 @@ class CreateRelojsTable extends Migration
             $table->bigInteger('id');
             $table->string('RFC');
             $table->string('nombre');
+            $table->date('fecha');
             $table->time('entrada');
             $table->time('salida');
+            $table->string('incidencia');
             $table->timestamps();
         });
     }

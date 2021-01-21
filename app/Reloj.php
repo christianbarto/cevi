@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Reloj extends Model
 {
     protected $fillable = [
-        'id','RFC', 'nombre','entrada','salida',
+        'id','RFC', 'nombre','entrada','salida','fecha','incidencia'
     ];
 }

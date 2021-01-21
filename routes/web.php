@@ -35,3 +35,4 @@ Route::put('/empleado/{empleado}/enable', 'EmpleadoController@enable')->name('em
 //Rutas del reloj checador
 Route::get('/IndexReloj', 'RelojController@index')->name('checador.index');
 Route::post('import-list-excel', 'RelojController@import')->name('checador.import');
+Route::post('import-list-xml', 'RelojController@importxml')->name('checador.importxml');
