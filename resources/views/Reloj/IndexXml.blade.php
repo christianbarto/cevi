@@ -26,12 +26,7 @@
                                 </ul>
                         @endif
                         <div class="form-group">
-                            <div>
-                                <label class="control-label text-muted" for="xml">
-                                    Archivo Reloj checador
-                                </label>
-                            </div>
-                            <input accept=".xml" name="xml" style="color:black" type="file"/>
+                            <input class="form-control form-control-lg" accept=".xml" name="xml" style="color:black" type="file"/>
                         </div>
                         <button class="btn btn-primary">
                             Agregar

@@ -19,11 +19,20 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '5bbf518113a1677a82dc41acacdb9e6ae1e69b30',
+    'reference' => '87021b6ab1605c8a08b64da55673e5264f503f39',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'barryvdh/laravel-dompdf' => 
+    array (
+      'pretty_version' => 'v0.9.0',
+      'version' => '0.9.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5b99e1f94157d74e450f4c97e8444fcaffa2144b',
+    ),
     'beyondcode/laravel-dump-server' => 
     array (
       'pretty_version' => '1.3.0',
@@ -82,6 +91,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'e864bbf5904cb8f5bb334f99209b48018522f042',
+    ),
+    'dompdf/dompdf' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8768448244967a46d6e67b891d30878e0e15d25c',
     ),
     'dragonmantank/cron-expression' => 
     array (
@@ -401,7 +419,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5bbf518113a1677a82dc41acacdb9e6ae1e69b30',
+      'reference' => '87021b6ab1605c8a08b64da55673e5264f503f39',
     ),
     'laravel/tinker' => 
     array (
@@ -568,6 +586,24 @@ private static $installed = array (
       array (
       ),
       'reference' => '45a2ec53a73c70ce41d55cedef9063630abaf1b6',
+    ),
+    'phenx/php-font-lib' => 
+    array (
+      'pretty_version' => '0.5.2',
+      'version' => '0.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ca6ad461f032145fff5971b5985e5af9e7fa88d8',
+    ),
+    'phenx/php-svg-lib' => 
+    array (
+      'pretty_version' => 'v0.3.3',
+      'version' => '0.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -770,6 +806,15 @@ private static $installed = array (
       array (
         0 => '3.9.3',
       ),
+    ),
+    'sabberworm/php-css-parser' => 
+    array (
+      'pretty_version' => '8.3.1',
+      'version' => '8.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd217848e1396ef962fb1997cf3e2421acba7f796',
     ),
     'sebastian/code-unit-reverse-lookup' => 
     array (

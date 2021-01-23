@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Incidencia;
+use App\Reloj;
+
 
 class HomeController extends Controller
 {
@@ -28,7 +29,7 @@ class HomeController extends Controller
     }
     public function index2(){
 
-      $Incidencias = Incidencia::all();
-    return view('HomeAdmin')->with('Incidencias',$Incidencias);
+        $Relojs = Reloj::all();
+        return view('HomeAdmin')->with('Relojs',$Relojs);
     }
 }

@@ -3,14 +3,11 @@
 
 <div class="row justify-content-center">
     <div class="form-group col-md-9">
-        <div class="card">
-                <div class="card-header" style="color:black">
+                <div class="text-center">
                     <h1>
                     Usuarios
                     </h1>
                 </div>
-        </div>
-        <br>
         <form action="{{ url('/alta')}}" method="get">
             <button class="btn btn-primary btn-sm float-left" type="submit">
                 + Agregar

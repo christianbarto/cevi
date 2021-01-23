@@ -72,7 +72,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="# ">
+                                    <a class="nav-link" href="{{route('reportes.index')}}">
                                         Reportes
                                     </a>
                                 </li>
@@ -87,6 +87,7 @@
                                 <!-- Authentication Links -->
                                 @guest
                                 <li class="nav-item">
+                                    <label class="alert-danger" for="">Su Sesion ha caducado</label>
                                     <a class="nav-link" href="{{ route('login') }}">
                                         {{ __('Login') }}
                                     </a>

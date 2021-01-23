@@ -7,7 +7,7 @@
     <div class="form-group col-md-9">
         <div class="card">
             <div class="card-header" style="color:black">
-                Ingresa el archivo del reloj checador
+                Ingresa Archivo
             </div>
             <div class="card-body">
                 <div class="row justify-content-center">

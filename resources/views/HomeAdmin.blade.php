@@ -28,20 +28,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($Incidencias as $Incidencia)
+                    @foreach($Relojs as $Reloj)
+                    @if(strcmp(($Reloj->incidencia),'NORMAL')!== 0)
                     <tr>
                         <th>
                             {{$loop->iteration}}
                         </th>
                         <td>
-                            {{$Incidencia->nombre}}
+                            {{$Reloj->nombre}}
                         </td>
                         <td>
-                            {{$Incidencia->RFC}}
+                            {{$Reloj->RFC}}
                         </td>
                         <td>
-                            {{$Incidencia->incidencia}}
+                            {{$Reloj->incidencia}}
                         </td>
+                    
+                    @endif
                         @endforeach
                     </tr>
                 </tbody>
