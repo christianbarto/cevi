@@ -3,7 +3,7 @@
     <h1 class="text-center" style="color:#FDFCFC">
         Empleados Activos
     </h1>
-<div class="row justify-content-center">
+<div class="row justify-content-center  overflow-auto">
     <div class="form-group col-md-9">
         @include('user.forms.edit')
         <form action="{{ url('/createEmpleado')}}" method="get">
@@ -643,7 +643,7 @@
     <h1 class="text-center" style="color:#FDFCFC">
         Empleados Inactivos
     </h1>
-<div class="row justify-content-center">
+<div class="row justify-content-center overflow-auto">
     <div class="form-group col-md-9">
                 <div class="table-responsive">
                     <table class="table table-dark ">
