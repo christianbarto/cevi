@@ -28,6 +28,12 @@ button {
     margin-left: 50px;
     margin-right: 50px;
 }
+.margen {
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 #mycontainer {
     max-width: 1280px !important;
 }
@@ -35,5 +41,8 @@ button {
     font: sans-serif;
 }
 input, select, option {
+    text-align: center
+}
+.centro {
     text-align: center
 }

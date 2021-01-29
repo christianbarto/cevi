@@ -40,3 +40,7 @@ Route::post('import-list-xml', 'RelojController@importxml')->name('checador.impo
 //Rutas de los Reportes
 Route::get('/IndexReportes', 'ReportesController@index')->name('reportes.index');
 Route::get('/UsuariosReportes', 'ReportesController@usuarios')->name('reportes.usuarios');
+Route::get('/EmpleadosReportesA', 'ReportesController@empleadosA')->name('reportes.empleadosA');
+Route::get('/EmpleadosReportesI', 'ReportesController@empleadosI')->name('reportes.empleadosI');
+Route::get('/AsistenciasE', 'ReportesController@asistenciasE')->name('reportes.asistenciasE');
+Route::get('/AsistenciasP', 'ReportesController@asistenciasP')->name('reportes.asistenciasP');

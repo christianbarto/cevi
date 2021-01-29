@@ -23,7 +23,6 @@
             </meta>
         </meta>
     </head>
-</html>
 <style>
     body{
                 background-image: url(img/fondo.png);
