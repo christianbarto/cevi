@@ -10,9 +10,7 @@ Route::get('/', function () {
 });
 
 //Rutas de login
-Route::get('/homeAdmin', 'HomeController@index2')->name('home');
-Route::get('/homeUser', 'HomeController@index');
-Route::get('/admin', 'AdminController@index');
+Route::get('/Home', 'HomeController@index')->name('home');
 
 //Rutas Usuario
 Route::get('/alta', 'UserController@formulario');

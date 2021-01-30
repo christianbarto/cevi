@@ -41,9 +41,11 @@
                                 <th scope="col">
                                     Editar
                                 </th>
+                                @if(Auth::user()->role_id==2)
                                 <th scope="col">
                                     Eliminar
                                 </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -614,7 +616,7 @@
                                 </td>
 
                                 {{-- Boton de Eliminar --}}
-
+                                @if(Auth::user()->role_id==2)
                                 <td>
                                     <form action="{{route ('empleado.disable',$Empleado->id)}}"  method="post">
                                         {{csrf_field()}} {{method_field('put')}}
@@ -624,6 +626,7 @@
                                     </button>
                                     </form>
                                 </td>
+                                @endif
                                 @endif
                                 @endforeach
                             </tr>
@@ -673,9 +676,11 @@
                                 <th scope="col">
                                     Editar
                                 </th>
+                                @if(Auth::user()->role_id==2)
                                 <th scope="col">
                                     Ingresar
                                 </th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -1246,7 +1251,7 @@
                                 </td>
 
                                 {{-- Boton de Eliminar --}}
-
+                                @if(Auth::user()->role_id==2)
                                 <td>
                                     <form action="{{route ('empleado.enable',$Empleado->id)}}"  method="post">
                                         {{csrf_field()}} {{method_field('put')}}
@@ -1255,6 +1260,7 @@
                                     </button>
                                     </form>
                                 </td>
+                                @endif
                                 @endif
                                 @endforeach
                             </tr>

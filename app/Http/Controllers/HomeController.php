@@ -25,10 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('HomeUsuario');
-    }
-    public function index2(){
-
         $Relojs = Reloj::all();
         return view('HomeAdmin')->with('Relojs',$Relojs);
     }

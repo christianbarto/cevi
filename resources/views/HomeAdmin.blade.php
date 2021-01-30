@@ -45,7 +45,7 @@
                         </td>
                     
                     @endif
-                        @endforeach
+                    @endforeach
                     </tr>
                 </tbody>
             </table>
