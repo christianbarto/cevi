@@ -1,11 +1,36 @@
 @extends('layouts.app2')
 @section('content')
-    <h1 class="text-center" style="color:#FDFCFC">
-        Empleados Activos
-    </h1>
-<div class="row justify-content-center  overflow-auto">
+<div class="row justify-content-center overflow-auto">
     <div class="form-group col-md-9">
-        @include('user.forms.edit')
+        <div class="row float-left col-md-10">
+            <div class="form-group">
+                <div class="card">
+                    <form class="form-inline" action="{{ url('/buscarEmpleado')}}" method="get">
+                        <select class="form-control" id="seleccion" name="seleccion">
+                            <option value="id">
+                                N° de Trabajador
+                            </option>
+                            <option value="nombre">
+                                Nombre
+                            </option>
+                            <option value="RFC">
+                                RFC
+                            </option>
+                        </select>
+                        <input class="form-control" id="search" name="search" type="text" ></input>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <br>
+    <br>
+    <br>
+    <h1 class="text-center" style="color:#FDFCFC">
+    Empleados Activos
+    </h1>
         <form action="{{ url('/createEmpleado')}}" method="get">
             <button class="btn btn-primary btn-sm float-left" type="submit">
                 + Agregar
@@ -18,7 +43,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">
-                                    #
+                                    N° Trabajador
                                 </th>
                                 <th scope="col">
                                     Avatar
@@ -53,7 +78,7 @@
                             @if($Empleado->estatus == 'activo')
                             <tr>
                                 <th>
-                                    {{$loop->iteration}}
+                                    {{$Empleado->id}}
                                 </th>
                                 <td>
                                     <img alt="Avatar" class="img-fluid" height="60" src="{{$Empleado->avatar}}" width="60">
@@ -653,7 +678,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">
-                                    #
+                                    N° Trabajador
                                 </th>
                                 <th scope="col">
                                     Avatar
@@ -688,7 +713,7 @@
                             @if($Empleado->estatus == 'inactivo')
                             <tr>
                                 <th>
-                                    {{$loop->iteration}}
+                                    {{$Empleado->id}}
                                 </th>
                                 <td>
                                     <img alt="Avatar" class="img-fluid" height="60" src="{{$Empleado->avatar}}" width="60">

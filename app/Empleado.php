@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
@@ -19,5 +19,23 @@ class Empleado extends Model
 
     protected $dates =['fecha_alta',
     ];
+
+    public function scopeNombre($query, $nombre)
+    {
+        if($nombre)
+            return $query->where('nombre', 'LIKE', "%$nombre%")->get();
+    }
+
+    public function scopeId($query, $id)
+    {
+        if($id)
+            return $query->where('id', 'LIKE', "%$id%")->get();
+    }
+
+    public function scopeRFC($query, $RFC)
+    {
+        if($RFC)
+            return $query->where('RFC', 'LIKE', "%$RFC%")->get();
+    }
 
 }

@@ -29,6 +29,8 @@ Route::post('/StoreEmpleado', 'EmpleadoController@store')->name('empleados.store
 Route::put('/empleado/{empleado}/update', 'EmpleadoController@update')->name('empleado.update');
 Route::put('/empleado/{empleado}/disable', 'EmpleadoController@disable')->name('empleado.disable');
 Route::put('/empleado/{empleado}/enable', 'EmpleadoController@enable')->name('empleado.enable');
+Route::get('/buscarEmpleado','EmpleadoController@search')->name('empleados.buscar');
+
 
 //Rutas del reloj checador
 Route::get('/IndexReloj', 'RelojController@index')->name('checador.index');

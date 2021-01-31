@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\BD;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
 
@@ -163,6 +163,21 @@ class EmpleadoController extends Controller
         $Empleado->estatus='activo';
         $Empleado->save();
         return redirect('/IndexEmpleado');
+    }
+
+    public function search(Request $request)
+    {   
+        $seleccion = $request->seleccion;
+        $valor = $request->search;
+        if($seleccion==='id')
+            $empleados = Empleado::orderBy('empleados.id','asc')->Where('id','like','%'.$valor.'%')->get();
+        if($seleccion==='nombre')
+            $empleados = Empleado::orderBy('empleados.id','asc')->Where('nombre','like','%'.$valor.'%')->get();
+        if($seleccion==='RFC')
+            $empleados = Empleado::orderBy('empleados.id','asc')->Where('RFC','like','%'.$valor.'%')->get();
+
+        return view('Empleados/IndexEmpleado', compact('empleados'));
+
     }
 
     public function update(Request $request, $id)
