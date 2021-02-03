@@ -16,10 +16,19 @@
                             <option value="RFC">
                                 RFC
                             </option>
+                            <option value="paterno">
+                                Apellido Paterno
+                            </option>
+                            <option value="materno">
+                                Apellido Materno
+                            </option>
                         </select>
                         <input class="form-control" id="search" name="search" type="text" ></input>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-search"></i>
+                        </button>
+                        <button method="get" action="{{ url('/IndexEmpleado')}}" class="btn btn-success">
+                            <i class="fas fa-sync-alt"></i>
                         </button>
                     </form>
                 </div>
@@ -58,6 +67,9 @@
                                     Apellido Materno
                                 </th>
                                 <th scope="col">
+                                    RFC
+                                </th>
+                                <th scope="col">
                                     Estatus
                                 </th>
                                 <th scope="col">
@@ -92,6 +104,9 @@
                                 </td>
                                 <td>
                                     {{$Empleado->ap_materno}}
+                                </td>
+                                <td>
+                                    {{$Empleado->RFC}}
                                 </td>
                                 <td>
                                     {{$Empleado->estatus}}
@@ -693,6 +708,9 @@
                                     Apellido Materno
                                 </th>
                                 <th scope="col">
+                                    RFC
+                                </th>
+                                <th scope="col">
                                     Estatus
                                 </th>
                                 <th scope="col">
@@ -727,6 +745,9 @@
                                 </td>
                                 <td>
                                     {{$Empleado->ap_materno}}
+                                </td>
+                                <td>
+                                    {{$Empleado->RFC}}
                                 </td>
                                 <td>
                                     {{$Empleado->estatus}}

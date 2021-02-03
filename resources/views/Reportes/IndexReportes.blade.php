@@ -57,7 +57,7 @@
                            <form action="{{route('reportes.asistenciasP')}}" method="GET">
 
                             <h4 style="color:black">
-                                Asistencias por periodo
+                                Asistencias por Periodo
                             </h4>
                             <label style="color:black">Inicio</label>
                             <input class="form-control" id="inicio" name="inicio" type="date" value="{{date('Y-m-d')}}"> 
@@ -81,6 +81,26 @@
                             </input>
                             <br>
                             <br>
+                            <!-- Submit Button -->
+                            <button class="btn btn-primary " type="submit">
+                               Generar
+                            </button>
+                           </form>
+                        </div>
+                        <div class="form-group col-md-3 border border-4 margen">
+                           <form action="{{route('reportes.asistenciasEP')}}" method="GET">
+                            <h4 style="color:black">
+                                Asistencias por Empleado y Periodo
+                            </h4>                            
+                            <br>
+                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre de empleado"> 
+                            </input>
+                            <label style="color:black">Inicio</label>
+                            <input class="form-control" id="inicio" name="inicio" type="date" value="{{date('Y-m-d')}}"> 
+                            </input>
+                            <label style="color:black">Fin</label>
+                            <input class="form-control" id="fin" name="fin" type="date" value="{{date('Y-m-d')}}">
+                            </input>
                             <!-- Submit Button -->
                             <button class="btn btn-primary " type="submit">
                                Generar

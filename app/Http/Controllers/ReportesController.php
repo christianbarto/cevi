@@ -62,4 +62,15 @@ class ReportesController extends Controller
                      
        return $pdf->stream('Reporte por Periodo.pdf');
      }
+
+     public function asistenciasEP(Request $request)
+     {
+       $nombre=$request->nombre;
+       $inicio=$request->inicio;
+       $fin=$request->fin;
+       $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->where('nombre','LIKE','%'.$nombre.'%')->get();
+       $pdf = PDF::loadView('pdf/asistenciasEP',compact('Relojes','inicio','fin','nombre'));
+                     
+       return $pdf->stream('Reporte por Periodo.pdf');
+     }
 }

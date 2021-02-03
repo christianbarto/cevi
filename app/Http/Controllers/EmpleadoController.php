@@ -175,6 +175,10 @@ class EmpleadoController extends Controller
             $empleados = Empleado::orderBy('empleados.id','asc')->Where('nombre','like','%'.$valor.'%')->get();
         if($seleccion==='RFC')
             $empleados = Empleado::orderBy('empleados.id','asc')->Where('RFC','like','%'.$valor.'%')->get();
+        if($seleccion==='materno')
+            $empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_materno','like','%'.$valor.'%')->get();
+        if($seleccion==='paterno')
+            $empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_paterno','like','%'.$valor.'%')->get();
 
         return view('Empleados/IndexEmpleado', compact('empleados'));
 

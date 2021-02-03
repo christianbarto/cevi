@@ -9,6 +9,7 @@ Route::get('/', function () {
         return redirect('/login');
 });
 
+Route::group(['middleware' => 'auth'], function () {
 //Rutas de login
 Route::get('/Home', 'HomeController@index')->name('home');
 
@@ -44,3 +45,7 @@ Route::get('/EmpleadosReportesA', 'ReportesController@empleadosA')->name('report
 Route::get('/EmpleadosReportesI', 'ReportesController@empleadosI')->name('reportes.empleadosI');
 Route::get('/AsistenciasE', 'ReportesController@asistenciasE')->name('reportes.asistenciasE');
 Route::get('/AsistenciasP', 'ReportesController@asistenciasP')->name('reportes.asistenciasP');
+Route::get('/AsistenciasEP', 'ReportesController@asistenciasEP')->name('reportes.asistenciasEP');
+
+
+});
