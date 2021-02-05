@@ -309,7 +309,7 @@ class EmpleadoController extends Controller
 
 
 
-        $Empleado->update($request->only('fecha_alta','RFC', 'telefono', 'genero',
+        $Empleado->update($request->only('id','fecha_alta','RFC', 'telefono', 'genero',
         'ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato'));
 
         $Empleado->contrato         = $urlcontrato;

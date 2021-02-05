@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reloj;
-
+use App\Empleado;
+use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,24 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $date = Carbon::now()->toDateString();
+        $dateEnd = Carbon::now()->addDay(5)->toDateString();
         $Relojs = Reloj::all();
-        return view('HomeAdmin')->with('Relojs',$Relojs);
+        $lengh = Empleado::count();
+        $Empleados = Empleado::all();
+        for($i=0;$i<1;$i++){
+            $fecha=$Empleados[$i]->fecha_alta;
+            $fecha=$fecha->addYear(5)->toDateString();
+            if($dateEnd>=$fecha && $fecha>=$date){
+                $nombre = $Empleados[$i]->nombre.' '.$Empleados[$i]->ap_paterno.' '.$Empleados[$i]->ap_materno;
+                toastr()->warning("El usuario $nombre Cumplio su periodo de conkian <br /><br /><button type='button' >Ok</button>",
+                           "",['positionClass' => 'toast-bottom-left','closeButton'=>true,'timeOut'=>0,
+                           'extendedTimeOut'=>0]);
+                
+                return view('HomeAdmin')->with('Relojs',$Relojs);
+            }
+        }
+    return view('HomeAdmin')->with('Relojs',$Relojs);
+
     }
 }

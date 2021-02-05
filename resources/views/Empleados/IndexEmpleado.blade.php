@@ -37,6 +37,7 @@
     <br>
     <br>
     <br>
+    @toastr_css
     <h1 class="text-center" style="color:#FDFCFC">
     Empleados Activos
     </h1>
@@ -349,9 +350,8 @@
                                                             <label class="control-label text-muted" for="id">
                                                                 Numero de Trabajador
                                                             </label>
-                                                            <label class="form-control" style="background-color: #F7F9F9 " id="id" name="id" type="text">
-                                                                {{$Empleado->id}}
-                                                            </label>
+                                                            <input class="form-control" style="background-color: #F7F9F9 " value="{{$Empleado->id}}" id="id" name="id" type="text">
+                                                            </input>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="nombre">
@@ -990,9 +990,8 @@
                                                             <label class="control-label text-muted" for="id">
                                                                 Numero de Trabajador
                                                             </label>
-                                                            <label class="form-control" style="background-color: #F7F9F9 " id="id" name="id" type="text">
-                                                                {{$Empleado->id}}
-                                                            </label>
+                                                            <input class="form-control" style="background-color: #F7F9F9" value="{{$Empleado->id}}"  id="id" name="id" type="text">
+                                                            </input>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="nombre">
