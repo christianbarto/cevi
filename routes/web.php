@@ -46,6 +46,8 @@ Route::get('/EmpleadosReportesI', 'ReportesController@empleadosI')->name('report
 Route::get('/AsistenciasE', 'ReportesController@asistenciasE')->name('reportes.asistenciasE');
 Route::get('/AsistenciasP', 'ReportesController@asistenciasP')->name('reportes.asistenciasP');
 Route::get('/AsistenciasEP', 'ReportesController@asistenciasEP')->name('reportes.asistenciasEP');
+Route::get('/Antiguedad', 'ReportesController@antiguedad')->name('reportes.antiguedad');
+Route::get('/AntiguedadE', 'ReportesController@antiguedadE')->name('reportes.antiguedadE');
 
 
 });

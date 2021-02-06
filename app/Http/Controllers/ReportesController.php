@@ -73,4 +73,31 @@ class ReportesController extends Controller
                      
        return $pdf->stream('Reporte por Periodo.pdf');
      }
+
+     public function antiguedad()
+     {
+        $Empleados = Empleado::all();
+        $pdf = PDF::loadView('pdf/antiguedad',compact('Empleados'));
+
+        return $pdf->stream('Reporte de antiguedad de empleados.pdf');
+     }
+
+     public function antiguedadE(Request $request)
+     {
+        $seleccion = $request->seleccion;
+        $valor = $request->search;
+        if($seleccion==='id')
+            $Empleados = Empleado::orderBy('empleados.id','asc')->Where('id','like','%'.$valor.'%')->get();
+        if($seleccion==='nombre')
+            $Empleados = Empleado::orderBy('empleados.id','asc')->Where('nombre','like','%'.$valor.'%')->get();
+        if($seleccion==='RFC')
+            $Empleados = Empleado::orderBy('empleados.id','asc')->Where('RFC','like','%'.$valor.'%')->get();
+        if($seleccion==='materno')
+            $Empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_materno','like','%'.$valor.'%')->get();
+        if($seleccion==='paterno')
+            $Empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_paterno','like','%'.$valor.'%')->get();
+
+        $pdf = PDF::loadView('pdf/antiguedad', compact('Empleados'));
+        return $pdf->stream('Reporte de antiguedad de empleados.pdf');
+     }
 }
