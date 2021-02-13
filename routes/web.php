@@ -24,13 +24,14 @@ Route::POST('/DeleteUsuarios/{id}', 'UserController@destroy');
 
 //Rutas Empleado
 Route::get('/IndexEmpleado', 'EmpleadoController@index')->name('empleados.index');
-Route::get('/Empleado/{id}', 'EmpleadoController@show')->name('empleados.busqueda');
+Route::get('/Empleado', 'EmpleadoController@show')->name('empleados.busqueda');
 Route::get('/createEmpleado', 'EmpleadoController@create')->name('empleados.create');
 Route::post('/StoreEmpleado', 'EmpleadoController@store')->name('empleados.store');
 Route::put('/empleado/{empleado}/update', 'EmpleadoController@update')->name('empleado.update');
 Route::put('/empleado/{empleado}/disable', 'EmpleadoController@disable')->name('empleado.disable');
 Route::put('/empleado/{empleado}/enable', 'EmpleadoController@enable')->name('empleado.enable');
 Route::get('/buscarEmpleado','EmpleadoController@search')->name('empleados.buscar');
+Route::get('/buscarDocumento','EmpleadoController@documento')->name('empleados.buscarDocumento');
 
 
 //Rutas del reloj checador

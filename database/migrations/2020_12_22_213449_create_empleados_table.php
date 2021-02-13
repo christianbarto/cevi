@@ -14,21 +14,24 @@ class CreateEmpleadosTable extends Migration
     public function up()
     {
         Schema::create('empleados', function (Blueprint $table) {
-            $table->integer('id');
+            $table->bigIncrements('id');
             $table->date('fecha_alta');
+            $table->date('fecha_baja')->nullable('yes');
+            $table->date('fecha_nombramiento')->nullable('yes');
             $table->string('ap_paterno');
             $table->string('ap_materno');
             $table->string('nombre');
             $table->string('RFC');
             $table->string('telefono');
             $table->string('genero');
-            $table->string('correo');
+            $table->string('correo')->nullable('yes');
             $table->string('avatar')->default('/storage/avatardefalut.png')->nullable('yes');
             $table->string('estatus')->default('activo');
             $table->string('puesto');
             $table->string('Tcontrato');
+            $table->integer('quinquenio')->nullable('yes');
             //Documentos Escaneados
-            $table->string('contrato');
+            $table->string('contrato')->nullable('yes');
             $table->string('creden_elect');
             $table->string('acta_nac');
             $table->string('curriculum');
@@ -38,13 +41,16 @@ class CreateEmpleadosTable extends Migration
             $table->string('fotografia');
             $table->string('const_Noinhab');
             $table->string('comp_Dom');
-            $table->string('licencia');
+            $table->string('licencia')->nullable('yes');
             $table->string('nss');
-            $table->string('infonavit');
+            $table->string('infonavit')->nullable('yes');
             $table->string('rfc_doc');
-            $table->string('cartilla');
+            $table->string('cartilla')->nullable('yes');
             $table->string('curp');
             $table->string('diploma');
+            $table->string('nombramiento')->nullable('yes');
+            $table->string('dictamen');
+            $table->string('adicionales')->nullable('yes');
             $table->timestamps();
 
         });

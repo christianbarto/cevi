@@ -29,17 +29,26 @@ class EmpleadoController extends Controller
         return view('Empleados/createEmpleados');
     }
 
-    public function show ($id)
+    public function show (Request $request)
     {
-        $empleados = Empleado::findOrFail($id);
-        return view('Empleados/showEmpleado',compact('empleados'));
+        $empleados = Empleado::findOrFail($request->id);
+        $seleccion = null;
+        $campo=null;
+        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo'));
+    }
+
+    public function documento(Request $request)
+    {
+        $empleados = Empleado::findOrFail($request->idF);
+        $campo = $request->seleccion;
+        $seleccion = $empleados->$campo;
+        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo'));
     }
 
     public function store(Request $request)
     {
         $urlAvatar='/storage/avatardefalut.png';
         $request->validate([
-            'contrato'      => 'required',
             'creden_elect'  => 'required',
             'acta_nac'      => 'required',
             'curriculum'    => 'required',
@@ -51,19 +60,18 @@ class EmpleadoController extends Controller
             'comp_Dom'      => 'required',
             'licencia'      => 'required',
             'nss'           => 'required',
-            'infonavit'     => 'required',
             'rfc_doc'       => 'required',
-            'cartilla'      => 'required',
             'curp'          => 'required',
             'diploma'       => 'required',
+            'dictamen'      => 'required',
         ]);
-        if ($request->file('avatar') != null) {
-            $avatar    = $request->file('avatar')->store('public');
-            $urlAvatar = Storage::url($avatar);
-        }
 
-        $contrato    = $request->file('contrato')->store('public');
-        $urlcontrato = Storage::url($contrato);
+        if ($request->hasFile('contrato')) {
+            $contrato    = $request->file('contrato')->store('public');
+            $urlcontrato = Storage::url($contrato);
+        }else{
+            $urlcontrato = null;
+        }
 
         $creden_elect    = $request->file('creden_elect')->store('public');
         $urlcreden_elect = Storage::url($creden_elect);
@@ -92,20 +100,32 @@ class EmpleadoController extends Controller
         $comp_Dom    = $request->file('comp_Dom')->store('public');
         $urlcomp_Dom = Storage::url($comp_Dom);
 
-        $licencia    = $request->file('licencia')->store('public');
-        $urllicencia = Storage::url($licencia);
+        if ($request->hasFile('licencia')) {
+            $licencia    = $request->file('licencia')->store('public');
+            $urllicencia = Storage::url($licencia);
+        }else{
+            $urllicencia = null;
+        }
 
         $nss    = $request->file('nss')->store('public');
         $urlnss = Storage::url($nss);
 
-        $infonavit    = $request->file('infonavit')->store('public');
-        $urlinfonavit = Storage::url($infonavit);
+        if ($request->hasFile('infonavit')) {
+            $infonavit    = $request->file('infonavit')->store('public');
+            $urlinfonavit = Storage::url($infonavit);
+        }else{
+            $urlinfonavit = null;
+        }
 
         $rfc_doc    = $request->file('rfc_doc')->store('public');
         $urlrfc_doc = Storage::url($rfc_doc);
 
-        $cartilla    = $request->file('cartilla')->store('public');
-        $urlcartilla = Storage::url($cartilla);
+        if ($request->hasFile('cartilla')) {
+            $cartilla    = $request->file('cartilla')->store('public');
+            $urlcartilla = Storage::url($cartilla);
+        }else{
+            $urlcartilla = null;
+        }
 
         $curp    = $request->file('curp')->store('public');
         $urlcurp = Storage::url($curp);
@@ -113,9 +133,26 @@ class EmpleadoController extends Controller
         $diploma    = $request->file('diploma')->store('public');
         $urldiploma = Storage::url($diploma);
 
+        if ($request->hasFile('nombramiento')) {
+            $nombramiento    = $request->file('nombramiento')->store('public');
+            $urlnombramiento = Storage::url($nombramiento);
+        }else{
+            $urlnombramiento = null;
+        }
+
+        $dictamen    = $request->file('dictamen')->store('public');
+        $urldictamen = Storage::url($dictamen);
+
+        if ($request->hasFile('adicionales')) {
+            $adicionales    = $request->file('adicionales')->store('public');
+            $urladicionales = Storage::url($adicionales);
+        }else{
+            $urladicionales = null;
+        }
+
         Empleado::create([
-            'id'            => request('id'),
             'fecha_alta'    => request('fecha_alta'),
+        'fecha_nombramiento'=> request('fecha_nombramiento'),
             'RFC'           => request('RFC'),
             'telefono'      => request('telefono'),
             'genero'        => request('genero'),
@@ -124,6 +161,7 @@ class EmpleadoController extends Controller
             'nombre'        => request('nombre'),
             'correo'        => request('correo'),
             'puesto'        => request('puesto'),
+            'Tcontrato'     => request('Tcontrato'),
             'Tcontrato'     => request('Tcontrato'),
             'avatar'        => $urlAvatar,
             'contrato'      => $urlcontrato,
@@ -143,16 +181,20 @@ class EmpleadoController extends Controller
             'cartilla'      => $urlcartilla,
             'curp'          => $urlcurp,
             'diploma'       => $urldiploma,
+            'dictamen'      => $urldictamen ,        
+            'nombramiento'  => $urlnombramiento,
+            'adicionales'   => $urladicionales,
         ]);
         return redirect('/IndexEmpleado');
 
     }
 
 
-    public function disable($id)
+    public function disable(Request $request,$id)
     {
         $Empleado = Empleado::findOrFail($id);
         $Empleado->estatus='inactivo';
+        $Empleado->fecha_baja = $request->fecha_baja;
         $Empleado->save();
         return redirect('/IndexEmpleado');
     }
@@ -307,10 +349,31 @@ class EmpleadoController extends Controller
             $urldiploma = $Empleado->diploma;
         }
 
+        if ($request->hasFile('nombramiento')) {
+            $nombramiento    = $request->file('nombramiento')->store('public');
+            $urlnombramiento = Storage::url($nombramiento);
+        }else{
+            $urlnombramiento = $Empleado->nombramiento;
+        }
+
+        if ($request->hasFile('dictamen')) {
+            $dictamen    = $request->file('dictamen')->store('public');
+            $urldictamen = Storage::url($dictamen);
+        }else{
+            $urldictamen = $Empleado->dictamen;
+        }
+
+        if ($request->hasFile('adicionales')) {
+            $adicionales    = $request->file('adicionales')->store('public');
+            $urladicionales = Storage::url($adicionales);
+        }else{
+            $urladicionales = $Empleado->adicionales;
+        }
 
 
-        $Empleado->update($request->only('id','fecha_alta','RFC', 'telefono', 'genero',
-        'ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato'));
+
+        $Empleado->update($request->only('fecha_alta','fecha_nombramiento','RFC', 'telefono',
+        'genero','ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato'));
 
         $Empleado->contrato         = $urlcontrato;
         $Empleado->creden_elect     = $urlcreden_elect;
@@ -329,6 +392,9 @@ class EmpleadoController extends Controller
         $Empleado->cartilla         = $urlcartilla;
         $Empleado->curp             = $urlcurp;
         $Empleado->diploma          = $urldiploma;
+        $Empleado->nombramiento     = $urlnombramiento;
+        $Empleado->dictamen         = $urldictamen;
+        $Empleado->adicionales      = $urladicionales;
         $Empleado->save();
         return redirect('/IndexEmpleado');
     }

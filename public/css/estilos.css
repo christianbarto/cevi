@@ -31,6 +31,12 @@ td {
     margin-left: 10px;
     margin-right: 10px;
 }
+.margin {
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
 #mycontainer {
     max-width: 1280px !important;
 }
@@ -42,4 +48,8 @@ input, select, option {
 }
 .centro {
     text-align: center
+}
+iframe {
+    width: 100%;
+    height: 95vh;
 }

@@ -32,15 +32,16 @@ class HomeController extends Controller
         $Relojs = Reloj::all();
         $lengh = Empleado::count();
         $Empleados = Empleado::all();
-        for($i=0;$i<1;$i++){
+        for($i=0;$i<$lengh;$i++){
             $fecha=$Empleados[$i]->fecha_alta;
             $fecha=$fecha->addYear(5)->toDateString();
             if($dateEnd>=$fecha && $fecha>=$date){
                 $nombre = $Empleados[$i]->nombre.' '.$Empleados[$i]->ap_paterno.' '.$Empleados[$i]->ap_materno;
-                toastr()->warning("El usuario $nombre Cumplio su periodo de conkian <br /><br /><button type='button' >Ok</button>",
+                toastr()->warning("El empleado $nombre Esta proximo a cumplir un periodo de quinquenio <br /><br /><button type='button' >Ok</button>",
                            "",['positionClass' => 'toast-bottom-left','closeButton'=>true,'timeOut'=>0,
                            'extendedTimeOut'=>0]);
                 
+
                 return view('HomeAdmin')->with('Relojs',$Relojs);
             }
         }

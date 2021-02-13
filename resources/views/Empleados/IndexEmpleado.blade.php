@@ -37,7 +37,6 @@
     <br>
     <br>
     <br>
-    @toastr_css
     <h1 class="text-center" style="color:#FDFCFC">
     Empleados Activos
     </h1>
@@ -116,211 +115,11 @@
 
                                 {{-- Boton de Ver Informacion --}}
                                 <td>
-                                    <a class="btn btn-success pull-right" data-target="#VerUsuario{{$Empleado->id}}" data-toggle="modal" href="#" type="submit">
-                                       <i class="fas fa-user-check"></i>
-                                        </i>
-                                    </a>
-                                    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="VerUsuario{{$Empleado->id}}" tabindex="-1">
-                                        <div class="modal-dialog modal-xl">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-dark">
-                                                        {{$Empleado->nombre}} {{$Empleado->ap_paterno}} {{$Empleado->ap_materno}}
-                                                    </h5>
-                                                    <button class="close" data-dismiss="modal" type="button">
-                                                        <span>
-                                                            ×
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="id">
-                                                                Numero de Trabajador
-                                                            </label>
-                                                            <label class="form-control" id="id" name="id" type="text">
-                                                                {{$Empleado->id}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="nombre">
-                                                                Nombre
-                                                            </label>
-                                                            <label class="form-control" id="nombre" name="nombre" type="text">
-                                                                {{$Empleado->nombre}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="ap_paterno">
-                                                                Apellido Paterno
-                                                            </label>
-                                                            <label class="form-control" id="ap_paterno" name="ap_paterno" type="text">
-                                                                {{$Empleado->ap_paterno}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="ap_materno">
-                                                                Apellido Materno
-                                                            </label>
-                                                            <label class="form-control" id="ap_materno" name="ap_materno" type="text">
-                                                                {{$Empleado->ap_materno}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="fecha_alta">
-                                                                Fecha de Alta
-                                                            </label>
-                                                            <label class="form-control" id="fecha_alta" name="fecha_alta" type="text">
-                                                                {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
-                                                            </label>
-
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="RFC">
-                                                                RFC
-                                                            </label>
-                                                            <label class="form-control" id="RFC" name="RFC" type="text">
-                                                                {{$Empleado->RFC}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="telefono">
-                                                                Telefono
-                                                            </label>
-                                                            <label class="form-control" id="telefono" name="telefono" type="text">
-                                                                {{$Empleado->telefono}}
-                                                            </label>
-
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="genero">
-                                                                Genero
-                                                            </label>
-                                                            <label class="form-control" id="genero" name="genero" type="text">
-                                                                {{$Empleado->genero}}
-                                                            </label>
-
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="correo">
-                                                                Correo
-                                                            </label>
-                                                            <label class="form-control" id="correo" name="correo" type="text">
-                                                                {{$Empleado->correo}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="puesto">
-                                                                Puesto
-                                                            </label>
-                                                            <label class="form-control" id="puesto" name="puesto" type="text">
-                                                                {{$Empleado->puesto}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="Tcontrato">
-                                                                Tipo de Contrato
-                                                            </label>
-                                                            <label class="form-control" id="Tcontrato" name="Tcontrato" type="text">
-                                                                {{$Empleado->Tcontrato}}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group text-muted">
-                                                        <h3>
-                                                            Documentos Personales
-                                                        </h3>
-                                                    </div>
-
-                                                        <div class="form-group">
-                                                            <ul>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->solicitud}}">
-                                                                        Solicitud de Empleo
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->contrato}}">
-                                                                        Contrato
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->creden_elect}}">
-                                                                        Credencial de Elector
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->acta_nac}}">
-                                                                        Acta de Nacimiento
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->curriculum}}">
-                                                                        Curriculum
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->cert_medico}}">
-                                                                        Certificado Medico
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->cart_recomend}}">
-                                                                        Carta de recomendacion
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->const_Noinhab}}">
-                                                                        Constancia de No Inhabilitacion
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->comp_Dom}}">
-                                                                        Comprobante de domicilio
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->licencia}}">
-                                                                        Licencia de Conducir
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->nss}}">
-                                                                        Numero de Seguro Social
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->infonavit}}">
-                                                                        Comprobante de Infonavit
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->rfc_doc}}">
-                                                                        Comprobante de RFC
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->cartilla}}">
-                                                                        Cartilla Militar
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->curp}}">
-                                                                        Curp
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->diploma}}">
-                                                                        Diploma de Ultimo Nivel Academico
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <form action="{{ route('empleados.busqueda')}}"   method="get">
+                                        <button class="btn btn-success float-left" name="id"  type="submit" value={{$Empleado->id}}>
+                                            <i class="fas fa-user-check"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 {{-- Boton de Editar Informacion --}}
@@ -350,8 +149,9 @@
                                                             <label class="control-label text-muted" for="id">
                                                                 Numero de Trabajador
                                                             </label>
-                                                            <input class="form-control" style="background-color: #F7F9F9 " value="{{$Empleado->id}}" id="id" name="id" type="text">
-                                                            </input>
+                                                            <label class="form-control" style="background-color: #F7F9F9 " id="id" name="id" type="text">
+                                                                {{$Empleado->id}}
+                                                            </label>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="nombre">
@@ -385,6 +185,16 @@
                                                                 {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
                                                             </label>
                                                             <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
+                                                            </input>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                Fecha de Nombramiento : 
+                                                            </label>
+                                                            <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                                            </label>
+                                                            <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value={{$Empleado->fecha_nombramiento}}>
                                                             </input>
                                                         </div>
                                                         <div class="form-group">
@@ -436,14 +246,23 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="Tcontrato">
-                                                                Tipo de Contrato
+                                                                Relacion Laboral
                                                             </label>
                                                             <select class="form-control" id="Tcontrato" name="Tcontrato">
-                                                                <option value="confianza">
-                                                                    Personal de Confianza
-                                                                </option>
                                                                 <option value="base">
-                                                                    Personal de base
+                                                                    PERSONAL DE BASE
+                                                                </option>
+                                                                <option value="contrato">
+                                                                    PERSONAL DE CONTRATO
+                                                                </option>
+                                                                <option value="nombremientoConfianza">
+                                                                    NOMBRAMIENTO CONFIANZA
+                                                                </option>
+                                                                <option value="mandosMedios">
+                                                                    MANDOS MEDIOS
+                                                                </option>
+                                                                <option value="contratoConfianza">
+                                                                    CONTRATO CONFIANZA
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -644,6 +463,39 @@
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <div class="text-dark">
+                                                            <label class="control-label text-muted" for="nombramiento">
+                                                                Nombramiento
+                                                            </label>
+                                                            <input accept="application/pdf, .doc, .docx, .odf" name="nombramiento" type="file">
+                                                                <label for="nombramiento">
+                                                                </label>
+                                                            </input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="text-dark">
+                                                            <label class="control-label text-muted" for="dictamen">
+                                                                Dictamen
+                                                            </label>
+                                                            <input accept="application/pdf, .doc, .docx, .odf" name="dictamen" type="file">
+                                                                <label for="dictamen">
+                                                                </label>
+                                                            </input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="text-dark">
+                                                            <label class="control-label text-muted" for="adicionales">
+                                                                Documentos Adicionales
+                                                            </label>
+                                                            <input accept="application/pdf, .doc, .docx, .odf" name="adicionales" type="file">
+                                                                <label for="adicionales">
+                                                                </label>
+                                                            </input>
+                                                        </div>
+                                                    </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-primary" type="submit">
                                                         Guardar
@@ -658,13 +510,46 @@
                                 {{-- Boton de Eliminar --}}
                                 @if(Auth::user()->role_id==2)
                                 <td>
-                                    <form action="{{route ('empleado.disable',$Empleado->id)}}"  method="post">
-                                        {{csrf_field()}} {{method_field('put')}}
-                                    <button class="btn btn-outline-danger pull-right" type="submit">
-                                        <i class="fas fa-user-times">
+                                    <a class="btn btn-danger pull-right" data-target="#DeleteUsuario{{$Empleado->id}}" data-toggle="modal" href="#" type="submit">
+                                       <i class="fas fa-user-times"></i>
                                         </i>
-                                    </button>
-                                    </form>
+                                    </a>
+                                    <div aria-hidden="true" aria-labelledby="exampleModalLabl" class="modal fade" id="DeleteUsuario{{$Empleado->id}}" tabindex="-1">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="text-center text-muted" style="color:gray">
+                                                        Selecciona la Fecha de Baja
+                                                    </h3>
+                                                </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{route ('empleado.disable',$Empleado->id)}}"  
+                                                            enctype="multipart/form-data" method="post">
+                                                                {{csrf_field()}} {{method_field('put')}}
+                                                                <div class="form-group col-md-12">
+
+                                                                    <input class="form-control" id="fecha_baja" name="fecha_baja" 
+                                                                    required="" style="text-transform:uppercase;" type="date" 
+                                                                    value="{{date('Y-m-d')}}">
+                                                                    </input>
+                                                                </div>
+                                                            {{-- <form action="{{route ('empleado.disable',$Empleado->id)}}"  method="post">
+                                                                {{csrf_field()}} {{method_field('put')}}
+                                                            <button class="btn btn-outline-danger pull-right" type="submit">
+                                                                <i class="fas fa-user-times">
+                                                                </i>
+                                                            </button>
+                                                            </form> --}}
+                                                    </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-primary" type="submit">
+                                                                    Guardar
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
                                 @endif
                                 @endif
@@ -714,6 +599,9 @@
                                     Estatus
                                 </th>
                                 <th scope="col">
+                                    Fecha Baja
+                                </th>
+                                <th scope="col">
                                     Ver
                                 </th>
                                 <th scope="col">
@@ -730,6 +618,7 @@
                             @foreach($empleados as $Empleado)
                             @if($Empleado->estatus == 'inactivo')
                             <tr>
+                                <tr>
                                 <th>
                                     {{$Empleado->id}}
                                 </th>
@@ -752,215 +641,21 @@
                                 <td>
                                     {{$Empleado->estatus}}
                                 </td>
-
+                                <td>
+                                    @if($Empleado->fecha_baja==null)
+                                        Sin fecha de baja
+                                    @else
+                                    {{Date::parse($Empleado->fecha_baja)->format('l j \d\e F \d\e Y')}}
+                                    @endif
+                                </td>
 
                                 {{-- Boton de Ver Informacion --}}
                                 <td>
-                                    <a class="btn btn-success pull-right" data-target="#VerUsuario{{$Empleado->id}}" data-toggle="modal" href="#" type="submit">
-                                       <i class="fas fa-user-check"></i>
-                                        </i>
-                                    </a>
-                                    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="VerUsuario{{$Empleado->id}}" tabindex="-1">
-                                        <div class="modal-dialog modal-xl">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title text-dark">
-                                                        {{$Empleado->nombre}} {{$Empleado->ap_paterno}} {{$Empleado->ap_materno}}
-                                                    </h5>
-                                                    <button class="close" data-dismiss="modal" type="button">
-                                                        <span>
-                                                            ×
-                                                        </span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="id">
-                                                                Numero de Trabajador
-                                                            </label>
-                                                            <label class="form-control" id="id" name="id" type="text">
-                                                                {{$Empleado->id}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="nombre">
-                                                                Nombre
-                                                            </label>
-                                                            <label class="form-control" id="nombre" name="nombre" type="text">
-                                                                {{$Empleado->nombre}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="ap_paterno">
-                                                                Apellido Paterno
-                                                            </label>
-                                                            <label class="form-control" id="ap_paterno" name="ap_paterno" type="text">
-                                                                {{$Empleado->ap_paterno}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="ap_materno">
-                                                                Apellido Materno
-                                                            </label>
-                                                            <label class="form-control" id="ap_materno" name="ap_materno" type="text">
-                                                                {{$Empleado->ap_materno}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="fecha_alta">
-                                                                Fecha de Alta
-                                                            </label>
-                                                            <label class="form-control" id="fecha_alta" name="fecha_alta" type="text">
-                                                                {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
-                                                            </label>
-
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="RFC">
-                                                                RFC
-                                                            </label>
-                                                            <label class="form-control" id="RFC" name="RFC" type="text">
-                                                                {{$Empleado->RFC}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="telefono">
-                                                                Telefono
-                                                            </label>
-                                                            <label class="form-control" id="telefono" name="telefono" type="text">
-                                                                {{$Empleado->telefono}}
-                                                            </label>
-
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="genero">
-                                                                Genero
-                                                            </label>
-                                                            <label class="form-control" id="genero" name="genero" type="text">
-                                                                {{$Empleado->genero}}
-                                                            </label>
-
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="correo">
-                                                                Correo
-                                                            </label>
-                                                            <label class="form-control" id="correo" name="correo" type="text">
-                                                                {{$Empleado->correo}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="puesto">
-                                                                Puesto
-                                                            </label>
-                                                            <label class="form-control" id="puesto" name="puesto" type="text">
-                                                                {{$Empleado->puesto}}
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label text-muted" for="Tcontrato">
-                                                                Tipo de Contrato
-                                                            </label>
-                                                            <label class="form-control" id="Tcontrato" name="Tcontrato" type="text">
-                                                                {{$Empleado->Tcontrato}}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group text-muted">
-                                                        <h3>
-                                                            Documentos Personales
-                                                        </h3>
-                                                    </div>
-
-                                                        <div class="form-group">
-                                                            <ul>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->solicitud}}">
-                                                                        Solicitud de Empleo
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->contrato}}">
-                                                                        Contrato
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->creden_elect}}">
-                                                                        Credencial de Elector
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->acta_nac}}">
-                                                                        Acta de Nacimiento
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->curriculum}}">
-                                                                        Curriculum
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->cert_medico}}">
-                                                                        Certificado Medico
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->cart_recomend}}">
-                                                                        Carta de recomendacion
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->const_Noinhab}}">
-                                                                        Constancia de No Inhabilitacion
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->comp_Dom}}">
-                                                                        Comprobante de domicilio
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->licencia}}">
-                                                                        Licencia de Conducir
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->nss}}">
-                                                                        Numero de Seguro Social
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->infonavit}}">
-                                                                        Comprobante de Infonavit
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->rfc_doc}}">
-                                                                        Comprobante de RFC
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->cartilla}}">
-                                                                        Cartilla Militar
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->curp}}">
-                                                                        Curp
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a class="text-danger align-items-start" href="{{$Empleado->diploma}}">
-                                                                        Diploma de Ultimo Nivel Academico
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <form action="{{ route('empleados.busqueda')}}"   method="get">
+                                        <button class="btn btn-success float-left" name="id"  type="submit" value={{$Empleado->id}}>
+                                            <i class="fas fa-user-check"></i>
+                                        </button>
+                                    </form>
                                 </td>
 
                                 {{-- Boton de Editar Informacion --}}
@@ -990,8 +685,9 @@
                                                             <label class="control-label text-muted" for="id">
                                                                 Numero de Trabajador
                                                             </label>
-                                                            <input class="form-control" style="background-color: #F7F9F9" value="{{$Empleado->id}}"  id="id" name="id" type="text">
-                                                            </input>
+                                                            <label class="form-control" style="background-color: #F7F9F9 " id="id" name="id" type="text">
+                                                                {{$Empleado->id}}
+                                                            </label>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="nombre">
@@ -1025,6 +721,16 @@
                                                                 {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
                                                             </label>
                                                             <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
+                                                            </input>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                Fecha de Nombramiento : 
+                                                            </label>
+                                                            <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                                            </label>
+                                                            <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value={{$Empleado->fecha_nombramiento}}>
                                                             </input>
                                                         </div>
                                                         <div class="form-group">
@@ -1076,14 +782,23 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="Tcontrato">
-                                                                Tipo de Contrato
+                                                                Relacion Laboral
                                                             </label>
                                                             <select class="form-control" id="Tcontrato" name="Tcontrato">
-                                                                <option value="confianza">
-                                                                    Personal de Confianza
-                                                                </option>
                                                                 <option value="base">
-                                                                    Personal de base
+                                                                    PERSONAL DE BASE
+                                                                </option>
+                                                                <option value="contrato">
+                                                                    PERSONAL DE CONTRATO
+                                                                </option>
+                                                                <option value="nombremientoConfianza">
+                                                                    NOMBRAMIENTO CONFIANZA
+                                                                </option>
+                                                                <option value="mandosMedios">
+                                                                    MANDOS MEDIOS
+                                                                </option>
+                                                                <option value="contratoConfianza">
+                                                                    CONTRATO CONFIANZA
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -1284,6 +999,39 @@
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <div class="text-dark">
+                                                            <label class="control-label text-muted" for="nombramiento">
+                                                                Nombramiento
+                                                            </label>
+                                                            <input accept="application/pdf, .doc, .docx, .odf" name="nombramiento" type="file">
+                                                                <label for="nombramiento">
+                                                                </label>
+                                                            </input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="text-dark">
+                                                            <label class="control-label text-muted" for="dictamen">
+                                                                Dictamen
+                                                            </label>
+                                                            <input accept="application/pdf, .doc, .docx, .odf" name="dictamen" type="file">
+                                                                <label for="dictamen">
+                                                                </label>
+                                                            </input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="text-dark">
+                                                            <label class="control-label text-muted" for="adicionales">
+                                                                Documentos Adicionales
+                                                            </label>
+                                                            <input accept="application/pdf, .doc, .docx, .odf" name="adicionales" type="file">
+                                                                <label for="adicionales">
+                                                                </label>
+                                                            </input>
+                                                        </div>
+                                                    </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-primary" type="submit">
                                                         Guardar
@@ -1294,6 +1042,7 @@
                                         </div>
                                 </div>
                                 </td>
+                                
 
                                 {{-- Boton de Eliminar --}}
                                 @if(Auth::user()->role_id==2)
