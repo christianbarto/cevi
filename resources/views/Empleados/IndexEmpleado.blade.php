@@ -189,10 +189,14 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="fecha_nombramiento">
-                                                                Fecha de Nombramiento : 
+                                                                Fecha de Nombramiento  
                                                             </label>
                                                             <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                @if($Empleado->fecha_nombramiento==null)
+                                                                    
+                                                                @else
                                                                 {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                                                @endif
                                                             </label>
                                                             <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value={{$Empleado->fecha_nombramiento}}>
                                                             </input>

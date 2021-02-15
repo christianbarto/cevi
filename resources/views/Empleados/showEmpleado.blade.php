@@ -52,7 +52,7 @@
                                 </label>
                                 <label class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="text">
                                     @if($empleados->fecha_nombramiento==null)
-                                        Sin fecha de Nombramiento
+                                        Sin Fecha de Nombramiento
                                     @else
                                     {{Date::parse($empleados->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
                                     @endif

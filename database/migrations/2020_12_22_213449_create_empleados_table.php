@@ -29,7 +29,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('estatus')->default('activo');
             $table->string('puesto');
             $table->string('Tcontrato');
-            $table->integer('quinquenio')->nullable('yes');
+            $table->integer('quinquenio')->nullable('yes')->default(0);
             //Documentos Escaneados
             $table->string('contrato')->nullable('yes');
             $table->string('creden_elect');
