@@ -1,13 +1,11 @@
-<h1 class="text-center">
+<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
+<h1 style="text-align: center">
     Empleados Inactivos
 </h1>
 <div class="table-responsive">
-    <table class="table table-dark ">
+    <table border="1" style="margin: 0 auto;">
         <thead class="thead-light">
             <tr>
-                <th scope="col">
-                    #
-                </th>
                 <th scope="col">
                     Nombre(s)
                 </th>
@@ -18,7 +16,7 @@
                     Apellido Materno
                 </th>
                 <th scope="col">
-                    Estatus
+                    RFC
                 </th>
             </tr>
         </thead>
@@ -26,9 +24,6 @@
             @foreach($empleados as $Empleado)
             @if($Empleado->estatus == 'inactivo')
             <tr>
-                <th>
-                    {{$loop->iteration}}
-                </th>
                 <td>
                     {{$Empleado->nombre}}
                 </td>
@@ -39,7 +34,7 @@
                     {{$Empleado->ap_materno}}
                 </td>
                 <td>
-                    {{$Empleado->estatus}}
+                    {{$Empleado->RFC}}
                 </td>
             </tr>
             @endif

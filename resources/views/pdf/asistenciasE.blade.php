@@ -1,13 +1,11 @@
+<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
 <h1 style="text-align: center">
-    Asistencia por Empleados
+    Asistencia por Empleado
 </h1>
 <div class="table-responsive">
-    <table class="table table-dark ">
+    <table border="1" style="margin: 0 auto;">
         <thead class="thead-light">
             <tr>
-                <th scope="col">
-                    #Empleado
-                </th>
                 <th scope="col">
                     Nombre(s)
                 </th>
@@ -31,9 +29,6 @@
         <tbody>
             @foreach($empleados as $Empleado)
             <tr>
-                <th>
-                    {{$Empleado->id}}
-                </th>
                 <td>
                     {{$Empleado->nombre}}
                 </td>
@@ -41,7 +36,7 @@
                     {{$Empleado->RFC}}
                 </td>
                 <td>
-                    {{$Empleado->fecha}}
+                    {{Date::parse($Empleado->fecha)->format('l j \d\e F \d\e Y')}}
                 </td>
                 <td>
                     {{$Empleado->entrada}}

@@ -1,14 +1,12 @@
-<h1>Asistencia del Empleado:</h1>
-<h2>{{$nombre}}</h2>
-<h1>En el periodo:</h1>
-<h2>{{Date::parse($inicio)->format('l j \d\e F \d\e Y')}} al {{Date::parse($fin)->format('l j \d\e F \d\e Y')}}</h2>
+<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
+<h2 style="text-align: center">Asistencia del Empleado:</h2>
+<h2 style="text-align: center">{{$nombre}}</h2>
+<h2 style="text-align: center">En el periodo:</h2>
+<h2 style="text-align: center">{{Date::parse($inicio)->format('l j \d\e F \d\e Y')}} al {{Date::parse($fin)->format('l j \d\e F \d\e Y')}}</h2>
 <div class="table-responsive">
-            <table class="table table-dark ">
+            <table border="1" style="margin: 0 auto;">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">
-                            #
-                        </th>
                         <th scope="col">
                             Nombre
                         </th>
@@ -32,9 +30,6 @@
                 <tbody>
                     @foreach($Relojes as $Reloj)
                     <tr>
-                        <th>
-                            {{$loop->iteration}}
-                        </th>
                         <td>
                             {{$Reloj->nombre}}
                         </td>

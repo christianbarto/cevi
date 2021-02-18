@@ -28,6 +28,7 @@ class ReportesController extends Controller
      {
        $usuarios = User::all();
        $pdf = PDF::loadView('pdf/IndexUser',compact('usuarios'));
+       set_time_limit(300); 
        return $pdf->stream('Reporte de Usuarios.pdf');
      }
 
@@ -35,6 +36,7 @@ class ReportesController extends Controller
      {
        $empleados = Empleado::all();
        $pdf = PDF::loadView('pdf/IndexEmpleadoA',compact('empleados'));
+       set_time_limit(300); 
        return $pdf->stream('Reporte de Empleados.pdf');
      }
 
@@ -42,14 +44,16 @@ class ReportesController extends Controller
      {
        $empleados = Empleado::all();
        $pdf = PDF::loadView('pdf/IndexEmpleadoI',compact('empleados'));
+       set_time_limit(300); 
        return $pdf->stream('Reporte de Empleados.pdf');
      }
 
      public function asistenciasE(Request $request)
      {
        $nombre=$request->nombre;
-       $empleados = DB::table('relojs')->Where('nombre','like','%'.$nombre.'%')->get();
+       $empleados = DB::table('relojs')->Where('nombre','like','%'.$nombre.'%')->orderBy('fecha','desc')->get();
        $pdf = PDF::loadView('pdf/asistenciasE',compact('empleados'));
+       set_time_limit(300); 
        return $pdf->stream('Reporte por Empleado.pdf');
      }
 
@@ -59,8 +63,8 @@ class ReportesController extends Controller
        $fin=$request->fin;
        $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->get();
        $pdf = PDF::loadView('pdf/asistenciasP',compact('Relojes','inicio','fin'));
-                     
-       return $pdf->stream('Reporte por Periodo.pdf');
+        set_time_limit(300);          
+       return $pdf->download('Reporte por Periodo.pdf');
      }
 
      public function asistenciasEP(Request $request)
@@ -70,7 +74,7 @@ class ReportesController extends Controller
        $fin=$request->fin;
        $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->where('nombre','LIKE','%'.$nombre.'%')->get();
        $pdf = PDF::loadView('pdf/asistenciasEP',compact('Relojes','inicio','fin','nombre'));
-                     
+       set_time_limit(300);         
        return $pdf->stream('Reporte por Periodo.pdf');
      }
 
@@ -78,7 +82,7 @@ class ReportesController extends Controller
      {
         $Empleados = Empleado::all();
         $pdf = PDF::loadView('pdf/antiguedad',compact('Empleados'));
-
+        set_time_limit(300); 
         return $pdf->stream('Reporte de antiguedad de empleados.pdf');
      }
 
@@ -98,6 +102,7 @@ class ReportesController extends Controller
             $Empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_paterno','like','%'.$valor.'%')->get();
 
         $pdf = PDF::loadView('pdf/antiguedad', compact('Empleados'));
+        set_time_limit(300); 
         return $pdf->stream('Reporte de antiguedad de empleados.pdf');
      }
 }

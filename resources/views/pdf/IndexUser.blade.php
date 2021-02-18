@@ -1,10 +1,11 @@
-<div style="text-align:center;">
+<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
+<div align="center">
     <h1>
         Usuarios
     </h1>
 </div>
-<div style="text-align:center;">
-    <table class="table table-dark">
+<div align="center">
+    <table border="1" style="margin: 0 auto;">
         <thead class="thead-light">
             <tr>
                 <th scope="col">

@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $date = Carbon::now();
-        $Relojs = Reloj::all();
+        $Relojs = Reloj::Paginate(10);
         $Empleados = Empleado::all();
         $lengh = Empleado::count();
         for($i=0;$i<$lengh;$i++){

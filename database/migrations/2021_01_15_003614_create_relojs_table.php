@@ -14,7 +14,7 @@ class CreateRelojsTable extends Migration
     public function up()
     {
         Schema::create('relojs', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->string('id');
             $table->string('RFC');
             $table->string('nombre');
             $table->date('fecha');

@@ -89,11 +89,19 @@
                                                         <input type="text" name ="name" class="form-control" value={{$User->name}}>
                                                         </input>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="" class="text-dark float-left">UserName</label>
-                                                        <input type="text" name ="email" class="form-control" value={{$User->email}}>
-                                                        </input>
-                                                    </div>
+                                                    @if($User->email=='admin_agustin' || $User->email=='user')
+                                                        <div class="form-group">
+                                                            <label for="" class="text-dark float-left">UserName</label>
+                                                            <input type="text" readonly name="email" class="form-control" value={{$User->email}}>
+                                                            </input>
+                                                        </div>
+                                                    @else
+                                                        <div class="form-group">
+                                                            <label for="" class="text-dark float-left">UserName</label>
+                                                            <input type="text"  name="email" class="form-control" value={{$User->email}}>
+                                                            </input>
+                                                        </div>
+                                                    @endif
                                                     <div class="form-group">
                                                         <label for="" class="text-dark float-left">Password</label>
                                                         <input type="text" name ="password" class="form-control" placeholder="Ingresa Nueva Contraseña">
@@ -123,12 +131,21 @@
                                             </div>
                                         </div>
                                         <td>
+                                        @if($User->email=='admin_agustin' || $User->email=='user')
+                                            <form action="{{ url('/DeleteUsuarios/'.$User->id)}}" method="POST">
+                                                {{csrf_field()}}
+                                                <button class="btn btn-danger" onclick="return confirm('¿Borrar?');" type="submit" disabled>
+                                                    <i class="fas fa-user-times"></i>
+                                                </button>
+                                            </form>
+                                        @else
                                             <form action="{{ url('/DeleteUsuarios/'.$User->id)}}" method="POST">
                                                 {{csrf_field()}}
                                                 <button class="btn btn-danger" onclick="return confirm('¿Borrar?');" type="submit">
                                                     <i class="fas fa-user-times"></i>
                                                 </button>
                                             </form>
+                                        @endif
                                         </td>
                                     </div>
                                 </td>

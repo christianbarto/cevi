@@ -12,7 +12,7 @@ class relojController extends Controller
 {
     public function index()
     {
-      $Relojes = Reloj::all();
+      $Relojes = $Relojs = Reloj::orderBy('fecha','desc')->Paginate(10);;
       return view('Reloj/IndexXml')->with('Relojes',$Relojes);
     }
 

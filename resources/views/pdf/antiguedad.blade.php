@@ -1,8 +1,9 @@
+<img height="120" src="img/CEVILOGO2020.jpg" width="380"></img>
 <h1 style="text-align: center">
     Antiguedad de los empleados
 </h1>
 <div class="table-responsive">
-    <table class="table table-dark ">
+    <table border="1" style="margin: 0 auto;">
         <thead class="thead-light">
             <tr>
                 <th scope="col">

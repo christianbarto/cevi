@@ -40,9 +40,6 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">
-                            #
-                        </th>
-                        <th scope="col">
                             Nombre
                         </th>
                         <th scope="col">
@@ -65,9 +62,6 @@
                 <tbody>
                     @foreach($Relojes as $Reloj)
                     <tr>
-                        <th>
-                            {{$loop->iteration}}
-                        </th>
                         <td>
                             {{$Reloj->nombre}}
                         </td>
@@ -106,6 +100,7 @@
                     </tr>
                 </tbody>
             </table>
+            {!!$Relojes->render() !!}
         </div>
     </div>
 </div>

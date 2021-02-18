@@ -13,10 +13,10 @@
                 <div class="row justify-content-center">
                     <form action="{{route('checador.import')}}" enctype="multipart/form-data" method="POST">
                         @csrf
-                    @if(Session::has('message'))
-                        <p style="color:black">
-                            {{Session::get('message')}}
-                        </p>
+                        @if(Session::has('message'))
+                            <p style="color:black">
+                                {{Session::get('message')}}
+                            </p>
                         @endif
                         <div class="form-group">
                             <div>
@@ -30,58 +30,52 @@
                             Agregar
                         </button>
                     </form>
+                <div class="table-responsive">
+                    <table class="table table-dark ">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">
+                                    Nombre
+                                </th>
+                                <th scope="col">
+                                    RFC
+                                </th>
+                                <th scope="col">
+                                    Hora de Entrada
+                                </th>
+                                <th scope="col">
+                                    Hora de salida
+                                </th>
+                                <th scope="col">
+                                    Incidencia
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($Relojes as $Reloj)
+                            <tr>
+                                <td>
+                                    {{$Reloj->nombre}}
+                                </td>
+                                <td>
+                                    {{$Reloj->RFC}}
+                                </td>
+                                <td>
+                                    {{$Reloj->entrada}}
+                                </td>
+                                <td>
+                                    {{$Reloj->salida}}
+                                </td>
+                                <td>
+                                    #
+                                </td>
+                                @endforeach
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                {!! $Relojs->render() !!}
             </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-dark ">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">
-                            #
-                        </th>
-                        <th scope="col">
-                            Nombre
-                        </th>
-                        <th scope="col">
-                            RFC
-                        </th>
-                        <th scope="col">
-                            Hora de Entrada
-                        </th>
-                        <th scope="col">
-                            Hora de salida
-                        </th>
-                        <th scope="col">
-                            Incidencia
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($Relojes as $Reloj)
-                    <tr>
-                        <th>
-                            {{$loop->iteration}}
-                        </th>
-                        <td>
-                            {{$Reloj->nombre}}
-                        </td>
-                        <td>
-                            {{$Reloj->RFC}}
-                        </td>
-                        <td>
-                            {{$Reloj->entrada}}
-                        </td>
-                        <td>
-                            {{$Reloj->salida}}
-                        </td>
-                        <td>
-                            #
-                        </td>
-                        @endforeach
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
