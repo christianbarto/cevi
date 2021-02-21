@@ -36,7 +36,7 @@ class relojController extends Controller
            ['xml.required' => 'Selecciona Un Documento']
          );
       $control = simplexml_load_file($request->xml);  
-      //dd($control);    
+      dd($control);    
       $total_empleados=count($control->CONTROL);
       //echo $total_empleados;
 
@@ -64,7 +64,6 @@ class relojController extends Controller
           }
 
           Reloj::create([
-            'id'         => $id,
             'RFC'        => $RFC,
             'nombre'     => $nombre,
             'entrada'    => $entrada,

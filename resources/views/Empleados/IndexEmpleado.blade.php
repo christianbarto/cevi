@@ -130,7 +130,7 @@
                                         </i>
                                     </a>
                                     <div aria-hidden="true" aria-labelledby="exampleModalLabl" class="modal fade" id="EditUsuario{{$Empleado->id}}" tabindex="-1">
-                                        <div class="modal-dialog modal-xl">
+                                        <div class="modal-dialog ">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title text-dark">
@@ -142,7 +142,7 @@
                                                         </span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body carta">
                                                     <form action="{{route ('empleado.update',$Empleado->id)}}"  enctype="multipart/form-data" method="post">
                                                     {{csrf_field()}} {{method_field('put')}}
                                                         <div class="form-group">
@@ -271,7 +271,7 @@
                                                             </select>
                                                         </div>
 
-                                                    </div>
+                                                    
 
                                                     {{-- Edicion de archivos personales --}}
 
@@ -280,222 +280,239 @@
                                                             Documentos Personales
                                                         </h3>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="contrato">
-                                                                Contrato
+                                                               ----------Contrato----------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="contrato" type="file">
+                                                            <input accept="application/pdf" name="contrato" type="file">
                                                                 <label for="contrato">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="creden_elect">
-                                                                Credencial de Elector
+                                                               ---Credencial de Elector----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="creden_elect" type="file">
+                                                            <input accept="application/pdf" name="creden_elect" type="file">
                                                                 <label for="creden_elect">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="acta_nac">
-                                                                Acta de nacimiento
+                                                               -----Acta de Nacimiento-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="acta_nac" type="file">
+                                                            <input accept="application/pdf" name="acta_nac" type="file">
                                                                 <label for="acta_nac">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="curriculum">
-                                                                Curriculum
+                                                               ---------Curriculum---------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="curriculum" type="file">
+                                                            <input accept="application/pdf" name="curriculum" type="file">
                                                                 <label for="curriculum">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="solicitud">
-                                                                Solicitud de Empleo
+                                                               ----Solicitud de Empleo-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="solicitud" type="file">
+                                                            <input accept="application/pdf" name="solicitud" type="file">
                                                                 <label for="solicitud">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="cert_medico">
-                                                                Certificado Medico
+                                                               -----Certificado Medico-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="cert_medico" type="file">
+                                                            <input accept="application/pdf" name="cert_medico" type="file">
                                                                 <label for="cert_medico">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="cart_recomend">
-                                                                Carta de Recomendacion
+                                                               ---Carta de Recomendacion---
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="cart_recomend" type="file">
+                                                            <input accept="application/pdf" name="cart_recomend" type="file">
                                                                 <label for="cart_recomend">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="fotografia">
-                                                                Fotografia
+                                                               ---------Fotografia---------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="fotografia" type="file">
+                                                            <input accept="application/pdf" name="fotografia" type="file">
                                                                 <label for="fotografia">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="const_Noinhab">
-                                                                Constancia de No Inhabilitacion
+                                                               Constancia No Inhabilitacion
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="const_Noinhab" type="file">
+                                                            <input accept="application/pdf" name="const_Noinhab" type="file">
                                                                 <label for="const_Noinhab">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="comp_Dom">
-                                                                Comprobante de Domicilio
+                                                               --Comprobante de Domicilio--
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="comp_Dom" type="file">
+                                                            <input accept="application/pdf" name="comp_Dom" type="file">
                                                                 <label for="comp_Dom">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="licencia">
-                                                                Licencia de Conducir
+                                                               ----Licencia de Conducir----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="licencia" type="file">
+                                                            <input accept="application/pdf" name="licencia" type="file">
                                                                 <label for="licencia">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <div class="text-dark">
+                                                    <br>
+                                                    <div class="form-group text-dark">
                                                             <label class="control-label text-muted" for="nss">
-                                                                Numero de Seguro Social
+                                                               --Numero de Seguro Social---
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="nss" type="file">
+                                                            <input accept="application/pdf" name="nss" type="file">
                                                                 <label for="nss">
                                                                 </label>
                                                             </input>
-                                                        </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="infonavit">
-                                                                Infonavit
+                                                               ---------Infonavit----------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="infonavit" type="file">
+                                                            <input accept="application/pdf" name="infonavit" type="file">
                                                                 <label for="infonavit">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="rfc_doc">
-                                                                Comprobante de RFC
+                                                               -----Comprobante de RFC-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="rfc_doc" type="file">
+                                                            <input accept="application/pdf" name="rfc_doc" type="file">
                                                                 <label for="rfc_doc">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="cartilla">
-                                                                Cartilla Militar Liberada
+                                                               -Cartilla Militar Liberada--
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="cartilla" type="file">
+                                                            <input accept="application/pdf" name="cartilla" type="file">
                                                                 <label for="cartilla">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="curp">
-                                                                Comprobante de CURP
+                                                               -----Comprobante de CURP----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="curp" type="file">
+                                                            <input accept="application/pdf" name="curp" type="file">
                                                                 <label for="curp">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="diploma">
-                                                                Diploma de Grado de estudio
+                                                               --Diploma Grado de Estudio--
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="diploma" type="file">
+                                                            <input accept="application/pdf" name="diploma" type="file">
                                                                 <label for="diploma">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="nombramiento">
-                                                                Nombramiento
+                                                               --------Nombramiento--------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="nombramiento" type="file">
+                                                            <input accept="application/pdf" name="nombramiento" type="file">
                                                                 <label for="nombramiento">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="dictamen">
-                                                                Dictamen
+                                                               ----------Dictamen----------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="dictamen" type="file">
+                                                            <input accept="application/pdf" name="dictamen" type="file">
                                                                 <label for="dictamen">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
-                                                            <label class="control-label text-muted" for="adicionales">
-                                                                Documentos Adicionales
-                                                            </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="adicionales" type="file">
-                                                                <label for="adicionales">
+                                                            <h5>
+                                                                Agrega Documento Adicional
+                                                            </h5>
+                                                            <input accept="application/pdf" name="adicional" type="file">
+                                                                <label for="adicional">
                                                                 </label>
                                                             </input>
                                                         </div>
@@ -505,9 +522,9 @@
                                                         Guardar
                                                     </button>
                                                 </div>
-                                                    </form>
-                                            </div>
+                                            </form>
                                         </div>
+                                    </div>
                                 </div>
                                 </td>
 
@@ -537,23 +554,17 @@
                                                                     value="{{date('Y-m-d')}}">
                                                                     </input>
                                                                 </div>
-                                                            {{-- <form action="{{route ('empleado.disable',$Empleado->id)}}"  method="post">
-                                                                {{csrf_field()}} {{method_field('put')}}
-                                                            <button class="btn btn-outline-danger pull-right" type="submit">
-                                                                <i class="fas fa-user-times">
-                                                                </i>
-                                                            </button>
-                                                            </form> --}}
-                                                    </div>
+
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-primary" type="submit">
                                                                     Guardar
                                                                 </button>
                                                             </div>
                                                         </form>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </td>
                                 @endif
                                 @endif
@@ -622,7 +633,6 @@
                             @foreach($empleados as $Empleado)
                             @if($Empleado->estatus == 'inactivo')
                             <tr>
-                                <tr>
                                 <th>
                                     {{$Empleado->id}}
                                 </th>
@@ -670,7 +680,7 @@
                                         </i>
                                     </a>
                                     <div aria-hidden="true" aria-labelledby="exampleModalLabl" class="modal fade" id="EditUsuario{{$Empleado->id}}" tabindex="-1">
-                                        <div class="modal-dialog modal-xl">
+                                        <div class="modal-dialog ">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title text-dark">
@@ -682,7 +692,7 @@
                                                         </span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body carta">
                                                     <form action="{{route ('empleado.update',$Empleado->id)}}"  enctype="multipart/form-data" method="post">
                                                     {{csrf_field()}} {{method_field('put')}}
                                                         <div class="form-group">
@@ -729,10 +739,14 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label text-muted" for="fecha_nombramiento">
-                                                                Fecha de Nombramiento : 
+                                                                Fecha de Nombramiento  
                                                             </label>
                                                             <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                @if($Empleado->fecha_nombramiento==null)
+                                                                    
+                                                                @else
                                                                 {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                                                @endif
                                                             </label>
                                                             <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value={{$Empleado->fecha_nombramiento}}>
                                                             </input>
@@ -807,7 +821,7 @@
                                                             </select>
                                                         </div>
 
-                                                    </div>
+                                                    
 
                                                     {{-- Edicion de archivos personales --}}
 
@@ -816,222 +830,239 @@
                                                             Documentos Personales
                                                         </h3>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="contrato">
-                                                                Contrato
+                                                               ----------Contrato----------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="contrato" type="file">
+                                                            <input accept="application/pdf" name="contrato" type="file">
                                                                 <label for="contrato">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="creden_elect">
-                                                                Credencial de Elector
+                                                               ---Credencial de Elector----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="creden_elect" type="file">
+                                                            <input accept="application/pdf" name="creden_elect" type="file">
                                                                 <label for="creden_elect">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="acta_nac">
-                                                                Acta de nacimiento
+                                                               -----Acta de Nacimiento-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="acta_nac" type="file">
+                                                            <input accept="application/pdf" name="acta_nac" type="file">
                                                                 <label for="acta_nac">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="curriculum">
-                                                                Curriculum
+                                                               ---------Curriculum---------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="curriculum" type="file">
+                                                            <input accept="application/pdf" name="curriculum" type="file">
                                                                 <label for="curriculum">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="solicitud">
-                                                                Solicitud de Empleo
+                                                               ----Solicitud de Empleo-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="solicitud" type="file">
+                                                            <input accept="application/pdf" name="solicitud" type="file">
                                                                 <label for="solicitud">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="cert_medico">
-                                                                Certificado Medico
+                                                               -----Certificado Medico-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="cert_medico" type="file">
+                                                            <input accept="application/pdf" name="cert_medico" type="file">
                                                                 <label for="cert_medico">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="cart_recomend">
-                                                                Carta de Recomendacion
+                                                               ---Carta de Recomendacion---
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="cart_recomend" type="file">
+                                                            <input accept="application/pdf" name="cart_recomend" type="file">
                                                                 <label for="cart_recomend">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="fotografia">
-                                                                Fotografia
+                                                               ---------Fotografia---------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="fotografia" type="file">
+                                                            <input accept="application/pdf" name="fotografia" type="file">
                                                                 <label for="fotografia">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="const_Noinhab">
-                                                                Constancia de No Inhabilitacion
+                                                               Constancia No Inhabilitacion
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="const_Noinhab" type="file">
+                                                            <input accept="application/pdf" name="const_Noinhab" type="file">
                                                                 <label for="const_Noinhab">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="comp_Dom">
-                                                                Comprobante de Domicilio
+                                                               --Comprobante de Domicilio--
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="comp_Dom" type="file">
+                                                            <input accept="application/pdf" name="comp_Dom" type="file">
                                                                 <label for="comp_Dom">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <br>
+                                                    <div class="form-group ">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="licencia">
-                                                                Licencia de Conducir
+                                                               ----Licencia de Conducir----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="licencia" type="file">
+                                                            <input accept="application/pdf" name="licencia" type="file">
                                                                 <label for="licencia">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <div class="text-dark">
+                                                    <br>
+                                                    <div class="form-group text-dark">
                                                             <label class="control-label text-muted" for="nss">
-                                                                Numero de Seguro Social
+                                                               --Numero de Seguro Social---
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="nss" type="file">
+                                                            <input accept="application/pdf" name="nss" type="file">
                                                                 <label for="nss">
                                                                 </label>
                                                             </input>
-                                                        </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="infonavit">
-                                                                Infonavit
+                                                               ---------Infonavit----------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="infonavit" type="file">
+                                                            <input accept="application/pdf" name="infonavit" type="file">
                                                                 <label for="infonavit">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="rfc_doc">
-                                                                Comprobante de RFC
+                                                               -----Comprobante de RFC-----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="rfc_doc" type="file">
+                                                            <input accept="application/pdf" name="rfc_doc" type="file">
                                                                 <label for="rfc_doc">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="cartilla">
-                                                                Cartilla Militar Liberada
+                                                               -Cartilla Militar Liberada--
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="cartilla" type="file">
+                                                            <input accept="application/pdf" name="cartilla" type="file">
                                                                 <label for="cartilla">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="curp">
-                                                                Comprobante de CURP
+                                                               -----Comprobante de CURP----
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="curp" type="file">
+                                                            <input accept="application/pdf" name="curp" type="file">
                                                                 <label for="curp">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="diploma">
-                                                                Diploma de Grado de estudio
+                                                               --Diploma Grado de Estudio--
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="diploma" type="file">
+                                                            <input accept="application/pdf" name="diploma" type="file">
                                                                 <label for="diploma">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="nombramiento">
-                                                                Nombramiento
+                                                               --------Nombramiento--------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="nombramiento" type="file">
+                                                            <input accept="application/pdf" name="nombramiento" type="file">
                                                                 <label for="nombramiento">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
                                                             <label class="control-label text-muted" for="dictamen">
-                                                                Dictamen
+                                                               ----------Dictamen----------
                                                             </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="dictamen" type="file">
+                                                            <input accept="application/pdf" name="dictamen" type="file">
                                                                 <label for="dictamen">
                                                                 </label>
                                                             </input>
                                                         </div>
                                                     </div>
+                                                    <br>
                                                     <div class="form-group">
                                                         <div class="text-dark">
-                                                            <label class="control-label text-muted" for="adicionales">
-                                                                Documentos Adicionales
-                                                            </label>
-                                                            <input accept="application/pdf, .doc, .docx, .odf" name="adicionales" type="file">
-                                                                <label for="adicionales">
+                                                            <h5>
+                                                                Agrega Documento Adicional
+                                                            </h5>
+                                                            <input accept="application/pdf" name="adicional" type="file">
+                                                                <label for="adicional">
                                                                 </label>
                                                             </input>
                                                         </div>
@@ -1041,9 +1072,9 @@
                                                         Guardar
                                                     </button>
                                                 </div>
-                                                    </form>
-                                            </div>
+                                            </form>
                                         </div>
+                                    </div>
                                 </div>
                                 </td>
                                 

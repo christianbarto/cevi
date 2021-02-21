@@ -344,14 +344,14 @@
                     <div class="form-row">
                         <div class="form-group col-md-3">
                         <form action="{{ route('empleados.buscarDocumentoAdicional')}}" method="get">
-                            @foreach($adicionales as $adicional)
-                                <select class="form-control" id="select" name="select">
-                                        <option value="default">Selecciona el Documento</option>
-                                        <option value="{{$adicional->dir}}">
-                                            {{$adicional->nombre}}
-                                        </option>
-                                @endforeach 
-                            </select>
+                            <select class="form-control" id="select" name="select">
+                                <option value="default">Selecciona el Documento</option>
+                                @foreach($adicionales as $adicional)
+                                    <option value="{{$adicional->dir}}">
+                                        {{$adicional->nombre}}
+                                    </option>
+                                @endforeach
+                            </select> 
                         </div>
                         <div class="form-group col-md-3"> 
                             <button class="btn btn-primary float-left" name="adi"  type="submit" value={{$empleados->id}}>

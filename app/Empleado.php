@@ -14,7 +14,7 @@ class Empleado extends Model
         'puesto','Tcontrato','contrato','creden_elect','acta_nac','curriculum',
         'solicitud','cert_medico','cart_recomend','fotografia','const_Noinhab',
         'comp_Dom','licencia','nss','infonavit','rfc_doc','cartilla','curp',
-        'diploma','dictamen','nombramiento','adicionales',
+        'diploma','dictamen','nombramiento',
     ];
 
     protected $dates =['fecha_alta','fecha_nombramiento'

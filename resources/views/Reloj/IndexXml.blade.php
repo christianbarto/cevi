@@ -13,14 +13,14 @@
                     <form action="{{route('checador.importxml')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @if(Session::has('message'))
-                            <p style="color:black">
                                 {{Session::get('message')}}
-                            </p>
                         @endif
                         @if($errors->any())
                             <ul class="text-danger">
                                 @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
+                                    <div class="alert alert-danger" role="alert">
+                                     {{ $error }}
+                                    </div>
                                 @endforeach
                             </ul>
                         @endif

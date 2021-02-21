@@ -255,6 +255,7 @@ class EmpleadoController extends Controller
     public function update(Request $request, $id)
     {
         $Empleado = Empleado::findOrFail($id);
+        $empleadoRFC = $Empleado->RFC;
         
         if ($request->hasFile('contrato')) {
             $contrato    = $request->file('contrato')->store('public');
@@ -389,11 +390,18 @@ class EmpleadoController extends Controller
             $urldictamen = $Empleado->dictamen;
         }
 
-        if ($request->hasFile('adicionales')) {
-            $adicionales    = $request->file('adicionales')->store('public');
-            $urladicionales = Storage::url($adicionales);
-        }else{
-            $urladicionales = $Empleado->adicionales;
+        if ($request->hasFile('adicional')) {
+            $file=$request->file('adicional');
+            $adicionales = Storage::putFileAs('/public/'.$empleadoRFC,$file,
+                                $file->getClientOriginalName());
+            $urladicional = Storage::url($adicionales);
+            
+            files::create([
+                'nombre'      => $file->getClientOriginalName(),
+                'empleado_id' => $empleadoRFC,
+                'dir'         => $urladicional,
+
+            ]);
         }
 
         $Empleado->update($request->only('fecha_alta','fecha_nombramiento','RFC', 'telefono',
@@ -418,7 +426,6 @@ class EmpleadoController extends Controller
         $Empleado->diploma          = $urldiploma;
         $Empleado->nombramiento     = $urlnombramiento;
         $Empleado->dictamen         = $urldictamen;
-        $Empleado->adicionales      = $urladicionales;
         $Empleado->save();
         return redirect('/IndexEmpleado');
     }
