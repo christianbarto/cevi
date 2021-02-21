@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('content')
 <h1 class="text-center" style="color:#FDFCFC">
     Registrar Usuario
@@ -6,20 +6,25 @@
 <div class="row justify-content-center">
     <form action="{{route('empleado.store')}}" method="POST">
         @csrf
+        @if(session('verifi'))
+            <div class="alert alert-danger" role="alert">
+                {{session('verifi')}}
+            </div>
+        @endif
         <div class="form-row">
             <!-- Full Name -->
             <div class="form-group col-md-3">
                 <label class="control-label" for="name">
                     Nombre
                 </label>
-                <input class="form-control" id="name" name="name" type="text" required>
+                <input class="form-control" id="name" name="name" value="{{old('name')}}" type="text" required>
                 </input>
             </div>
             <div class="form-group col-md-3">
                 <label class="control-label" for="username">
                     Username
                 </label>
-                <input class="form-control" id="email" name="email" type="text" required>
+                <input class="form-control" id="email" name="email" value="{{old('email')}}" type="text" required>
                 </input>
             </div>
             <div class="form-group col-md-3">

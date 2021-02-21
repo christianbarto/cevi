@@ -6,8 +6,13 @@
             Nuevo Empleado
         </h1>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="background-color: #DCDCDC">
                 <div class="row justify-content-center">
+                    @if(session('verifi'))
+                        <div class="alert alert-danger" role="alert">
+                            {{session('verifi')}}
+                        </div>
+                    @endif
                     <form action="{{route('empleados.store')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="form-row">
@@ -15,21 +20,21 @@
                                 <label class="control-label text-muted" for="nombre">
                                     Nombre
                                 </label>
-                                <input class="form-control" id="nombre" name="nombre" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="nombre" name="nombre" required style="text-transform:uppercase;" type="text" value="{{ old('nombre') }}">
                                 </input>
                             </div>
                             <div class="form-group col-md-3" style="">
                                 <label class="control-label text-muted" for="ap_paterno">
                                     Apellido Paterno
                                 </label>
-                                <input class="form-control" id="ap_paterno" name="ap_paterno" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="ap_paterno" name="ap_paterno" value="{{old('ap_paterno')}}"  required="" style="text-transform:uppercase;" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="ap_materno">
                                     Apellido Materno
                                 </label>
-                                <input class="form-control" id="ap_materno" name="ap_materno" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}"  required="" style="text-transform:uppercase;" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -43,21 +48,21 @@
                                 <label class="control-label text-muted" for="fecha_nombramiento">
                                     Fecha de Nombramiento
                                 </label>
-                                <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date">
+                                <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" value="{{old('fecha_nombramiento')}}" type="date">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="correo">
                                     Correo Electronico
                                 </label>
-                                <input class="form-control" id="correo" name="correo" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="correo" name="correo" style="text-transform:uppercase;" value="{{old('correo')}}" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="telefono">
                                     Numero Telefonico
                                 </label>
-                                <input class="form-control" id="telefono" name="telefono" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" required="" style="text-transform:uppercase;" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -77,14 +82,14 @@
                                 <label class="control-label text-muted" for="RFC">
                                     RFC
                                 </label>
-                                <input class="form-control" id="RFC" name="RFC" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="RFC" name="RFC" value="{{old('RFC')}}" required="" style="text-transform:uppercase;" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">
                                     Puesto
                                 </label>
-                                <input class="form-control" id="puesto" name="puesto" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="puesto" name="puesto" value="{{old('puesto')}}" required="" style="text-transform:uppercase;" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -117,7 +122,7 @@
                                     <label class="control-label text-muted" for="contrato">
                                         Contrato
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="contrato" type="file">
+                                    <input accept="application/pdf" name="contrato" value="{{old('contrato')}}" type="file">
                                         <label for="contrato">
                                         </label>
                                     </input>
@@ -128,7 +133,7 @@
                                     <label class="control-label text-muted"  for="creden_elect">
                                         Credencial de Elector
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="creden_elect" type="file">
+                                    <input accept="application/pdf" required  name="creden_elect" value="{{old('creden_elect')}}" type="file">
                                         <label for="creden_elect">
                                         </label>
                                     </input>
@@ -139,7 +144,7 @@
                                     <label class="control-label text-muted" for="acta_nac">
                                         Acta de nacimiento
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="acta_nac" type="file">
+                                    <input accept="application/pdf" required name="acta_nac" value="{{old('acta_nac')}}" type="file">
                                         <label for="acta_nac">
                                         </label>
                                     </input>
@@ -150,7 +155,7 @@
                                     <label class="control-label text-muted" for="curriculum">
                                         Curriculum
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="curriculum" type="file">
+                                    <input accept="application/pdf" required name="curriculum" value="{{old('curriculum')}}" type="file">
                                         <label for="curriculum">
                                         </label>
                                     </input>
@@ -161,7 +166,7 @@
                                     <label class="control-label text-muted" for="solicitud">
                                         Solicitud de Empleo
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="solicitud" type="file">
+                                    <input accept="application/pdf" required name="solicitud" value="{{old('solicitud')}}" type="file">
                                         <label for="solicitud">
                                         </label>
                                     </input>
@@ -172,7 +177,7 @@
                                     <label class="control-label text-muted" for="cert_medico">
                                         Certificado Medico
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="cert_medico" type="file">
+                                    <input accept="application/pdf" required name="cert_medico" value="{{old('cert_medico')}}" type="file">
                                         <label for="cert_medico">
                                         </label>
                                     </input>
@@ -183,7 +188,7 @@
                                     <label class="control-label text-muted" for="cart_recomend">
                                         Carta de Recomendacion
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="cart_recomend" type="file">
+                                    <input accept="application/pdf" required name="cart_recomend" value="{{old('cart_recomend')}}" type="file">
                                         <label for="cart_recomend">
                                         </label>
                                     </input>
@@ -194,7 +199,7 @@
                                     <label class="control-label text-muted" for="fotografia">
                                         Fotografia
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="fotografia" type="file">
+                                    <input accept="application/pdf" required name="fotografia" value="{{old('fotografia')}}" type="file">
                                         <label for="fotografia">
                                         </label>
                                     </input>
@@ -205,7 +210,7 @@
                                     <label class="control-label text-muted" for="const_Noinhab">
                                         Constancia de No Inhabilitacion
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="const_Noinhab" type="file">
+                                    <input accept="application/pdf" required name="const_Noinhab" value="{{old('const_Noinhab')}}" type="file">
                                         <label for="const_Noinhab">
                                         </label>
                                     </input>
@@ -216,7 +221,7 @@
                                     <label class="control-label text-muted" for="comp_Dom">
                                         Comprobante de Domicilio
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="comp_Dom" type="file">
+                                    <input accept="application/pdf" required name="comp_Dom" value="{{old('comp_Dom')}}" type="file">
                                         <label for="comp_Dom">
                                         </label>
                                     </input>
@@ -227,7 +232,7 @@
                                     <label class="control-label text-muted" for="licencia">
                                         Licencia de Conducir
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="licencia" type="file">
+                                    <input accept="application/pdf" name="licencia" value="{{old('licencia')}}" type="file">
                                         <label for="licencia">
                                         </label>
                                     </input>
@@ -238,7 +243,7 @@
                                     <label class="control-label text-muted" for="nss">
                                         Numero de Seguro Social
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="nss" type="file">
+                                    <input accept="application/pdf" required name="nss" value="{{old('nss')}}" type="file">
                                         <label for="nss">
                                         </label>
                                     </input>
@@ -249,7 +254,7 @@
                                     <label class="control-label text-muted" for="infonavit">
                                         Infonavit
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="infonavit" type="file">
+                                    <input accept="application/pdf" name="infonavit" value="{{old('infonavit')}}" type="file">
                                         <label for="infonavit">
                                         </label>
                                     </input>
@@ -260,7 +265,7 @@
                                     <label class="control-label text-muted" for="rfc_doc">
                                         Constancia de RFC
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="rfc_doc" type="file">
+                                    <input accept="application/pdf" required name="rfc_doc" value="{{old('rfc_doc')}}" type="file">
                                         <label for="rfc_doc">
                                         </label>
                                     </input>
@@ -271,7 +276,7 @@
                                     <label class="control-label text-muted" for="cartilla">
                                         Cartilla Militar Liberada
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="cartilla" type="file">
+                                    <input accept="application/pdf" name="cartilla" value="{{old('cartilla')}}" type="file">
                                         <label for="cartilla">
                                         </label>
                                     </input>
@@ -282,7 +287,7 @@
                                     <label class="control-label text-muted"  for="curp">
                                         Clave Única de Registro de Poblacional (CURP)
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="curp" type="file">
+                                    <input accept="application/pdf" required name="curp" value="{{old('curp')}}" type="file">
                                         <label for="curp">
                                         </label>
                                     </input>
@@ -293,7 +298,7 @@
                                     <label class="control-label text-muted" for="diploma">
                                         Diploma de Grado de Estudio
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" required="" name="diploma" type="file">
+                                    <input accept="application/pdf" required name="diploma" value="{{old('diploma')}}" type="file">
                                         <label for="diploma">
                                         </label>
                                     </input>
@@ -304,7 +309,7 @@
                                     <label class="control-label text-muted" for="nombramiento">
                                         Nombramiento
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="nombramiento" type="file">
+                                    <input accept="application/pdf" name="nombramiento" value="{{old('nombramiento')}}" type="file">
                                         <label for="nombramiento">
                                         </label>
                                     </input>
@@ -315,7 +320,7 @@
                                     <label class="control-label text-muted" for="dictamen">
                                         Dictamen
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="dictamen" type="file">
+                                    <input accept="application/pdf" required name="dictamen" value="{{old('dictamen')}}" type="file">
                                         <label for="dictamen">
                                         </label>
                                     </input>
@@ -326,7 +331,7 @@
                                     <label class="control-label text-muted" for="adicionales">
                                         Documentos Adicionales
                                     </label>
-                                    <input accept="application/pdf, .doc, .docx, .odf" name="adicionales" type="file">
+                                    <input accept="application/pdf" name="adicionales" value="{{old('adicionales')}}" type="file">
                                         <label for="adicionales">
                                         </label>
                                     </input>
@@ -338,7 +343,7 @@
                             <button class="btn btn-primary " type="submit">
                                 Guardar
                             </button>
-                        </div>
+                        </div> 
                     </form>
                 </div>    
             </div>

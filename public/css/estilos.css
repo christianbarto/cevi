@@ -2,7 +2,10 @@
     margin: 10px;
 }
 .carta {
-    background-color: gray;
+    background-color: #C0C0C0;
+}
+.gris {
+    background-color: grey;
 }
 label {
     color: #FDFCFC;
@@ -29,7 +32,6 @@ td {
     margin-top: 0px;
     margin-right: 10px;
     margin-left: 10px;
-    margin-right: 10px;
 }
 .margin {
     margin-top: 0px;

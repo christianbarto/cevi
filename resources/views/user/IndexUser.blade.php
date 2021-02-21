@@ -58,7 +58,7 @@
                                     {{$User->password}}
                                 </td>
                                 <td>
-                                    @if(($User->role_id) > 1)
+                                    @if($User->role_id > 1)
                                         Administrador
                                     @else
                                         Usuario
@@ -69,7 +69,7 @@
                                         <i class="fas fa-user-edit"></i>
                                     </a>
                                     <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="EditUsuario{{$User->id}}" tabindex="-1">
-                                        <div class="modal-dialog modal-sm">
+                                        <div class="modal-dialog modal-lm">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title text-dark">

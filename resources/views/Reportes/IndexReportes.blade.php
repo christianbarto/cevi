@@ -1,18 +1,16 @@
 @extends('layouts.app2')
 @section('content')
-<h1 class="text-center" style="color:#FDFCFC">
-    Exportar Reportes
-</h1>
 <div class="row justify-content-center">
     <div class="form-group col-md-9">
         <div class="card">
-            <div class="card-header">
-                <h2 style="color:black">
-                    Selecciona el Reporte
-                </h2>
-                <div class="card-body">
+            <div class="card-header" style="color:black">
+                <h1>
+                   Exportar Reportes
+                </h1>
+            </div> 
+                <div class="card-body" style="background-color: #DCDCDC">
                     <div class="row justify-content-center">
-                        <div class="form-group col-md-3 border border-1 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                             <form action="{{route('reportes.usuarios')}}" method="GET">
                                 <h4 style="color:black">
                                     Roles y Usuarios
@@ -25,7 +23,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.empleadosA')}}" method="GET">
 
                             <h4 style="color:black">
@@ -39,7 +37,7 @@
                             </div>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.empleadosI')}}" method="GET">
 
                             <h4 style="color:black">
@@ -53,7 +51,7 @@
                             </div>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.asistenciasP')}}" method="GET">
 
                             <h4 style="color:black">
@@ -71,7 +69,7 @@
                             </button>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.asistenciasE')}}" method="GET">
                             <h4 style="color:black">
                                 Asistencias por Empleado
@@ -87,7 +85,7 @@
                             </button>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.asistenciasEP')}}" method="GET">
                             <h4 style="color:black">
                                 Asistencias por Empleado y Periodo
@@ -107,7 +105,7 @@
                             </button>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.antiguedad')}}" method="GET">
                             <h4 style="color:black">
                                 Antiguedad de Empleados
@@ -120,7 +118,7 @@
                             </button>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen">
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.antiguedadE')}}" method="GET">
                             <h4 style="color:black">
                                 Antiguedad por Empleado

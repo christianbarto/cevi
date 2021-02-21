@@ -9,7 +9,7 @@
             <div class="card-header" style="color:black">
                 Ingresa Archivo
             </div>
-            <div class="card-body">
+            <div class="card-body" style="background-color: #DCDCDC">
                 <div class="row justify-content-center">
                     <form action="{{route('checador.import')}}" enctype="multipart/form-data" method="POST">
                         @csrf

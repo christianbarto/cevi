@@ -32,7 +32,7 @@ Route::put('/empleado/{empleado}/disable', 'EmpleadoController@disable')->name('
 Route::put('/empleado/{empleado}/enable', 'EmpleadoController@enable')->name('empleado.enable');
 Route::get('/buscarEmpleado','EmpleadoController@search')->name('empleados.buscar');
 Route::get('/buscarDocumento','EmpleadoController@documento')->name('empleados.buscarDocumento');
-
+Route::get('/buscarDocumentoAdicional','EmpleadoController@documentoAdicional')->name('empleados.buscarDocumentoAdicional');
 
 //Rutas del reloj checador
 Route::get('/IndexReloj', 'RelojController@index')->name('checador.index');

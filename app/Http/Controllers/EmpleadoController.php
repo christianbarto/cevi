@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empleado;
+use App\files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -32,39 +33,58 @@ class EmpleadoController extends Controller
     public function show (Request $request)
     {
         $empleados = Empleado::findOrFail($request->id);
+        $adicionales = DB::table('files')->Where('empleado_id','like','%'.$empleados->RFC.'%')->get();
         $seleccion = null;
-        $campo=null;
-        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo'));
+        $extra = null;
+        $nombre = null;
+        $campo='default';
+        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo','adicionales','extra','nombre'));
     }
 
     public function documento(Request $request)
     {
         $empleados = Empleado::findOrFail($request->idF);
+        $adicionales = DB::table('files')->Where('empleado_id','like','%'.$empleados->RFC.'%')->get();
         $campo = $request->seleccion;
         $seleccion = $empleados->$campo;
-        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo'));
+        $extra = null;
+        $nombre = null;
+        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo','adicionales','extra','nombre'));
+    }
+
+    public function documentoAdicional(Request $request)
+    {
+        $empleados = Empleado::findOrFail($request->adi);
+        $adicionales = DB::table('files')->Where('empleado_id','like','%'.$empleados->RFC.'%')->get();
+        $extra = $request->select;
+        $fichero = DB::table('files')->Where('dir','like','%'.$extra.'%')->get();
+        $conteo= DB::table('files')->Where('dir','like','%'.$extra.'%')->count();
+        $seleccion = null;
+        $campo='default';
+        $nombre = null;
+        if($conteo>0){
+            $nombre = $fichero[0]->nombre;
+        }
+        return view('Empleados/showEmpleado',compact('empleados','seleccion','campo','adicionales','extra','nombre'));
     }
 
     public function store(Request $request)
     {
+        $verifiName = Empleado::Where('nombre','like','%'.$request->nombre.'%')
+                                            ->Where('ap_paterno','like','%'.$request->ap_paterno.'%')
+                                            ->Where('ap_materno','like','%'.$request->materno.'%')->count();
+        $verifiRFC = DB::table('empleados')->Where('RFC','like','%'.$request->RFC.'%')->count();
+
+        if($verifiName>0){   
+            return back()->with('verifi',$request->nombre.' '.$request->ap_paterno.' '.$request->ap_materno.' Ya esta registrado')->withInput();
+        }
+
+        if($verifiRFC>0){   
+            return back()->with('verifi','El RFC: '.$request->RFC.' Ya esta registrado')->withInput();
+        }
+
+        $idEmpleado = $request->RFC;
         $urlAvatar='/storage/avatardefalut.png';
-        $request->validate([
-            'creden_elect'  => 'required',
-            'acta_nac'      => 'required',
-            'curriculum'    => 'required',
-            'solicitud'     => 'required',
-            'cert_medico'   => 'required',
-            'cart_recomend' => 'required',
-            'fotografia'    => 'required',
-            'const_Noinhab' => 'required',
-            'comp_Dom'      => 'required',
-            'licencia'      => 'required',
-            'nss'           => 'required',
-            'rfc_doc'       => 'required',
-            'curp'          => 'required',
-            'diploma'       => 'required',
-            'dictamen'      => 'required',
-        ]);
 
         if ($request->hasFile('contrato')) {
             $contrato    = $request->file('contrato')->store('public');
@@ -144,10 +164,17 @@ class EmpleadoController extends Controller
         $urldictamen = Storage::url($dictamen);
 
         if ($request->hasFile('adicionales')) {
-            $adicionales    = $request->file('adicionales')->store('public');
+            $file=$request->file('adicionales');
+            $adicionales = Storage::putFileAs('/public/'.$idEmpleado,$file,
+                                $file->getClientOriginalName());
             $urladicionales = Storage::url($adicionales);
-        }else{
-            $urladicionales = null;
+            //dd($urladicionales);
+            files::create([
+                'nombre'      => $file->getClientOriginalName(),
+                'empleado_id' => $idEmpleado,
+                'dir'         => $urladicionales,
+
+            ]);
         }
 
         Empleado::create([
@@ -183,7 +210,6 @@ class EmpleadoController extends Controller
             'diploma'       => $urldiploma,
             'dictamen'      => $urldictamen ,        
             'nombramiento'  => $urlnombramiento,
-            'adicionales'   => $urladicionales,
         ]);
         return redirect('/IndexEmpleado');
 
@@ -369,8 +395,6 @@ class EmpleadoController extends Controller
         }else{
             $urladicionales = $Empleado->adicionales;
         }
-
-
 
         $Empleado->update($request->only('fecha_alta','fecha_nombramiento','RFC', 'telefono',
         'genero','ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato'));

@@ -6,7 +6,7 @@
                 {{$empleados->nombre}} {{$empleados->ap_materno}} {{$empleados->ap_paterno}}
             </h1>
             <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="background-color: #DCDCDC">
                     <form action="{{ route('empleados.buscarDocumento')}}" method="get">
                         <div class="form-group col-md-5  text-muted ">
                             <h2>
@@ -119,9 +119,9 @@
                             <div class="form-group col-md-3">
                                 <select class="form-control" id="seleccion" name="seleccion">
                                     @if($campo==null)
-                                    <option selected>Selecciona el Documento</option>
+                                    <option selected value="default">Selecciona el Documento</option>
                                     @else
-                                    <option>Selecciona el Documento</option>
+                                    <option value="default">Selecciona el Documento</option>
                                     @endif
 
                                     @if($campo=='contrato')
@@ -314,15 +314,7 @@
                                     </option>
                                     @endif
 
-                                    @if($campo=='adicionales')
-                                    <option selected value="adicionales">
-                                        Documentos Adicionales
-                                    </option>
-                                    @else
-                                    <option value="adicionales">
-                                        Documentos Adicionales
-                                    </option>
-                                    @endif
+                                    
                                 </select>
                             </div>
                             <div class="form-group col-md-3"> 
@@ -331,11 +323,57 @@
                                         Buscar
                                     </button>
                             </div>
-                        </div>  
+                        </div> 
                     </form>
+                    @if($seleccion!=null)
                     <center>
                         <iframe class="iframe hidden-print" for="seleccion" src={{$seleccion}}></iframe>
                     </center>
+                    @elseif($campo=='default')
+                        <h2 class="alert alert-primary" role="alert" style="color:black">Selecciona un Documento</h2>
+                    @elseif($seleccion==null)
+                        <h2 div class="alert alert-danger" role="alert" style="color:black">No se cuenta con el archivo seleccionado</h2>
+                    @endif
+
+                    <br>
+                    <div class="form-group col-md-5 text-muted">
+                        <h5>
+                            Documentos Personales Adicionales
+                        </h5>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                        <form action="{{ route('empleados.buscarDocumentoAdicional')}}" method="get">
+                            @foreach($adicionales as $adicional)
+                                <select class="form-control" id="select" name="select">
+                                        <option value="default">Selecciona el Documento</option>
+                                        <option value="{{$adicional->dir}}">
+                                            {{$adicional->nombre}}
+                                        </option>
+                                @endforeach 
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3"> 
+                            <button class="btn btn-primary float-left" name="adi"  type="submit" value={{$empleados->id}}>
+                                <i class="fas fa-search"></i>
+                                    Buscar
+                            </button>
+                        </div>
+                        </form>
+                    </div>
+                    @if($nombre!=null)
+                    <label class="form-control" id="name" name="name" type="text">
+                        {{$nombre}}
+                    </label>
+                    @endif
+
+                    @if($extra=='default')
+                        <h2 class="alert alert-primary" role="alert" style="color:black">Selecciona un Documento</h2>
+                    @elseif($extra!=null)
+                    <center>
+                        <iframe class="iframe hidden-print" for="seleccion" src="{{$extra}}"></iframe>
+                    </center>
+                    @endif
                 </div>
             </div>
     </div>

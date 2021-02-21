@@ -50,7 +50,6 @@ class CreateEmpleadosTable extends Migration
             $table->string('diploma');
             $table->string('nombramiento')->nullable('yes');
             $table->string('dictamen');
-            $table->string('adicionales')->nullable('yes');
             $table->timestamps();
 
         });

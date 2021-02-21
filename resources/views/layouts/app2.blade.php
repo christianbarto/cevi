@@ -42,11 +42,11 @@
         </img>
     </div>
     <br>
-        <div class="row justify-content-center">
-            <div class="col-md-9">
-                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="row justify-content-center" >
+            <div class="col-md-9" >
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" >
                     <div class="container-fluid">
-                        <a class="navbar-brand text-dark">
+                        <a class="navbar-brand bg-dark">
                             Bienvenido Administrador
                         </a>
                         <div class="collapse navbar-collapse" id="navbarNav">

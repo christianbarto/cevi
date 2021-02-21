@@ -15,6 +15,16 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $verifiName = User::Where('name','like','%'.$request->name.'%')->count();
+        $verifiUsername = User::Where('email','like','%'.$request->email.'%')->count();
+
+        if($verifiName>0){   
+            return back()->with('verifi',$request->name.' Ya esta registrado')->withInput();
+        }
+
+        if($verifiUsername>0){   
+            return back()->with('verifi','El Usuario '.$request->email.' Ya esta registrado')->withInput();
+        }
         User::create([
             'name'     => request('name'),
             'email'    => request('email'),
@@ -26,8 +36,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $datos['usuarios'] = User::all();
-        return view('user/IndexUser', $datos);
+        $usuarios = User::all();
+        return view('user/IndexUser',compact('usuarios'));
     }
 
     public function edit($id)
