@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empleado;
+use App\Departamentos;
 use App\files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -22,12 +23,14 @@ class EmpleadoController extends Controller
     
     {
         $empleados = Empleado::all();
-        return view('Empleados/IndexEmpleado')->with('empleados',$empleados);
+        $departamentos = Departamentos::all();
+        return view('Empleados/IndexEmpleado',compact('empleados','departamentos'));
     }
 
     public function create()
-    {
-        return view('Empleados/createEmpleados');
+    {   
+        $departamentos = Departamentos::all();
+        return view('Empleados/createEmpleados',compact('departamentos'));
     }
 
     public function show (Request $request)
@@ -70,7 +73,7 @@ class EmpleadoController extends Controller
 
     public function store(Request $request)
     {
-        $verifiName = Empleado::Where('nombre','like','%'.$request->nombre.'%')
+        $verifiName = Empleado::Where('nombre','like',$request->nombre)
                                             ->Where('ap_paterno','like','%'.$request->ap_paterno.'%')
                                             ->Where('ap_materno','like','%'.$request->materno.'%')->count();
         $verifiRFC = DB::table('empleados')->Where('RFC','like','%'.$request->RFC.'%')->count();
@@ -168,7 +171,6 @@ class EmpleadoController extends Controller
             $adicionales = Storage::putFileAs('/public/'.$idEmpleado,$file,
                                 $file->getClientOriginalName());
             $urladicionales = Storage::url($adicionales);
-            //dd($urladicionales);
             files::create([
                 'nombre'      => $file->getClientOriginalName(),
                 'empleado_id' => $idEmpleado,
@@ -189,7 +191,7 @@ class EmpleadoController extends Controller
             'correo'        => request('correo'),
             'puesto'        => request('puesto'),
             'Tcontrato'     => request('Tcontrato'),
-            'Tcontrato'     => request('Tcontrato'),
+            'departamento'  => request('departamento'),
             'avatar'        => $urlAvatar,
             'contrato'      => $urlcontrato,
             'creden_elect'  => $urlcreden_elect,
@@ -403,9 +405,9 @@ class EmpleadoController extends Controller
 
             ]);
         }
-
+        //dd($request->departamento);
         $Empleado->update($request->only('fecha_alta','fecha_nombramiento','RFC', 'telefono',
-        'genero','ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato'));
+        'genero','ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato','departamento'));
 
         $Empleado->contrato         = $urlcontrato;
         $Empleado->creden_elect     = $urlcreden_elect;

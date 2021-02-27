@@ -30,6 +30,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('puesto');
             $table->string('Tcontrato');
             $table->integer('quinquenio')->nullable('yes')->default(0);
+            $table->string('departamento');
             //Documentos Escaneados
             $table->string('contrato')->nullable('yes');
             $table->string('creden_elect');

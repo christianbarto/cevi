@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Empleado;
+use App\Departamentos;
 use App\User;
 use App\Reloj;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class ReportesController extends Controller
 
      public function index()
      {
-       return view('Reportes/IndexReportes');
+       $departamentos = Departamentos::all();
+       return view('Reportes/IndexReportes',compact('departamentos'));
      }
 
      public function usuarios()
@@ -104,5 +106,22 @@ class ReportesController extends Controller
         $pdf = PDF::loadView('pdf/antiguedad', compact('Empleados'));
         set_time_limit(300); 
         return $pdf->stream('Reporte de antiguedad de empleados.pdf');
+     }
+
+     public function empleadosQuinquenio()
+     {
+       $empleados = Empleado::all();
+       $pdf = PDF::loadView('pdf/IndexEmpleadoQ',compact('empleados'));
+       set_time_limit(300); 
+       return $pdf->stream('Reporte de Quinquenios.pdf');
+     }
+
+     public function empleadosDepartamento(Request $request)
+     {
+      $departamento=$request->departamento;
+      $empleados = Empleado::all();
+      $pdf = PDF::loadView('pdf/IndexEmpleadoD',compact('empleados','departamento'));
+      set_time_limit(300); 
+      return $pdf->stream('Reporte de Quinquenios.pdf');
      }
 }

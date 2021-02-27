@@ -13,7 +13,9 @@
                     <form action="{{route('checador.importxml')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @if(Session::has('message'))
+                            <div class="alert alert-success" role="alert">
                                 {{Session::get('message')}}
+                            </div>
                         @endif
                         @if($errors->any())
                             <ul class="text-danger">
@@ -67,7 +69,7 @@
                                 {{$Reloj->RFC}}
                             </td>
                             <td>
-                                {{$Reloj->fecha}}
+                                {{Date::parse($Reloj->fecha)->format('l j \d\e F \d\e Y')}}
                             </td>
                             <td>
                                 @if(($Reloj->entrada)===('00:00:00'))
@@ -75,9 +77,8 @@
                                     N/A
                                 
                                 @else
-                                
-                                    {{$Reloj->entrada}}
-                                   
+                                {{Date::parse($Reloj->entrada)->isoFormat('h:mm A')}}
+                                    
                                 @endif                            
                             </td>
                             <td>
@@ -86,8 +87,7 @@
                                     N/A
                                 
                                 @else
-                                
-                                    {{$Reloj->salida}}
+                                {{Date::parse($Reloj->salida)->isoFormat('h:mm A')}}
 
                                 @endif
                             </td>

@@ -21,6 +21,13 @@ Route::get('/EditUser/{id}', 'UserController@edit');
 Route::put('/usuario/{user}/update', 'UserController@update')->name('user.update');
 Route::POST('/DeleteUsuarios/{id}', 'UserController@destroy');
 
+//Ruta Deparamentos
+Route::get('/IndexDepartamento', 'DepartamentosController@index')->name('departamentos.index');
+Route::get('/buscarDepartamento','DepartamentosController@search')->name('departamentos.buscar');
+Route::get('/createDepartamento','DepartamentosController@create')->name('departamentos.crear');
+Route::post('/storeDepartamento','DepartamentosController@store')->name('departamentos.store');
+Route::put('/Deparamento/{departamento}/update', 'DepartamentosController@update')->name('departamentos.update');
+Route::POST('/DeleteDepartamento/{id}', 'DepartamentosController@destroy')->name('departamentos.delete');
 
 //Rutas Empleado
 Route::get('/IndexEmpleado', 'EmpleadoController@index')->name('empleados.index');
@@ -49,6 +56,7 @@ Route::get('/AsistenciasP', 'ReportesController@asistenciasP')->name('reportes.a
 Route::get('/AsistenciasEP', 'ReportesController@asistenciasEP')->name('reportes.asistenciasEP');
 Route::get('/Antiguedad', 'ReportesController@antiguedad')->name('reportes.antiguedad');
 Route::get('/AntiguedadE', 'ReportesController@antiguedadE')->name('reportes.antiguedadE');
-
+Route::get('/EmpleadosReportesQ', 'ReportesController@empleadosQuinquenio')->name('reportes.EmpleadosReportesQ');
+Route::get('/EmpleadosReportesD', 'ReportesController@empleadosDepartamento')->name('reportes.EmpleadosReportesD');
 
 });

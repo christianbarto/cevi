@@ -2,10 +2,12 @@
 @section('content')
 <div class="row justify-content-center overflow-auto">
     <div class="form-group col-md-9">
-            <h1>
-                {{$empleados->nombre}} {{$empleados->ap_materno}} {{$empleados->ap_paterno}}
-            </h1>
             <div class="card">
+                <div class="card-header">
+                    <h1 style="color: black">
+                        {{$empleados->nombre}} {{$empleados->ap_paterno}} {{$empleados->ap_materno}}
+                    </h1>
+                </div>
                 <div class="card-body" style="background-color: #DCDCDC">
                     <form action="{{ route('empleados.buscarDocumento')}}" method="get">
                         <div class="form-group col-md-5  text-muted ">
@@ -88,6 +90,14 @@
                                 </label>
                                 <label class="form-control" id="puesto" name="puesto" type="text">
                                     {{$empleados->puesto}}
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="control-label text-muted" for="departamento">
+                                    Departamento
+                                </label>
+                                <label class="form-control" id="departamento" name="departamento" type="text">
+                                    {{$empleados->departamento}}
                                 </label>
                             </div>
                             <div class="form-group col-md-3">

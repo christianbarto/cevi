@@ -2,10 +2,12 @@
 @section('content')
 <div class="row justify-content-center overflow-auto">
         <div class="form-group col-md-9">
-        <h1>
-            Nuevo Empleado
-        </h1>
         <div class="card">
+            <div class="card-header">
+                <h1 style="color: black">
+                    Nuevo Empleado
+                </h1>
+            </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <div class="row justify-content-center">
                     @if(session('verifi'))
@@ -91,6 +93,18 @@
                                 </label>
                                 <input class="form-control" id="puesto" name="puesto" value="{{old('puesto')}}" required="" style="text-transform:uppercase;" type="text">
                                 </input>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label text-muted" for="departamento">
+                                    Departamento
+                                </label>
+                                <select class="form-control" id="departamento" name="departamento" required>
+                                @foreach($departamentos as $departamento)
+                                    <option value="{{$departamento->id}} {{$departamento->descripcion}}">
+                                        {{$departamento->id}} {{$departamento->descripcion}}
+                                    </option>
+                                @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="Tcontrato">
