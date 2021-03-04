@@ -49,6 +49,11 @@
         <br>
         <br>
         <br>
+        @if(session('verifi'))
+            <div class="alert alert-danger" role="alert">
+                    {{session('verifi')}}
+            </div>
+        @endif
         <h2 class="text-center" style="color:black">
         Activos
         </h2>
@@ -57,10 +62,10 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">
-                                        N° Trabajador
+                                        N° de trabajador
                                     </th>
                                     <th scope="col">
-                                        Avatar
+                                        RFC
                                     </th>
                                     <th scope="col">
                                         Nombre(s)
@@ -72,12 +77,6 @@
                                         Apellido Materno
                                     </th>
                                     <th scope="col">
-                                        RFC
-                                    </th>
-                                    <th scope="col">
-                                        Estatus
-                                    </th>
-                                    <th scope="col">
                                         Ver
                                     </th>
                                     <th scope="col">
@@ -85,7 +84,7 @@
                                     </th>
                                     @if(Auth::user()->role_id==2)
                                     <th scope="col">
-                                        Eliminar
+                                        Inactivar
                                     </th>
                                     @endif
                                 </tr>
@@ -98,8 +97,7 @@
                                         {{$Empleado->id}}
                                     </td>
                                     <td>
-                                        <img alt="Avatar" class="img-fluid" height="60" src="{{$Empleado->avatar}}" width="60">
-                                        </img>
+                                        {{$Empleado->RFC}}
                                     </td>
                                     <td>
                                         {{$Empleado->nombre}}
@@ -110,13 +108,6 @@
                                     <td>
                                         {{$Empleado->ap_materno}}
                                     </td>
-                                    <td>
-                                        {{$Empleado->RFC}}
-                                    </td>
-                                    <td>
-                                        {{$Empleado->estatus}}
-                                    </td>
-
 
                                     {{-- Boton de Ver Informacion --}}
                                     <td>
@@ -151,155 +142,215 @@
                                                         <form action="{{route ('empleado.update',$Empleado->id)}}"  enctype="multipart/form-data" method="post">
                                                         {{csrf_field()}} {{method_field('put')}}
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="id">
-                                                                    Numero de Trabajador
-                                                                </label>
-                                                                <label class="form-control" style="background-color: #F7F9F9 " id="id" name="id" type="text">
-                                                                    {{$Empleado->id}}
-                                                                </label>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="id">
+                                                                        Numero de Trabajador
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control"  value="{{$Empleado->id}}" name="id" type="text" disabled>
+                                                                    </input>
+                                                                </center>
+                                                            </div>
+                                                            @if(Auth::user()->role_id==2)
+                                                            <div class="form-group">
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="nombre">
+                                                                        Nombre
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="nombre" name="nombre" type="text" value="{{$Empleado->nombre}}" >
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="nombre">
-                                                                    Nombre
-                                                                </label>
-                                                                <input class="form-control" id="nombre" name="nombre" type="text" value="{{$Empleado->nombre}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_paterno">
+                                                                        Apellido Paterno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$Empleado->ap_paterno}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="ap_paterno">
-                                                                    Apellido Paterno
-                                                                </label>
-                                                                <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$Empleado->ap_paterno}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_materno">
+                                                                        Apellido Materno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$Empleado->ap_materno}}">
+                                                                    </input>
+                                                                </center>
+                                                            </div>
+                                                            @endif
+                                                            @if(Auth::user()->role_id==1)
+                                                            <label class="text-danger" for="nombre">
+                                                                !! Para editar el nombre ingresa como administrador !!
+                                                            </label>
+                                                            <div class="form-group">
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="nombre">
+                                                                        Nombre
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="nombre" name="nombre" type="text" value="{{$Empleado->nombre}}" disabled>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="ap_materno">
-                                                                    Apellido Materno
-                                                                </label>
-                                                                <input class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$Empleado->ap_materno}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_paterno">
+                                                                        Apellido Paterno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$Empleado->ap_paterno}}" disabled>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="fecha_alta">
-                                                                    Fecha de Alta : 
-                                                                </label>
-                                                                <label class="control-label text-muted" for="fecha_alta">
-                                                                    {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
-                                                                </label>
-                                                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_materno">
+                                                                        Apellido Materno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$Empleado->ap_materno}}" disabled>
+                                                                    </input>
+                                                                </center>
+                                                            </div>
+                                                            @endif
+                                                            <div class="form-group">
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="fecha_alta">
+                                                                        Fecha de Alta : 
+                                                                    </label>
+                                                                    <label class="control-label text-muted" for="fecha_alta">
+                                                                        {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="fecha_nombramiento">
-                                                                    Fecha de Nombramiento:
-                                                                </label>
-                                                                <label class="control-label text-muted" for="fecha_nombramiento">
-                                                                    @if($Empleado->fecha_nombramiento==null)
-                                                                        
-                                                                    @else
-                                                                    {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
-                                                                    @endif
-                                                                </label>
-                                                                <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value="{{$Empleado->fecha_nombramiento}}">
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="Tcontrato">
+                                                                        Relacion Laboral:
+                                                                    </label>
+                                                                    <label class="form-label text-muted">
+                                                                        @if($Empleado->Tcontrato=='base')
+                                                                            PERSONAL DE BASE
+                                                                        @elseif($Empleado->Tcontrato=='contrato')
+                                                                            PERSONAL DE CONTRATO
+                                                                        @elseif($Empleado->Tcontrato=='nombremientoConfianza')
+                                                                            NOMBRAMIENTO CONFIANZA
+                                                                        @elseif($Empleado->Tcontrato=='mandosMedios')
+                                                                            MANDOS MEDIOS
+                                                                        @elseif($Empleado->Tcontrato=='contratoConfianza')
+                                                                            CONTRATO CONFIANZA
+                                                                        @endif                                    
+                                                                    </label>
+                                                                    <select onChange="prueba()" style="width: 45%" class="form-control" id="Tcontrato" name="Tcontrato">
+                                                                        <option value="">
+                                                                            Seleccione una opción
+                                                                        </option>
+                                                                        <option value="base">
+                                                                            PERSONAL DE BASE
+                                                                        </option>
+                                                                        <option value="contrato">
+                                                                            PERSONAL DE CONTRATO
+                                                                        </option>
+                                                                        <option value="nombremientoConfianza">
+                                                                            NOMBRAMIENTO CONFIANZA
+                                                                        </option>
+                                                                        <option value="mandosMedios">
+                                                                            MANDOS MEDIOS
+                                                                        </option>
+                                                                        <option value="contratoConfianza">
+                                                                            CONTRATO CONFIANZA
+                                                                        </option>
+                                                                    </select>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="RFC">
-                                                                    RFC
-                                                                </label>
-                                                                <input class="form-control" id="RFC" name="RFC" type="text" value="{{$Empleado->RFC}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                        Fecha de Nombramiento:
+                                                                    </label>
+                                                                    <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                        @if($Empleado->fecha_nombramiento==null)
+                                                                        @else
+                                                                            {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                                                        @endif
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" 
+                                                                    type="date" value="{{$Empleado->fecha_nombramiento}}" disabled>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="telefono">
-                                                                    Telefono
-                                                                </label>
-                                                                <input class="form-control" id="telefono" name="telefono" type="text" value="{{$Empleado->telefono}}">
-                                                                    
-                                                                </input>
-
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="RFC">
+                                                                        RFC
+                                                                    </label>
+                                                                    <input style="text-transform:uppercase;width: 45%;" class="form-control" id="RFC" name="RFC" type="text" value="{{$Empleado->RFC}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="genero">
-                                                                    Genero: {{$Empleado->genero}}
-                                                                </label>
-                                                                <select class="form-control" id="genero" name="genero">
-                                                                    <option value="Hombre">
-                                                                        Hombre
-                                                                    </option>
-                                                                    <option value="Mujer">
-                                                                        Mujer
-                                                                    </option>
-                                                                </select>
-
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="telefono">
+                                                                        Telefono
+                                                                    </label>
+                                                                    <input style="width: 45%"class="form-control" id="telefono" name="telefono" type="text" value="{{$Empleado->telefono}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="correo">
-                                                                    Correo
-                                                                </label>
-                                                                <input class="form-control" id="correo" name="correo" type="text" value="{{$Empleado->correo}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="genero">
+                                                                        Genero: {{$Empleado->genero}}
+                                                                    </label>
+                                                                    <select style="width: 45%" class="form-control" id="genero" name="genero">
+                                                                        <option value="">
+                                                                            Seleccione una opción
+                                                                        </option>
+                                                                        <option value="Hombre">
+                                                                            Hombre
+                                                                        </option>
+                                                                        <option value="Mujer">
+                                                                            Mujer
+                                                                        </option>
+                                                                    </select>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="puesto">
-                                                                    Puesto
-                                                                </label>
-                                                                <input class="form-control" id="puesto" name="puesto" type="text" value="{{$Empleado->puesto}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="correo">
+                                                                        Correo
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="correo" name="correo" type="text" value="{{$Empleado->correo}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="departamento">
-                                                                    Departamento: {{$Empleado->departamento}}
-                                                                </label>
-                                                                <select class="form-control" id="departamento" name="departamento">
-                                                                @foreach($departamentos as $departamento)
-                                                                    <option value="{{$departamento->id}} {{$departamento->descripcion}}">
-                                                                        {{$departamento->id}} {{$departamento->descripcion}}
-                                                                    </option>
-                                                                @endforeach
-                                                                </select>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="puesto">
+                                                                        Categoria
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="puesto" name="puesto" type="text" value="{{$Empleado->puesto}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="Tcontrato">
-                                                                    Relacion Laboral:
-                                                                </label>
-                                                                <label class="form-label text-muted">
-                                                                    @if($Empleado->Tcontrato=='base')
-                                                                        PERSONAL DE BASE
-                                                                    @elseif($Empleado->Tcontrato=='contrato')
-                                                                        PERSONAL DE CONTRATO
-                                                                    @elseif($Empleado->Tcontrato=='nombremientoConfianza')
-                                                                        NOMBRAMIENTO CONFIANZA
-                                                                    @elseif($Empleado->Tcontrato=='mandosMedios')
-                                                                        MANDOS MEDIOS
-                                                                    @elseif($Empleado->Tcontrato=='contratoConfianza')
-                                                                        CONTRATO CONFIANZA
-                                                                    @endif                                    
-                                                                </label>
-                                                                <select class="form-control" id="Tcontrato" name="Tcontrato">
-                                                                    <option value="base">
-                                                                        PERSONAL DE BASE
-                                                                    </option>
-                                                                    <option value="contrato">
-                                                                        PERSONAL DE CONTRATO
-                                                                    </option>
-                                                                    <option value="nombremientoConfianza">
-                                                                        NOMBRAMIENTO CONFIANZA
-                                                                    </option>
-                                                                    <option value="mandosMedios">
-                                                                        MANDOS MEDIOS
-                                                                    </option>
-                                                                    <option value="contratoConfianza">
-                                                                        CONTRATO CONFIANZA
-                                                                    </option>
-                                                                </select>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="departamento">
+                                                                        Departamento: {{$Empleado->departamento}}
+                                                                    </label>
+                                                                    <select style="width: 45%" class="form-control" id="departamento" name="departamento">
+                                                                        <option value="">
+                                                                            Seleccione una opción
+                                                                        </option>
+                                                                    @foreach($departamentos as $departamento)
+                                                                        <option value="{{$departamento->id}} {{$departamento->descripcion}}">
+                                                                            {{$departamento->id}} {{$departamento->descripcion}}
+                                                                        </option>
+                                                                    @endforeach
+                                                                    </select>
+                                                                </center>
                                                             </div>
+                                                            
 
                                                         
 
@@ -310,12 +361,18 @@
                                                                 Documentos Personales
                                                             </h3>
                                                         </div>
-                                                        <div class="form-group ">
+                                                        <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="contrato">
-                                                                   ----------Contrato----------
-                                                                </label>
-                                                                <input accept="application/pdf" name="contrato" type="file">
+                                                                @if($Empleado->contrato==null)
+                                                                    <label class="control-label text-muted" for="contrato">
+                                                                       ----------Ingresar Contrato----------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="contrato">
+                                                                       ---------Actualizar Contrato---------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="contrato" type="file">
                                                                     <label for="contrato">
                                                                     </label>
                                                                 </input>
@@ -324,10 +381,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="creden_elect">
-                                                                   ---Credencial de Elector----
-                                                                </label>
-                                                                <input accept="application/pdf" name="creden_elect" type="file">
+                                                                @if($Empleado->creden_elect==null)
+                                                                    <label class="control-label text-muted" for="creden_elect">
+                                                                       ---Ingresar Credencial de Elector----    
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="creden_elect">
+                                                                       --Actualizar Credencial de Elector---        
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="creden_elect" type="file">
                                                                     <label for="creden_elect">
                                                                     </label>
                                                                 </input>
@@ -336,10 +399,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="acta_nac">
-                                                                   -----Acta de Nacimiento-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="acta_nac" type="file">
+                                                                @if($Empleado->acta_nac==null)
+                                                                    <label class="control-label text-muted" for="acta_nac">
+                                                                       -----Ingresar Acta de Nacimiento-----  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="acta_nac">
+                                                                       ----Actualizar Acta de Nacimiento----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="acta_nac" type="file">
                                                                     <label for="acta_nac">
                                                                     </label>
                                                                 </input>
@@ -348,10 +417,16 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="curriculum">
-                                                                   ---------Curriculum---------
-                                                                </label>
-                                                                <input accept="application/pdf" name="curriculum" type="file">
+                                                                @if($Empleado->curriculum==null)
+                                                                    <label class="control-label text-muted" for="curriculum">
+                                                                       ---------Ingresar Curriculum---------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="curriculum">
+                                                                       --------Actualizar Curriculum--------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="curriculum" type="file">
                                                                     <label for="curriculum">
                                                                     </label>
                                                                 </input>
@@ -360,10 +435,16 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="solicitud">
-                                                                   ----Solicitud de Empleo-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="solicitud" type="file">
+                                                                @if($Empleado->solicitud==null)
+                                                                    <label class="control-label text-muted" for="solicitud">
+                                                                       ----Ingresar Solicitud de Empleo-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="solicitud">
+                                                                       ---Actualizar Solicitud de Empleo----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="solicitud" type="file">
                                                                     <label for="solicitud">
                                                                     </label>
                                                                 </input>
@@ -372,10 +453,16 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="cert_medico">
-                                                                   -----Certificado Medico-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="cert_medico" type="file">
+                                                                @if($Empleado->cert_medico==null)
+                                                                    <label class="control-label text-muted" for="cert_medico">
+                                                                       -----Ingresar Certificado Medico-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="cert_medico">
+                                                                       ----Actualizar Certificado Medico----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="cert_medico" type="file">
                                                                     <label for="cert_medico">
                                                                     </label>
                                                                 </input>
@@ -384,22 +471,34 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="cart_recomend">
-                                                                   ---Carta de Recomendacion---
-                                                                </label>
-                                                                <input accept="application/pdf" name="cart_recomend" type="file">
+                                                                @if($Empleado->cart_recomend==null)
+                                                                    <label class="control-label text-muted" for="cart_recomend">
+                                                                       ---Ingresar Carta de Recomendacion---  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="cart_recomend">
+                                                                       --Actualizar Carta de Recomendacion--
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="cart_recomend" type="file">
                                                                     <label for="cart_recomend">
                                                                     </label>
                                                                 </input>
                                                             </div>
                                                         </div>
                                                         <br>
-                                                        <div class="form-group ">
+                                                        <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="fotografia">
-                                                                   ---------Fotografia---------
-                                                                </label>
-                                                                <input accept="application/pdf" name="fotografia" type="file">
+                                                                @if($Empleado->fotografia==null)
+                                                                    <label class="control-label text-muted" for="fotografia">
+                                                                       ---------Ingresar Fotografia---------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="fotografia">
+                                                                       --------Actualizar Fotografia--------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="fotografia" type="file">
                                                                     <label for="fotografia">
                                                                     </label>
                                                                 </input>
@@ -408,10 +507,17 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="const_Noinhab">
-                                                                   Constancia No Inhabilitacion
-                                                                </label>
-                                                                <input accept="application/pdf" name="const_Noinhab" type="file">
+                                                                @if($Empleado->const_Noinhab==null)
+                                                                    <label class="control-label text-muted" for="const_Noinhab">
+                                                                       Ingresar Constancia No Inhabilitacion  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="const_Noinhab">
+                                                                     Actualizar Constancia No Inhabilitacion
+                                                                    </label>
+                                                                @endif
+
+                                                                <input style="width: 71%" accept="application/pdf" name="const_Noinhab" type="file">
                                                                     <label for="const_Noinhab">
                                                                     </label>
                                                                 </input>
@@ -420,10 +526,17 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="comp_Dom">
-                                                                   --Comprobante de Domicilio--
-                                                                </label>
-                                                                <input accept="application/pdf" name="comp_Dom" type="file">
+                                                                @if($Empleado->comp_Dom==null)
+                                                                    <label class="control-label text-muted" for="comp_Dom">
+                                                                       --Ingresar Comprobante de Domicilio--  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="comp_Dom">
+                                                                       -Actualizar Comprobante de Domicilio-
+                                                                    </label>
+                                                                @endif
+
+                                                                <input style="width: 71%" accept="application/pdf" name="comp_Dom" type="file">
                                                                     <label for="comp_Dom">
                                                                     </label>
                                                                 </input>
@@ -432,10 +545,17 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="licencia">
-                                                                   ----Licencia de Conducir----
-                                                                </label>
-                                                                <input accept="application/pdf" name="licencia" type="file">
+                                                                @if($Empleado->licencia==null)
+                                                                    <label class="control-label text-muted" for="licencia">
+                                                                       ----Ingresar Licencia de Conducir----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="licencia">
+                                                                       ---Actualizar Licencia de Conducir---
+                                                                    </label>
+                                                                @endif
+
+                                                                <input style="width: 71%" accept="application/pdf" name="licencia" type="file">
                                                                     <label for="licencia">
                                                                     </label>
                                                                 </input>
@@ -443,10 +563,16 @@
                                                         </div>
                                                         <br>
                                                         <div class="form-group text-dark">
-                                                                <label class="control-label text-muted" for="nss">
-                                                                   --Numero de Seguro Social---
-                                                                </label>
-                                                                <input accept="application/pdf" name="nss" type="file">
+                                                                @if($Empleado->nss==null)
+                                                                    <label class="control-label text-muted" for="nss">
+                                                                       ---Ingresar Numero de Seguro Social--
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="nss">
+                                                                       --Actualizar Numero de Seguro Social--
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="nss" type="file">
                                                                     <label for="nss">
                                                                     </label>
                                                                 </input>
@@ -454,10 +580,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="infonavit">
-                                                                   ---------Infonavit----------
-                                                                </label>
-                                                                <input accept="application/pdf" name="infonavit" type="file">
+                                                                @if($Empleado->infonavit==null)
+                                                                    <label class="control-label text-muted" for="infonavit">
+                                                                       ---------Ingresar Infonavit----------
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="infonavit">
+                                                                       --------Actualizar Infonavit---------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="infonavit" type="file">
                                                                     <label for="infonavit">
                                                                     </label>
                                                                 </input>
@@ -466,10 +598,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="rfc_doc">
-                                                                   -----Comprobante de RFC-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="rfc_doc" type="file">
+                                                                @if($Empleado->rfc_doc==null)
+                                                                    <label class="control-label text-muted" for="rfc_doc">
+                                                                       -----Ingresar Comprobante de RFC-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="rfc_doc">
+                                                                       ----Actualizar Comprobante de RFC----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="rfc_doc" type="file">
                                                                     <label for="rfc_doc">
                                                                     </label>
                                                                 </input>
@@ -478,10 +616,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="cartilla">
-                                                                   -Cartilla Militar Liberada--
-                                                                </label>
-                                                                <input accept="application/pdf" name="cartilla" type="file">
+                                                                @if($Empleado->cartilla==null)
+                                                                    <label class="control-label text-muted" for="cartilla">
+                                                                       --Ingresar Cartilla Militar Liberada--
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="cartilla">
+                                                                       -Actualizar Cartilla Militar Liberada-
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="cartilla" type="file">
                                                                     <label for="cartilla">
                                                                     </label>
                                                                 </input>
@@ -490,10 +634,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="curp">
-                                                                   -----Comprobante de CURP----
-                                                                </label>
-                                                                <input accept="application/pdf" name="curp" type="file">
+                                                                @if($Empleado->curp==null)
+                                                                    <label class="control-label text-muted" for="curp">
+                                                                       ----Ingresar Comprobante de CURP-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="curp">
+                                                                       ---Actualizar Comprobante de CURP----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="curp" type="file">
                                                                     <label for="curp">
                                                                     </label>
                                                                 </input>
@@ -502,10 +652,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="diploma">
-                                                                   --Diploma Grado de Estudio--
-                                                                </label>
-                                                                <input accept="application/pdf" name="diploma" type="file">
+                                                                @if($Empleado->diploma==null)
+                                                                    <label class="control-label text-muted" for="diploma">
+                                                                       --Ingresar Diploma Grado de Estudio--
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="diploma">
+                                                                       -Actualizar Diploma Grado de Estudio-
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="diploma" type="file">
                                                                     <label for="diploma">
                                                                     </label>
                                                                 </input>
@@ -514,10 +670,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="nombramiento">
-                                                                   --------Nombramiento--------
-                                                                </label>
-                                                                <input accept="application/pdf" name="nombramiento" type="file">
+                                                                @if($Empleado->nombramiento==null)
+                                                                    <label class="control-label text-muted" for="nombramiento">
+                                                                       --------Ingresar Nombramiento--------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="nombramiento">
+                                                                       -------Actualizar Nombramiento-------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="nombramiento" type="file">
                                                                     <label for="nombramiento">
                                                                     </label>
                                                                 </input>
@@ -526,10 +688,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="dictamen">
-                                                                   ----------Dictamen----------
-                                                                </label>
-                                                                <input accept="application/pdf" name="dictamen" type="file">
+                                                                @if($Empleado->dictamen==null)
+                                                                    <label class="control-label text-muted" for="dictamen">
+                                                                       ----------Ingresar Dictamen----------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="dictamen">
+                                                                       ---------Actualizar Dictamen---------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="dictamen" type="file">
                                                                     <label for="dictamen">
                                                                     </label>
                                                                 </input>
@@ -541,7 +709,7 @@
                                                                 <h5>
                                                                     Agrega Documento Adicional
                                                                 </h5>
-                                                                <input accept="application/pdf" name="adicional" type="file">
+                                                                <input style="width: 71%" accept="application/pdf" name="adicional" type="file">
                                                                     <label for="adicional">
                                                                     </label>
                                                                 </input>
@@ -551,6 +719,7 @@
                                                         <button class="btn btn-primary" type="submit">
                                                             Guardar
                                                         </button>
+                                                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -569,26 +738,31 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h3 class="text-center text-muted" style="color:gray">
-                                                            Selecciona la Fecha de Baja
+                                                        <h3 class="text-center" style="color:black">
+                                                            Selecciona la fecha y causa de la baja
                                                         </h3>
                                                     </div>
                                                         <div class="modal-body">
-                                                            <form action="{{route ('empleado.disable',$Empleado->id)}}"  
-                                                                enctype="multipart/form-data" method="post">
+                                                            <form action="{{route ('empleado.disable',$Empleado->id)}}" method="post">
                                                                     {{csrf_field()}} {{method_field('put')}}
                                                                     <div class="form-group col-md-12">
-
-                                                                        <input class="form-control" id="fecha_baja" name="fecha_baja" 
-                                                                        required="" style="text-transform:uppercase;" type="date" 
-                                                                        value="{{date('Y-m-d')}}">
+                                                                        <label style="color:black">
+                                                                            Fecha de baja
+                                                                        </label>
+                                                                        <input class="form-control" id="fecha_baja" name="fecha_baja" type="date" value="{{date('Y-m-d')}}">
                                                                         </input>
                                                                     </div>
-
+                                                                    <div class="form-group col-md-12">
+                                                                        <label style="color:black">
+                                                                            Causa de baja
+                                                                        </label>
+                                                                        <textarea name="causa_baja" rows="3" cols="30" value="{{old('causa_baja')}}" required></textarea>
+                                                                    </div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-primary" type="submit">
                                                                         Guardar
                                                                     </button>
+                                                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -614,10 +788,10 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">
-                                        N° Trabajador
+                                        N° de Trabajador
                                     </th>
                                     <th scope="col">
-                                        Avatar
+                                        RFC
                                     </th>
                                     <th scope="col">
                                         Nombre(s)
@@ -629,13 +803,10 @@
                                         Apellido Materno
                                     </th>
                                     <th scope="col">
-                                        RFC
-                                    </th>
-                                    <th scope="col">
-                                        Estatus
-                                    </th>
-                                    <th scope="col">
                                         Fecha Baja
+                                    </th>
+                                    <th scope="col">
+                                        Causa Baja
                                     </th>
                                     <th scope="col">
                                         Ver
@@ -645,7 +816,7 @@
                                     </th>
                                     @if(Auth::user()->role_id==2)
                                     <th scope="col">
-                                        Ingresar
+                                        Activar
                                     </th>
                                     @endif
                                 </tr>
@@ -658,8 +829,7 @@
                                         {{$Empleado->id}}
                                     </td>
                                     <td>
-                                        <img alt="Avatar" class="img-fluid" height="60" src="{{$Empleado->avatar}}" width="60">
-                                        </img>
+                                        {{$Empleado->RFC}}
                                     </td>
                                     <td>
                                         {{$Empleado->nombre}}
@@ -671,19 +841,19 @@
                                         {{$Empleado->ap_materno}}
                                     </td>
                                     <td>
-                                        {{$Empleado->RFC}}
-                                    </td>
-                                    <td>
-                                        {{$Empleado->estatus}}
-                                    </td>
-                                    <td>
                                         @if($Empleado->fecha_baja==null)
                                             Sin fecha de baja
                                         @else
-                                        {{Date::parse($Empleado->fecha_baja)->format('l j \d\e F \d\e Y')}}
+                                        {{Date::parse($Empleado->fecha_baja)->format('j \d\e F \d\e Y')}}
                                         @endif
                                     </td>
-
+                                    <td>
+                                        @if($Empleado->causa_baja==null)
+                                            Sin causa de baja
+                                        @else
+                                        {{$Empleado->causa_baja}}
+                                        @endif
+                                    </td>
                                     {{-- Boton de Ver Informacion --}}
                                     <td>
                                         <form action="{{ route('empleados.busqueda')}}"   method="get">
@@ -717,142 +887,214 @@
                                                         <form action="{{route ('empleado.update',$Empleado->id)}}"  enctype="multipart/form-data" method="post">
                                                         {{csrf_field()}} {{method_field('put')}}
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="id">
-                                                                    Numero de Trabajador
-                                                                </label>
-                                                                <label class="form-control" style="background-color: #F7F9F9 " id="id" name="id" type="text">
-                                                                    {{$Empleado->id}}
-                                                                </label>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="id">
+                                                                        Numero de Trabajador
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control"  value="{{$Empleado->id}}" name="id" type="text" disabled>
+                                                                    </input>
+                                                                </center>
+                                                            </div>
+                                                            @if(Auth::user()->role_id==2)
+                                                            <div class="form-group">
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="nombre">
+                                                                        Nombre
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="nombre" name="nombre" type="text" value="{{$Empleado->nombre}}" >
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="nombre">
-                                                                    Nombre
-                                                                </label>
-                                                                <input class="form-control" id="nombre" name="nombre" type="text" value="{{$Empleado->nombre}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_paterno">
+                                                                        Apellido Paterno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$Empleado->ap_paterno}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="ap_paterno">
-                                                                    Apellido Paterno
-                                                                </label>
-                                                                <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$Empleado->ap_paterno}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_materno">
+                                                                        Apellido Materno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$Empleado->ap_materno}}">
+                                                                    </input>
+                                                                </center>
+                                                            </div>
+                                                            @endif
+                                                            @if(Auth::user()->role_id==1)
+                                                            <label class="text-danger" for="nombre">
+                                                                !! Para editar el nombre ingresa como administrador !!
+                                                            </label>
+                                                            <div class="form-group">
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="nombre">
+                                                                        Nombre
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="nombre" name="nombre" type="text" value="{{$Empleado->nombre}}" disabled>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="ap_materno">
-                                                                    Apellido Materno
-                                                                </label>
-                                                                <input class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$Empleado->ap_materno}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_paterno">
+                                                                        Apellido Paterno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$Empleado->ap_paterno}}" disabled>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="fecha_alta">
-                                                                    Fecha de Alta : 
-                                                                </label>
-                                                                <label class="control-label text-muted" for="fecha_alta">
-                                                                    {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
-                                                                </label>
-                                                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="ap_materno">
+                                                                        Apellido Materno
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$Empleado->ap_materno}}" disabled>
+                                                                    </input>
+                                                                </center>
+                                                            </div>
+                                                            @endif
+                                                            <div class="form-group">
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="fecha_alta">
+                                                                        Fecha de Alta : 
+                                                                    </label>
+                                                                    <label class="control-label text-muted" for="fecha_alta">
+                                                                        {{Date::parse($Empleado->fecha_alta)->format('l j \d\e F \d\e Y')}}
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$Empleado->fecha_alta}}>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="fecha_nombramiento">
-                                                                    Fecha de Nombramiento  
-                                                                </label>
-                                                                <label class="control-label text-muted" for="fecha_nombramiento">
-                                                                    @if($Empleado->fecha_nombramiento==null)
-                                                                        
-                                                                    @else
-                                                                    {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
-                                                                    @endif
-                                                                </label>
-                                                                <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value="{{$Empleado->fecha_nombramiento}}">
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="Tcontrato">
+                                                                        Relacion Laboral:
+                                                                    </label>
+                                                                    <label class="form-label text-muted">
+                                                                        @if($Empleado->Tcontrato=='base')
+                                                                            PERSONAL DE BASE
+                                                                        @elseif($Empleado->Tcontrato=='contrato')
+                                                                            PERSONAL DE CONTRATO
+                                                                        @elseif($Empleado->Tcontrato=='nombremientoConfianza')
+                                                                            NOMBRAMIENTO CONFIANZA
+                                                                        @elseif($Empleado->Tcontrato=='mandosMedios')
+                                                                            MANDOS MEDIOS
+                                                                        @elseif($Empleado->Tcontrato=='contratoConfianza')
+                                                                            CONTRATO CONFIANZA
+                                                                        @endif                                    
+                                                                    </label>
+                                                                    <select onChange="prueba()" style="width: 45%" class="form-control" id="Tcontrato" name="Tcontrato">
+                                                                        <option value="">
+                                                                            Seleccione una opción
+                                                                        </option>
+                                                                        <option value="base">
+                                                                            PERSONAL DE BASE
+                                                                        </option>
+                                                                        <option value="contrato">
+                                                                            PERSONAL DE CONTRATO
+                                                                        </option>
+                                                                        <option value="nombremientoConfianza">
+                                                                            NOMBRAMIENTO CONFIANZA
+                                                                        </option>
+                                                                        <option value="mandosMedios">
+                                                                            MANDOS MEDIOS
+                                                                        </option>
+                                                                        <option value="contratoConfianza">
+                                                                            CONTRATO CONFIANZA
+                                                                        </option>
+                                                                    </select>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="RFC">
-                                                                    RFC
-                                                                </label>
-                                                                <input class="form-control" id="RFC" name="RFC" type="text" value="{{$Empleado->RFC}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                        Fecha de Nombramiento:
+                                                                    </label>
+                                                                    <label class="control-label text-muted" for="fecha_nombramiento">
+                                                                        @if($Empleado->fecha_nombramiento==null)
+                                                                        @else
+                                                                            {{Date::parse($Empleado->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                                                        @endif
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value="{{$Empleado->fecha_nombramiento}}" disabled>
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="telefono">
-                                                                    Telefono
-                                                                </label>
-                                                                <input class="form-control" id="telefono" name="telefono" type="text" value="{{$Empleado->telefono}}">
-                                                                    
-                                                                </input>
-
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="RFC">
+                                                                        RFC
+                                                                    </label>
+                                                                    <input style="text-transform:uppercase;width: 45%;" class="form-control" id="RFC" name="RFC" type="text" value="{{$Empleado->RFC}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="genero">
-                                                                    Genero: {{$Empleado->genero}}
-                                                                </label>
-                                                                <select class="form-control" id="genero" name="genero">
-                                                                    <option value="Hombre">
-                                                                        Hombre
-                                                                    </option>
-                                                                    <option value="Mujer">
-                                                                        Mujer
-                                                                    </option>
-                                                                </select>
-
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="telefono">
+                                                                        Telefono
+                                                                    </label>
+                                                                    <input style="width: 45%"class="form-control" id="telefono" name="telefono" type="text" value="{{$Empleado->telefono}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="correo">
-                                                                    Correo
-                                                                </label>
-                                                                <input class="form-control" id="correo" name="correo" type="text" value="{{$Empleado->correo}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="genero">
+                                                                        Genero: {{$Empleado->genero}}
+                                                                    </label>
+                                                                    <select style="width: 45%" class="form-control" id="genero" name="genero">
+                                                                        <option value="">
+                                                                            Seleccione una opción
+                                                                        </option>
+                                                                        <option value="Hombre">
+                                                                            Hombre
+                                                                        </option>
+                                                                        <option value="Mujer">
+                                                                            Mujer
+                                                                        </option>
+                                                                    </select>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="puesto">
-                                                                    Puesto
-                                                                </label>
-                                                                <input class="form-control" id="puesto" name="puesto" type="text" value="{{$Empleado->puesto}}">
-                                                                    
-                                                                </input>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="correo">
+                                                                        Correo
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="correo" name="correo" type="text" value="{{$Empleado->correo}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="departamento">
-                                                                    Departamento : {{$Empleado->departamento}}
-                                                                </label>
-                                                                <select class="form-control" id="departamento" name="departamento">
-                                                                @foreach($departamentos as $departamento)
-                                                                    <option value="{{$departamento->id}} {{$departamento->descripcion}}">
-                                                                        {{$departamento->id}} {{$departamento->descripcion}}
-                                                                    </option>
-                                                                @endforeach
-                                                                </select>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="puesto">
+                                                                        Categoria
+                                                                    </label>
+                                                                    <input style="width: 45%" class="form-control" id="puesto" name="puesto" type="text" value="{{$Empleado->puesto}}">
+                                                                    </input>
+                                                                </center>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label text-muted" for="Tcontrato">
-                                                                    Relacion Laboral: {{$Empleado->Tcontrato}}
-                                                                </label>
-                                                                <select class="form-control" id="Tcontrato" name="Tcontrato">
-                                                                    <option value="base">
-                                                                        PERSONAL DE BASE
-                                                                    </option>
-                                                                    <option value="contrato">
-                                                                        PERSONAL DE CONTRATO
-                                                                    </option>
-                                                                    <option value="nombremientoConfianza">
-                                                                        NOMBRAMIENTO CONFIANZA
-                                                                    </option>
-                                                                    <option value="mandosMedios">
-                                                                        MANDOS MEDIOS
-                                                                    </option>
-                                                                    <option value="contratoConfianza">
-                                                                        CONTRATO CONFIANZA
-                                                                    </option>
-                                                                </select>
+                                                                <center>
+                                                                    <label class="control-label text-muted" for="departamento">
+                                                                        Departamento: {{$Empleado->departamento}}
+                                                                    </label>
+                                                                    <select style="width: 45%" class="form-control" id="departamento" name="departamento">
+                                                                        <option value="">
+                                                                            Seleccione una opción
+                                                                        </option>
+                                                                    @foreach($departamentos as $departamento)
+                                                                        <option value="{{$departamento->id}} {{$departamento->descripcion}}">
+                                                                            {{$departamento->id}} {{$departamento->descripcion}}
+                                                                        </option>
+                                                                    @endforeach
+                                                                    </select>
+                                                                </center>
                                                             </div>
+                                                            
 
                                                         
 
@@ -863,12 +1105,18 @@
                                                                 Documentos Personales
                                                             </h3>
                                                         </div>
-                                                        <div class="form-group ">
+                                                        <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="contrato">
-                                                                   ----------Contrato----------
-                                                                </label>
-                                                                <input accept="application/pdf" name="contrato" type="file">
+                                                                @if($Empleado->contrato==null)
+                                                                    <label class="control-label text-muted" for="contrato">
+                                                                       ----------Ingresar Contrato----------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="contrato">
+                                                                       ---------Actualizar Contrato---------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="contrato" type="file">
                                                                     <label for="contrato">
                                                                     </label>
                                                                 </input>
@@ -877,10 +1125,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="creden_elect">
-                                                                   ---Credencial de Elector----
-                                                                </label>
-                                                                <input accept="application/pdf" name="creden_elect" type="file">
+                                                                @if($Empleado->creden_elect==null)
+                                                                    <label class="control-label text-muted" for="creden_elect">
+                                                                       ---Ingresar Credencial de Elector----    
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="creden_elect">
+                                                                       --Actualizar Credencial de Elector---        
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="creden_elect" type="file">
                                                                     <label for="creden_elect">
                                                                     </label>
                                                                 </input>
@@ -889,10 +1143,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="acta_nac">
-                                                                   -----Acta de Nacimiento-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="acta_nac" type="file">
+                                                                @if($Empleado->acta_nac==null)
+                                                                    <label class="control-label text-muted" for="acta_nac">
+                                                                       -----Ingresar Acta de Nacimiento-----  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="acta_nac">
+                                                                       ----Actualizar Acta de Nacimiento----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="acta_nac" type="file">
                                                                     <label for="acta_nac">
                                                                     </label>
                                                                 </input>
@@ -901,10 +1161,16 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="curriculum">
-                                                                   ---------Curriculum---------
-                                                                </label>
-                                                                <input accept="application/pdf" name="curriculum" type="file">
+                                                                @if($Empleado->curriculum==null)
+                                                                    <label class="control-label text-muted" for="curriculum">
+                                                                       ---------Ingresar Curriculum---------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="curriculum">
+                                                                       --------Actualizar Curriculum--------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="curriculum" type="file">
                                                                     <label for="curriculum">
                                                                     </label>
                                                                 </input>
@@ -913,10 +1179,16 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="solicitud">
-                                                                   ----Solicitud de Empleo-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="solicitud" type="file">
+                                                                @if($Empleado->solicitud==null)
+                                                                    <label class="control-label text-muted" for="solicitud">
+                                                                       ----Ingresar Solicitud de Empleo-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="solicitud">
+                                                                       ---Actualizar Solicitud de Empleo----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="solicitud" type="file">
                                                                     <label for="solicitud">
                                                                     </label>
                                                                 </input>
@@ -925,10 +1197,16 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="cert_medico">
-                                                                   -----Certificado Medico-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="cert_medico" type="file">
+                                                                @if($Empleado->cert_medico==null)
+                                                                    <label class="control-label text-muted" for="cert_medico">
+                                                                       -----Ingresar Certificado Medico-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="cert_medico">
+                                                                       ----Actualizar Certificado Medico----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="cert_medico" type="file">
                                                                     <label for="cert_medico">
                                                                     </label>
                                                                 </input>
@@ -937,22 +1215,34 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="cart_recomend">
-                                                                   ---Carta de Recomendacion---
-                                                                </label>
-                                                                <input accept="application/pdf" name="cart_recomend" type="file">
+                                                                @if($Empleado->cart_recomend==null)
+                                                                    <label class="control-label text-muted" for="cart_recomend">
+                                                                       ---Ingresar Carta de Recomendacion---  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="cart_recomend">
+                                                                       --Actualizar Carta de Recomendacion--
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="cart_recomend" type="file">
                                                                     <label for="cart_recomend">
                                                                     </label>
                                                                 </input>
                                                             </div>
                                                         </div>
                                                         <br>
-                                                        <div class="form-group ">
+                                                        <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="fotografia">
-                                                                   ---------Fotografia---------
-                                                                </label>
-                                                                <input accept="application/pdf" name="fotografia" type="file">
+                                                                @if($Empleado->fotografia==null)
+                                                                    <label class="control-label text-muted" for="fotografia">
+                                                                       ---------Ingresar Fotografia---------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="fotografia">
+                                                                       --------Actualizar Fotografia--------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="fotografia" type="file">
                                                                     <label for="fotografia">
                                                                     </label>
                                                                 </input>
@@ -961,10 +1251,17 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="const_Noinhab">
-                                                                   Constancia No Inhabilitacion
-                                                                </label>
-                                                                <input accept="application/pdf" name="const_Noinhab" type="file">
+                                                                @if($Empleado->const_Noinhab==null)
+                                                                    <label class="control-label text-muted" for="const_Noinhab">
+                                                                       Ingresar Constancia No Inhabilitacion  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="const_Noinhab">
+                                                                     Actualizar Constancia No Inhabilitacion
+                                                                    </label>
+                                                                @endif
+
+                                                                <input style="width: 71%" accept="application/pdf" name="const_Noinhab" type="file">
                                                                     <label for="const_Noinhab">
                                                                     </label>
                                                                 </input>
@@ -973,10 +1270,17 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="comp_Dom">
-                                                                   --Comprobante de Domicilio--
-                                                                </label>
-                                                                <input accept="application/pdf" name="comp_Dom" type="file">
+                                                                @if($Empleado->comp_Dom==null)
+                                                                    <label class="control-label text-muted" for="comp_Dom">
+                                                                       --Ingresar Comprobante de Domicilio--  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="comp_Dom">
+                                                                       -Actualizar Comprobante de Domicilio-
+                                                                    </label>
+                                                                @endif
+
+                                                                <input style="width: 71%" accept="application/pdf" name="comp_Dom" type="file">
                                                                     <label for="comp_Dom">
                                                                     </label>
                                                                 </input>
@@ -985,10 +1289,17 @@
                                                         <br>
                                                         <div class="form-group ">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="licencia">
-                                                                   ----Licencia de Conducir----
-                                                                </label>
-                                                                <input accept="application/pdf" name="licencia" type="file">
+                                                                @if($Empleado->licencia==null)
+                                                                    <label class="control-label text-muted" for="licencia">
+                                                                       ----Ingresar Licencia de Conducir----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="licencia">
+                                                                       ---Actualizar Licencia de Conducir---
+                                                                    </label>
+                                                                @endif
+
+                                                                <input style="width: 71%" accept="application/pdf" name="licencia" type="file">
                                                                     <label for="licencia">
                                                                     </label>
                                                                 </input>
@@ -996,10 +1307,16 @@
                                                         </div>
                                                         <br>
                                                         <div class="form-group text-dark">
-                                                                <label class="control-label text-muted" for="nss">
-                                                                   --Numero de Seguro Social---
-                                                                </label>
-                                                                <input accept="application/pdf" name="nss" type="file">
+                                                                @if($Empleado->nss==null)
+                                                                    <label class="control-label text-muted" for="nss">
+                                                                       ---Ingresar Numero de Seguro Social--
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="nss">
+                                                                       --Actualizar Numero de Seguro Social--
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="nss" type="file">
                                                                     <label for="nss">
                                                                     </label>
                                                                 </input>
@@ -1007,10 +1324,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="infonavit">
-                                                                   ---------Infonavit----------
-                                                                </label>
-                                                                <input accept="application/pdf" name="infonavit" type="file">
+                                                                @if($Empleado->infonavit==null)
+                                                                    <label class="control-label text-muted" for="infonavit">
+                                                                       ---------Ingresar Infonavit----------
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="infonavit">
+                                                                       --------Actualizar Infonavit---------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="infonavit" type="file">
                                                                     <label for="infonavit">
                                                                     </label>
                                                                 </input>
@@ -1019,10 +1342,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="rfc_doc">
-                                                                   -----Comprobante de RFC-----
-                                                                </label>
-                                                                <input accept="application/pdf" name="rfc_doc" type="file">
+                                                                @if($Empleado->rfc_doc==null)
+                                                                    <label class="control-label text-muted" for="rfc_doc">
+                                                                       -----Ingresar Comprobante de RFC-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="rfc_doc">
+                                                                       ----Actualizar Comprobante de RFC----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="rfc_doc" type="file">
                                                                     <label for="rfc_doc">
                                                                     </label>
                                                                 </input>
@@ -1031,10 +1360,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="cartilla">
-                                                                   -Cartilla Militar Liberada--
-                                                                </label>
-                                                                <input accept="application/pdf" name="cartilla" type="file">
+                                                                @if($Empleado->cartilla==null)
+                                                                    <label class="control-label text-muted" for="cartilla">
+                                                                       --Ingresar Cartilla Militar Liberada--
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="cartilla">
+                                                                       -Actualizar Cartilla Militar Liberada-
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="cartilla" type="file">
                                                                     <label for="cartilla">
                                                                     </label>
                                                                 </input>
@@ -1043,10 +1378,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="curp">
-                                                                   -----Comprobante de CURP----
-                                                                </label>
-                                                                <input accept="application/pdf" name="curp" type="file">
+                                                                @if($Empleado->curp==null)
+                                                                    <label class="control-label text-muted" for="curp">
+                                                                       ----Ingresar Comprobante de CURP-----
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="curp">
+                                                                       ---Actualizar Comprobante de CURP----
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="curp" type="file">
                                                                     <label for="curp">
                                                                     </label>
                                                                 </input>
@@ -1055,10 +1396,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="diploma">
-                                                                   --Diploma Grado de Estudio--
-                                                                </label>
-                                                                <input accept="application/pdf" name="diploma" type="file">
+                                                                @if($Empleado->diploma==null)
+                                                                    <label class="control-label text-muted" for="diploma">
+                                                                       --Ingresar Diploma Grado de Estudio--
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="diploma">
+                                                                       -Actualizar Diploma Grado de Estudio-
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="diploma" type="file">
                                                                     <label for="diploma">
                                                                     </label>
                                                                 </input>
@@ -1067,10 +1414,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="nombramiento">
-                                                                   --------Nombramiento--------
-                                                                </label>
-                                                                <input accept="application/pdf" name="nombramiento" type="file">
+                                                                @if($Empleado->nombramiento==null)
+                                                                    <label class="control-label text-muted" for="nombramiento">
+                                                                       --------Ingresar Nombramiento--------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="nombramiento">
+                                                                       -------Actualizar Nombramiento-------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="nombramiento" type="file">
                                                                     <label for="nombramiento">
                                                                     </label>
                                                                 </input>
@@ -1079,10 +1432,16 @@
                                                         <br>
                                                         <div class="form-group">
                                                             <div class="text-dark">
-                                                                <label class="control-label text-muted" for="dictamen">
-                                                                   ----------Dictamen----------
-                                                                </label>
-                                                                <input accept="application/pdf" name="dictamen" type="file">
+                                                                @if($Empleado->dictamen==null)
+                                                                    <label class="control-label text-muted" for="dictamen">
+                                                                       ----------Ingresar Dictamen----------  
+                                                                    </label>
+                                                                @else
+                                                                    <label class="control-label text-muted" for="dictamen">
+                                                                       ---------Actualizar Dictamen---------
+                                                                    </label>
+                                                                @endif
+                                                                <input style="width: 71%" accept="application/pdf" name="dictamen" type="file">
                                                                     <label for="dictamen">
                                                                     </label>
                                                                 </input>
@@ -1094,7 +1453,7 @@
                                                                 <h5>
                                                                     Agrega Documento Adicional
                                                                 </h5>
-                                                                <input accept="application/pdf" name="adicional" type="file">
+                                                                <input style="width: 71%" accept="application/pdf" name="adicional" type="file">
                                                                     <label for="adicional">
                                                                     </label>
                                                                 </input>
@@ -1104,6 +1463,7 @@
                                                         <button class="btn btn-primary" type="submit">
                                                             Guardar
                                                         </button>
+                                                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -1128,7 +1488,6 @@
                                 </tr>
                             </tbody>
                         </table>
-    
                     </div>
                 </div>
             </div>

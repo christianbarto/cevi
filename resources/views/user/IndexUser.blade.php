@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header" style="color:black">
                 <h1>
-                   Registrar Usuario
+                   Usuarios
                 </h1>
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
@@ -21,16 +21,16 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">
-                                            #
-                                        </th>
-                                        <th scope="col">
                                             Nombre
                                         </th>
                                         <th scope="col">
-                                            Username
+                                            Apellido Paterno
                                         </th>
                                         <th scope="col">
-                                            Password
+                                            Apellido Materno
+                                        </th>
+                                        <th scope="col">
+                                            Correo
                                         </th>
                                         <th scope="col">
                                             Role
@@ -46,17 +46,17 @@
                                 <tbody>
                                     @foreach($usuarios as $User)
                                     <tr>
-                                        <th>
-                                            {{$loop->iteration}}
-                                        </th>
                                         <td>
                                             {{$User->name}}
                                         </td>
                                         <td>
-                                            {{$User->email}}
+                                            {{$User->ap_paterno}}
                                         </td>
                                         <td>
-                                            {{$User->password}}
+                                            {{$User->ap_materno}}
+                                        </td>
+                                        <td>
+                                            {{$User->email}}
                                         </td>
                                         <td>
                                             @if($User->role_id > 1)
@@ -70,7 +70,7 @@
                                                 <i class="fas fa-user-edit"></i>
                                             </a>
                                             <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="EditUsuario{{$User->id}}" tabindex="-1">
-                                                <div class="modal-dialog modal-lm">
+                                                <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title text-dark">
@@ -90,21 +90,31 @@
                                                                 <input type="text" name ="name" class="form-control" value={{$User->name}}>
                                                                 </input>
                                                             </div>
-                                                            @if($User->email=='admin_agustin' || $User->email=='user')
+                                                            <div class="form-group">
+                                                                <label for="ap_paterno" class="text-dark float-left">Apellido Paterno</label>
+                                                                <input type="text" name ="ap_paterno" class="form-control" value={{$User->ap_paterno}}>
+                                                                </input>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="ap_materno" class="text-dark float-left">Apellido Materno</label>
+                                                                <input type="text" name ="ap_materno" class="form-control" value={{$User->ap_materno}}>
+                                                                </input>
+                                                            </div>
+                                                            @if($User->email=='admin_agustin@mail.com' || $User->email=='user@mail.com')
                                                                 <div class="form-group">
-                                                                    <label for="" class="text-dark float-left">UserName</label>
+                                                                    <label for="" class="text-dark float-left">Correo</label>
                                                                     <input type="text" readonly name="email" class="form-control" value={{$User->email}}>
                                                                     </input>
                                                                 </div>
                                                             @else
                                                                 <div class="form-group">
-                                                                    <label for="" class="text-dark float-left">UserName</label>
+                                                                    <label for="" class="text-dark float-left">Correo</label>
                                                                     <input type="text"  name="email" class="form-control" value={{$User->email}}>
                                                                     </input>
                                                                 </div>
                                                             @endif
                                                             <div class="form-group">
-                                                                <label for="" class="text-dark float-left">Password</label>
+                                                                <label for="" class="text-dark float-left">Contraseña</label>
                                                                 <input type="text" name ="password" class="form-control" placeholder="Ingresa Nueva Contraseña">
                                                                 </input>
                                                             </div>
@@ -132,7 +142,7 @@
                                                     </div>
                                                 </div>
                                                 <td>
-                                                @if($User->email=='admin_agustin' || $User->email=='user')
+                                                @if($User->email=='admin_agustin@mail.com' || $User->email=='user@mail.com')
                                                     <form action="{{ url('/DeleteUsuarios/'.$User->id)}}" method="POST">
                                                         {{csrf_field()}}
                                                         <button class="btn btn-danger" onclick="return confirm('¿Borrar?');" type="submit" disabled>

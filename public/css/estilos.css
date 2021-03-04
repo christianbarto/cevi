@@ -7,21 +7,6 @@
 .gris {
     background-color: grey;
 }
-label {
-    color: #FDFCFC;
-}
-div {
-    color: #FDFCFC;
-}
-html {
-    overflow-x: scroll;
-}
-th {
-    color: #FDFCFC;
-}
-td {
-    color: #FDFCFC;
-}
 .logo-dep {
     margin-top: 0px;
     margin-right: 10px;
@@ -55,8 +40,14 @@ iframe {
     width: 100%;
     height: 95vh;
 }
-.scroll {
-    overflow: scroll;
-    height: 50px;
-    width: 50px;
+.tabla {
+    width: 100%;
+    border: 1px solid #000;
+}
+.columnas {
+    width: 25%;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-spacing: 0;
 }

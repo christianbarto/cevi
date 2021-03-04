@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 //Rutas de login
-Route::get('/Home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Rutas Usuario
 Route::get('/alta', 'UserController@formulario');

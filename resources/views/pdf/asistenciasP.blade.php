@@ -1,15 +1,24 @@
-<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
-<h1 style="text-align: center">Asistencia del periodo:</h1>
-<h2 style="text-align: center">{{Date::parse($inicio)->format('l j \d\e F \d\e Y')}} al {{Date::parse($fin)->format('l j \d\e F \d\e Y')}}</h2>
-<div class="table-responsive">
-                <table border="1" style="margin: 0 auto;">
+<img height="90" src="img/CEVILOGO2020.jpg" width="428" style="margin-top:0px;"></img>
+<h4 style="text-align: left;">
+    Generado: {{Date::parse(now())->format('j \d\e F \d\e Y')}}<br>
+    Usuario: {{Auth::user()->name}}
+</h4>
+<h3 >Asistencia del periodo:<br>
+Del {{Date::parse($inicio)->format('j \d\e F \d\e Y')}} al {{Date::parse($fin)->format('j \d\e F \d\e Y')}}</h3>
+                <table border="1" align="center" cellspacing="0" cellpadding="1" style="text-align: center;">
                     <thead>
                         <tr>
+                            <th scope="col">
+                                RFC
+                            </th>
                             <th scope="col">
                                 Nombre
                             </th>
                             <th scope="col">
-                                RFC
+                                Apellido Paterno
+                            </th>
+                            <th scope="col">
+                                Apellido Materno
                             </th>
                             <th scope="col">
                                 Fecha
@@ -29,34 +38,32 @@
                         @foreach($Relojes as $Reloj)
                         <tr>
                             <td>
-                                {{$Reloj->nombre}}
-                            </td>
-                            <td>
                                 {{$Reloj->RFC}}
                             </td>
                             <td>
-                                {{Date::parse($Reloj->fecha)->format('l j \d\e F \d\e Y')}}
+                                {{$Reloj->nombre}}
+                            </td>
+                            <td>
+                                {{$Reloj->ap_paterno}}
+                            </td>
+                            <td>
+                                {{$Reloj->ap_materno}}
+                            </td>
+                            <td>
+                                {{Date::parse($Reloj->fecha)->format('j \d\e F \d\e Y')}}
                             </td>
                             <td>
                                 @if(($Reloj->entrada)===('00:00:00'))
-                                
                                     N/A
-                                
                                 @else
-                                
-                                    {{$Reloj->entrada}}
-                                   
+                                    {{$Reloj->entrada}}   
                                 @endif                            
                             </td>
                             <td>
                                 @if(($Reloj->salida)===('00:00:00'))
-                                
                                     N/A
-                                
                                 @else
-                                
                                     {{$Reloj->salida}}
-
                                 @endif
                             </td>
                             <td>
@@ -66,4 +73,3 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>

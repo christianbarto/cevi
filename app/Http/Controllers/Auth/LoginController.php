@@ -18,6 +18,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }*/
     
-    protected $redirectTo = 'Home';
+    protected $redirectTo = 'home';
     
 }

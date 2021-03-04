@@ -1,21 +1,25 @@
-<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
-<div align="center">
-    <h1>
-        Usuarios
-    </h1>
-</div>
-<div align="center">
-    <table border="1" style="margin: 0 auto;">
+<img height="90" src="img/CEVILOGO2020.jpg" width="428" style="margin-top:0px;"></img>
+<h4 style="text-align: left;">
+    Generado: {{Date::parse(now())->format('j \d\e F \d\e Y')}}<br>
+    Usuario: {{Auth::user()->name}}
+</h4>
+<h3>
+    Usuarios Activos
+</h3>
+    <table border="1" align="center" cellspacing="0" cellpadding="1" style="text-align: center;">
         <thead class="thead-light">
             <tr>
                 <th scope="col">
-                    #
+                    Nombre(s)
                 </th>
                 <th scope="col">
-                    Nombre
+                    Apellido Paterno
                 </th>
                 <th scope="col">
-                    Username
+                    Apellido Materno
+                </th>
+                <th scope="col">
+                    Correo
                 </th>
                 <th scope="col">
                     Role
@@ -25,11 +29,14 @@
         <tbody>
             @foreach($usuarios as $User)
             <tr>
-                <th>
-                    {{$loop->iteration}}
-                </th>
                 <td>
                     {{$User->name}}
+                </td>
+                <td>
+                    {{$User->ap_paterno}}
+                </td>
+                <td>
+                    {{$User->ap_materno}}
                 </td>
                 <td>
                     {{$User->email}}

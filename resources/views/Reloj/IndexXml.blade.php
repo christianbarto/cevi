@@ -35,15 +35,21 @@
                     </form>
                 </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-dark ">
+            <div class="table-responsive" style="width:100%;overflow:auto; max-height:430px;">
+                <table class="table table-dark">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">
-                                Nombre
+                                RFC
                             </th>
                             <th scope="col">
-                                RFC
+                                Nombre(s)
+                            </th>
+                            <th scope="col">
+                                Apellido Paterno
+                            </th>
+                            <th scope="col">
+                                Apellido Materno
                             </th>
                             <th scope="col">
                                 Fecha
@@ -63,13 +69,19 @@
                         @foreach($Relojes as $Reloj)
                         <tr>
                             <td>
-                                {{$Reloj->nombre}}
-                            </td>
-                            <td>
                                 {{$Reloj->RFC}}
                             </td>
                             <td>
-                                {{Date::parse($Reloj->fecha)->format('l j \d\e F \d\e Y')}}
+                                {{$Reloj->nombre}}
+                            </td>
+                            <td>
+                                {{$Reloj->ap_paterno}}
+                            </td>
+                            <td>
+                                {{$Reloj->ap_materno}}
+                            </td>
+                            <td>
+                                {{Date::parse($Reloj->fecha)->format('j \d\e F \d\e Y')}}
                             </td>
                             <td>
                                 @if(($Reloj->entrada)===('00:00:00'))
@@ -98,7 +110,6 @@
                         </tr>
                     </tbody>
                 </table>
-                {!!$Relojes->render() !!}
             </div>
         </div>
     </div>

@@ -19,23 +19,37 @@
                         @endif
                         <div class="form-row">
                             <!-- Full Name -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label class="control-label" for="name" style="color:black">
                                     Nombre
                                 </label>
                                 <input class="form-control" id="name" name="name" value="{{old('name')}}" type="text" required>
                                 </input>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label class="control-label" for="username" style="color:black">
-                                    Username
+                            <div class="form-group col-md-2">
+                                <label class="control-label" for="ap_paterno" style="color:black">
+                                    Apellido Paterno
                                 </label>
-                                <input class="form-control" id="email" name="email" value="{{old('email')}}" type="text" required>
+                                <input class="form-control" id="ap_paterno" name="ap_paterno" value="{{old('ap_paterno')}}" type="text" required>
                                 </input>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
+                                <label class="control-label" for="ap_materno" style="color:black">
+                                    Apellido Materno
+                                </label>
+                                <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}" type="text" required>
+                                </input>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label class="control-label" for="username" style="color:black">
+                                    Correo
+                                </label>
+                                <input class="form-control" type="email" id="email" name="email" value="{{old('email')}}" type="text" required>
+                                </input>
+                            </div>
+                            <div class="form-group col-md-2">
                                 <label class="control-label" for="password" style="color:black">
-                                    Password
+                                    Contraseña
                                 </label>
                                 <input class="form-control" id="password" name="password" type="password" required>
                                 </input>

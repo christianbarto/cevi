@@ -17,6 +17,8 @@ class CreateRelojsTable extends Migration
             $table->bigIncrements('id');
             $table->string('RFC');
             $table->string('nombre');
+            $table->string('ap_paterno');
+            $table->string('ap_materno');
             $table->date('fecha');
             $table->time('entrada');
             $table->time('salida');

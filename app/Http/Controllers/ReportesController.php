@@ -39,7 +39,7 @@ class ReportesController extends Controller
        $empleados = Empleado::all();
        $pdf = PDF::loadView('pdf/IndexEmpleadoA',compact('empleados'));
        set_time_limit(300); 
-       return $pdf->stream('Reporte de Empleados.pdf');
+       return $pdf->stream('Reporte de Empleados Activos.pdf');
      }
 
      public function empleadosI()
@@ -66,7 +66,7 @@ class ReportesController extends Controller
        $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->get();
        $pdf = PDF::loadView('pdf/asistenciasP',compact('Relojes','inicio','fin'));
         set_time_limit(300);          
-       return $pdf->download('Reporte por Periodo.pdf');
+       return $pdf->stream('Reporte por Periodo.pdf');
      }
 
      public function asistenciasEP(Request $request)
@@ -82,7 +82,7 @@ class ReportesController extends Controller
 
      public function antiguedad()
      {
-        $Empleados = Empleado::all();
+        $Empleados = Empleado::orderBy('nombre','asc')->get();
         $pdf = PDF::loadView('pdf/antiguedad',compact('Empleados'));
         set_time_limit(300); 
         return $pdf->stream('Reporte de antiguedad de empleados.pdf');

@@ -15,21 +15,18 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $verifiName = User::Where('name','like','%'.$request->name.'%')->count();
         $verifiUsername = User::Where('email','like','%'.$request->email.'%')->count();
-
-        if($verifiName>0){   
-            return back()->with('verifi',$request->name.' Ya esta registrado')->withInput();
-        }
 
         if($verifiUsername>0){   
             return back()->with('verifi','El Usuario '.$request->email.' Ya esta registrado')->withInput();
         }
         User::create([
-            'name'     => request('name'),
-            'email'    => request('email'),
-            'password' => bcrypt(request('password')),
-            'role_id'  => request('role_id'),
+            'name'          => request('name'),
+            'ap_paterno'    => request('ap_paterno'),
+            'ap_materno'    => request('ap_materno'),
+            'email'         => request('email'),
+            'password'      => bcrypt(request('password')),
+            'role_id'       => request('role_id'),
         ]);
         return redirect('/usuarios');
     }

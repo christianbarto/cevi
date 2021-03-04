@@ -17,6 +17,7 @@ class CreateEmpleadosTable extends Migration
             $table->bigIncrements('id');
             $table->date('fecha_alta');
             $table->date('fecha_baja')->nullable('yes');
+            $table->string('causa_baja')->nullable('yes');
             $table->date('fecha_nombramiento')->nullable('yes');
             $table->string('ap_paterno');
             $table->string('ap_materno');
@@ -25,7 +26,6 @@ class CreateEmpleadosTable extends Migration
             $table->string('telefono');
             $table->string('genero');
             $table->string('correo')->nullable('yes');
-            $table->string('avatar')->default('/storage/avatardefalut.png')->nullable('yes');
             $table->string('estatus')->default('activo');
             $table->string('puesto');
             $table->string('Tcontrato');

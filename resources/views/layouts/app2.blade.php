@@ -11,8 +11,11 @@
                     <!-- Scripts -->
                     <script defer="" src="{{ asset('js/app.js') }}">
                     </script>
+                    <script type="text/javascript" src="{{ asset('js/desabilitar.js') }}">
+                    </script>
                     <script crossorigin="anonymous" src="https://kit.fontawesome.com/afca8b434b.js">
                     </script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                     <!-- Fonts -->
                     <link href="//fonts.gstatic.com" rel="dns-prefetch"/>
                     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"/>
@@ -39,9 +42,15 @@
         </div>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm "> 
                 <div class="container-fluid d-flex justify-content-around">
+                    @if(Auth::user()->role_id==2)
                     <a class="navbar-brand navbar-collapse bg-dark" href="{{route('home')}}">
-                    Bienvenido Administrador
+                        Bienvenido Administrador
                     </a>
+                    @else
+                    <a class="navbar-brand navbar-collapse bg-dark" href="{{route('home')}}">
+                        Bienvenido
+                    </a>
+                    @endif
                     <div class="navbar-nav ">
                         <ul class="navbar-nav ">
                             <li class="nav-item">
@@ -94,7 +103,7 @@
                             @else
                             <li class="nav-item dropdown">
                                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button" v-pre="">
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }} {{ Auth::user()->ap_paterno }} {{ Auth::user()->ap_materno }}
                                     <span class="caret">
                                     </span>
                                 </a>
@@ -116,5 +125,7 @@
         <main class="py-3">
             @yield('content')
         </main>
+
+        @yield('scripts')
     </body>
 </html>

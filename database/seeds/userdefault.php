@@ -13,15 +13,19 @@ class userdefault extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-          'name'     =>'Agustín Eliseo López Matías',
-          'email'    =>'admin_agustin',
-          'password' =>bcrypt('13269018'),
-          'role_id'  =>2,
+          'name'      =>'Agustín Eliseo',
+          'ap_paterno'=>' López Matías',
+          'ap_paterno'=>' Matías',
+          'email'     =>'admin_agustin@mail.com',
+          'password'  =>bcrypt('13269018'),
+          'role_id'   =>2,
           ]);
 
         DB::table('users')->insert([
-          'name'     =>'default',
-          'email'    =>'user',
+          'name'      =>'default',
+          'ap_paterno'=>'default',
+          'ap_paterno'=>'default',
+          'email'    =>'user@mail.com',
           'password' =>bcrypt('123456'),
           'role_id'  =>1,
           ]);

@@ -15,7 +15,7 @@
                             {{ "" }}
                         </label>
                         <div class="col-md-4">
-                            <input autocomplete="off"  style="background-color: #F2F4F4 " autofocus="" class="form-control @error('email') is-invalid @enderror" id="entrada_text" name="email" type="text" value="{{ old('email') }}" placeholder="Username">
+                            <input autocomplete="off"  style="background-color: #F2F4F4 " autofocus="" class="form-control @error('email') is-invalid @enderror" id="entrada_text" name="email" type="text" value="{{ old('email') }}" placeholder="Direccion de Correo">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>
@@ -31,7 +31,7 @@
                             {{ "" }}
                         </label>
                         <div class="col-md-4">
-                            <input autocomplete="current-password" class="form-control @error('password') is-invalid @enderror" style="background-color: #F2F4F4 " id="password" name="password" required="" type="password" placeholder="Password">
+                            <input autocomplete="current-password" class="form-control @error('password') is-invalid @enderror" style="background-color: #F2F4F4 " id="password" name="password" required="" type="password" placeholder="Contraseña">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>
@@ -41,13 +41,26 @@
                                 @enderror
                             </input>
                         </div>
+                        <div class="col-md-10" style="margin-top: 8px;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember" style="color: black;">
+                                        <h6>Recordarme</h6>
+                                    </label>
+                                </div>
+                        </div>
+
                     </div>
-                    <div align="center">
+                    <div class="form-group" align="center">
                         <button class="btn btn-primary" type="submit">
                             {{ __('Login') }}
                         </button>
-
                     </div>
+
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                        ¿Olviaste tu Contraseña?
+                        </a>
                     <br>
                 </form>
             </div>

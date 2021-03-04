@@ -73,6 +73,10 @@ class EmpleadoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'Tcontrato' => 'required'
+         ]);
+
         $verifiName = Empleado::Where('nombre','like',$request->nombre)
                                             ->Where('ap_paterno','like','%'.$request->ap_paterno.'%')
                                             ->Where('ap_materno','like','%'.$request->materno.'%')->count();
@@ -86,8 +90,24 @@ class EmpleadoController extends Controller
             return back()->with('verifi','El RFC: '.$request->RFC.' Ya esta registrado')->withInput();
         }
 
+        $fecha_actual = Carbon::now();
+        $fecha_tope   = Carbon::now()->subYears(40);
+        if($request->fecha_alta>$fecha_actual || $request->fecha_alta<$fecha_tope){
+            return back()->with('verifi','Fecha de alta Invalida')->withInput();
+        }
+
+        if($request->fecha_nombramiento != null){
+            if($request->fecha_nombramiento>$fecha_actual || $request->fecha_nombramiento<$fecha_tope){
+                return back()->with('verifi','Fecha de nombramiento Invalida')->withInput();
+            }
+        }
+
+        $validacion = strtoupper($request->RFC);
+        if ($this->validarRFC($validacion)==0) {
+                return back()->with('verifi','RFC Invalido')->withInput();
+            }
+
         $idEmpleado = $request->RFC;
-        $urlAvatar='/storage/avatardefalut.png';
 
         if ($request->hasFile('contrato')) {
             $contrato    = $request->file('contrato')->store('public');
@@ -182,7 +202,7 @@ class EmpleadoController extends Controller
         Empleado::create([
             'fecha_alta'    => request('fecha_alta'),
         'fecha_nombramiento'=> request('fecha_nombramiento'),
-            'RFC'           => request('RFC'),
+            'RFC'           => $validacion,
             'telefono'      => request('telefono'),
             'genero'        => request('genero'),
             'ap_paterno'    => request('ap_paterno'),
@@ -192,7 +212,6 @@ class EmpleadoController extends Controller
             'puesto'        => request('puesto'),
             'Tcontrato'     => request('Tcontrato'),
             'departamento'  => request('departamento'),
-            'avatar'        => $urlAvatar,
             'contrato'      => $urlcontrato,
             'creden_elect'  => $urlcreden_elect,
             'acta_nac'      => $urlacta_nac,
@@ -219,12 +238,19 @@ class EmpleadoController extends Controller
 
 
     public function disable(Request $request,$id)
-    {
-        $Empleado = Empleado::findOrFail($id);
-        $Empleado->estatus='inactivo';
-        $Empleado->fecha_baja = $request->fecha_baja;
-        $Empleado->save();
-        return redirect('/IndexEmpleado');
+    {   
+        $fecha_actual = Carbon::now();
+        $fecha_tope   = Carbon::now()->subYears(40);
+        if($request->fecha_baja<=$fecha_actual && $request->fecha_baja>=$fecha_tope){
+            $Empleado = Empleado::findOrFail($id);
+            $Empleado->estatus='inactivo';
+            $Empleado->fecha_baja = $request->fecha_baja;
+            $Empleado->causa_baja = $request->causa_baja;
+            $Empleado->save();
+            return redirect('/IndexEmpleado');
+        }else{
+            return back()->with('verifi','Fecha de baja invalida')->withInput();
+        }
     }
 
     public function enable($id)
@@ -249,8 +275,8 @@ class EmpleadoController extends Controller
             $empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_materno','like','%'.$valor.'%')->get();
         if($seleccion==='paterno')
             $empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_paterno','like','%'.$valor.'%')->get();
-
-        return view('Empleados/IndexEmpleado', compact('empleados'));
+        $departamentos = Departamentos::all();
+        return view('Empleados/IndexEmpleado', compact('empleados','departamentos'));
 
     }
 
@@ -258,6 +284,22 @@ class EmpleadoController extends Controller
     {
         $Empleado = Empleado::findOrFail($id);
         $empleadoRFC = $Empleado->RFC;
+        $fecha_actual = Carbon::now();
+        $fecha_tope   = Carbon::now()->subYears(40);
+        
+            if($request->fecha_alta>$fecha_actual || $request->fecha_alta<$fecha_tope){
+                return back()->with('verifi','Fecha de alta Invalida')->withInput();
+            }
+
+            if($request->fecha_nombramiento != null){
+                if($request->fecha_nombramiento>$fecha_actual || $request->fecha_nombramiento<$fecha_tope){
+                    return back()->with('verifi','Fecha de nombramiento Invalida')->withInput();
+                }
+            }
+            $validar=strtoupper($request->RFC);
+            if ($this->validarRFC($validar)==0) {
+                return back()->with('verifi','RFC Invalido')->withInput();
+            }
         
         if ($request->hasFile('contrato')) {
             $contrato    = $request->file('contrato')->store('public');
@@ -405,9 +447,25 @@ class EmpleadoController extends Controller
 
             ]);
         }
-        //dd($request->departamento);
-        $Empleado->update($request->only('fecha_alta','fecha_nombramiento','RFC', 'telefono',
-        'genero','ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato','departamento'));
+        if($request->Tcontrato==null && $request->departamento==null){
+            $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
+            'ap_paterno','ap_materno','nombre','correo','puesto'));
+        }elseif($request->departamento==null){
+            $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
+            'ap_paterno','ap_materno','nombre','correo','Tcontrato','puesto'));
+        }elseif($request->Tcontrato==null){
+            $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
+            'ap_paterno','ap_materno','nombre','correo','puesto','departamento'));
+        }elseif($request->Tcontrato!=null && $request->departamento!=null){
+            $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
+            'ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato','departamento'));
+        }
+        $genero=$request->genero;
+        if($request->genero!=null){
+            $Empleado->genero=$genero;
+        }
+        $RFC=strtoupper($request->RFC);
+        $Empleado->RFC=$RFC;
 
         $Empleado->contrato         = $urlcontrato;
         $Empleado->creden_elect     = $urlcreden_elect;
@@ -430,5 +488,10 @@ class EmpleadoController extends Controller
         $Empleado->dictamen         = $urldictamen;
         $Empleado->save();
         return redirect('/IndexEmpleado');
+    }
+
+    public function validarRFC($rfc){
+        $regex = '/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$/';
+    return preg_match($regex, $rfc);
     }
 }

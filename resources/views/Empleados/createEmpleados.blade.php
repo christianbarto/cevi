@@ -7,6 +7,9 @@
                 <h1 style="color: black">
                     Nuevo Empleado
                 </h1>
+                @error('Tcontrato')
+                    <div class="alert alert-danger">{{'Seleccione una Relacion Laboral' }}</div>
+                @enderror
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <div class="row justify-content-center">
@@ -22,49 +25,75 @@
                                 <label class="control-label text-muted" for="nombre">
                                     Nombre
                                 </label>
-                                <input class="form-control" id="nombre" name="nombre" required style="text-transform:uppercase;" type="text" value="{{ old('nombre') }}">
+                                <input class="form-control" id="nombre" name="nombre" required type="text" value="{{ old('nombre') }}" >
                                 </input>
                             </div>
                             <div class="form-group col-md-3" style="">
                                 <label class="control-label text-muted" for="ap_paterno">
                                     Apellido Paterno
                                 </label>
-                                <input class="form-control" id="ap_paterno" name="ap_paterno" value="{{old('ap_paterno')}}"  required="" style="text-transform:uppercase;" type="text">
+                                <input  class="form-control" id="ap_paterno" name="ap_paterno" value="{{old('ap_paterno')}}"  required type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="ap_materno">
                                     Apellido Materno
                                 </label>
-                                <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}"  required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}"  required type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="fecha_alta">
                                     Fecha de Alta
                                 </label>
-                                <input class="form-control" id="fecha_alta" name="fecha_alta" required="" style="text-transform:uppercase;" type="date" value="{{date('Y-m-d')}}">
+                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value="{{date('Y-m-d')}}">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
-                                <label class="control-label text-muted" for="fecha_nombramiento">
+                                <label class="control-label text-muted" for="Tcontrato">
+                                    Relacion Laboral
+                                </label>
+                                <select onChange="prueba()" class="form-control" id="Tcontrato" name="Tcontrato">
+                                    <option value="" >
+                                        Seleccione una opción
+                                    </option>
+                                    <option value="base" >
+                                        PERSONAL DE BASE
+                                    </option>
+                                    <option value="contrato">
+                                        PERSONAL DE CONTRATO
+                                    </option>
+                                    <option value="nombremientoConfianza">
+                                        NOMBRAMIENTO CONFIANZA
+                                    </option>
+                                    <option value="mandosMedios">
+                                        MANDOS MEDIOS
+                                    </option>
+                                    <option value="contratoConfianza">
+                                        CONTRATO CONFIANZA
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label text-muted" for="fecha_nombramiento" >
                                     Fecha de Nombramiento
                                 </label>
-                                <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" value="{{old('fecha_nombramiento')}}" type="date">
+                                <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" value="{{old('fecha_nombramiento')}}" 
+                                type="date" disabled >
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="correo">
                                     Correo Electronico
                                 </label>
-                                <input class="form-control" id="correo" name="correo" style="text-transform:uppercase;" value="{{old('correo')}}" type="text">
+                                <input class="form-control" id="correo" name="correo" value="{{old('correo')}}" type="email" required >
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="telefono">
                                     Numero Telefonico
                                 </label>
-                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" required  type="number">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -84,14 +113,14 @@
                                 <label class="control-label text-muted" for="RFC">
                                     RFC
                                 </label>
-                                <input class="form-control" id="RFC" name="RFC" value="{{old('RFC')}}" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="RFC" name="RFC" value="{{old('RFC')}}" required style="text-transform:uppercase;" type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">
-                                    Puesto
+                                    Categoria
                                 </label>
-                                <input class="form-control" id="puesto" name="puesto" value="{{old('puesto')}}" required="" style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="puesto" name="puesto" value="{{old('puesto')}}" required type="text">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -106,28 +135,7 @@
                                 @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label class="control-label text-muted" for="Tcontrato">
-                                    Relacion Laboral
-                                </label>
-                                <select class="form-control" id="Tcontrato" name="Tcontrato">
-                                    <option value="base">
-                                        PERSONAL DE BASE
-                                    </option>
-                                    <option value="contrato">
-                                        PERSONAL DE CONTRATO
-                                    </option>
-                                    <option value="nombremientoConfianza">
-                                        NOMBRAMIENTO CONFIANZA
-                                    </option>
-                                    <option value="mandosMedios">
-                                        MANDOS MEDIOS
-                                    </option>
-                                    <option value="contratoConfianza">
-                                        CONTRATO CONFIANZA
-                                    </option>
-                                </select>
-                            </div>
+                            
                         </div>
                         {{-- aqui inicia la parte de los archivos --}}
                         <div class="form-row">
@@ -365,3 +373,4 @@
     </div>
 </div>
 @endsection
+

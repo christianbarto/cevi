@@ -12,20 +12,8 @@ class relojController extends Controller
 {
     public function index()
     {
-      $Relojes = $Relojs = Reloj::orderBy('fecha','desc')->Paginate(10);;
+      $Relojes = $Relojs = Reloj::orderBy('fecha','asc')->orderBy('nombre', 'asc')->get();
       return view('Reloj/IndexXml')->with('Relojes',$Relojes);
-    }
-
-    public function import(Request $request)
-    {
-     $request->validate([
-            'Excel' => 'required',
-           ]);
-
-      $file = $request->file('Excel');
-      Excel::import(new RelojImport,$file);
-
-      return back()->with('message','Importacion de usuarios completada');
     }
 
     public function importxml(Request $request)
@@ -36,12 +24,12 @@ class relojController extends Controller
            ['xml.required' => 'Selecciona Un Documento']
          );
       $control = simplexml_load_file($request->xml);  
-      //dd($control);    
       $total_empleados=count($control->CONTROL);
-      //echo $total_empleados;
-
       for($x=0;$x<$total_empleados;$x++)
       {
+         $nombre = '';
+         $ap_paterno = '';
+         $ap_materno = '';
          $fecha   = $control->CONTROL[$x]->fecha;
          $fecha   = substr($fecha, 0, 10);
          $entrada = $control->CONTROL[$x]->MAE;
@@ -50,32 +38,62 @@ class relojController extends Controller
          $salida  = substr($salida, 11, 18);
          $id      = $control->CONTROL[$x]->id;
          $RFC     = $control->CONTROL[$x]->rfc;
-         $nombre  = $control->CONTROL[$x]->Nombre;
+         $name  = $control->CONTROL[$x]->Nombre;
 
+         $RFC = strtoupper($RFC);
+         $porciones = explode(" ", trim($name));
+         $total_porciones = sizeof($porciones);
 
+          if($total_porciones<3){
+            $ap_paterno = $porciones[0];
+            $nombre     = $porciones[1];
+          }elseif($porciones[0]=='DE'){
+            $ap_paterno = $porciones[0].' '.$porciones[1].' '.$porciones[2];
+            $ap_materno = $porciones[3];
+            $nombre     = $porciones[4];
+          }elseif($total_porciones==3){
+            $ap_paterno = $porciones[0];
+            $ap_materno = $porciones[1];
+            $nombre     = $porciones[2];
+          }elseif($total_porciones==4){
+            $ap_paterno = $porciones[0];
+            $ap_materno = $porciones[1];
+            $nombre     = $porciones[2].' '.$porciones[3];
+          }elseif($total_porciones==5){
+            $ap_paterno = $porciones[0];
+            $ap_materno = $porciones[1];
+            $nombre     = $porciones[2].' '.$porciones[3].' '.$porciones[4];
+          }elseif($total_porciones==6){
+            $ap_paterno = $porciones[0];
+            $ap_materno = $porciones[1];
+            $nombre     = $porciones[2].' '.$porciones[3].' '.$porciones[4].' '.$porciones[5];
+          }
 
          $incidenciaentrada = $control->CONTROL[$x]->MAEIT;
          $incidenciasalida  = $control->CONTROL[$x]->MASIT;
 
-         if (strcmp($incidenciaentrada,$incidenciasalida) === 0){
-          $incidencia = $incidenciasalida;
+          if (strcmp($incidenciaentrada,$incidenciasalida) === 0){
+            $incidencia = $incidenciasalida;
           }else{
-          $incidencia = 'Entrada:'.$incidenciaentrada.' - '.' Salida: '.$incidenciasalida;   
+            $incidencia = 'E̲N̲T̲R̲A̲D̲A̲:  '.$incidenciaentrada.'-'.'S̲A̲L̲I̲D̲A̲:  '.$incidenciasalida;   
           }
 
           Reloj::create([
             'RFC'        => $RFC,
             'nombre'     => $nombre,
+            'ap_materno' => $ap_materno,
+            'ap_paterno' => $ap_paterno,
             'entrada'    => $entrada,
             'salida'     => $salida,
             'fecha'      => $fecha,
             'incidencia' => $incidencia,
             
-        ]);
+         ]);
 
       
       }
-      return back()->with('message','Importacion de usuarios completada');
+
+      return back()->with('message','Importación de usuarios completada');
     }
 
 }

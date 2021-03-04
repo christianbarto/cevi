@@ -10,7 +10,7 @@ class Empleado extends Model
 
     protected $fillable = [
         'id', 'fecha_alta','fecha_nombramiento','RFC', 'telefono', 'genero',
-        'ap_paterno','ap_materno','nombre','correo','avatar','estatus',
+        'ap_paterno','ap_materno','nombre','correo','estatus',
         'puesto','Tcontrato','quinquenio','departamento','contrato','creden_elect','acta_nac','curriculum',
         'solicitud','cert_medico','cart_recomend','fotografia','const_Noinhab',
         'comp_Dom','licencia','nss','infonavit','rfc_doc','cartilla','curp',

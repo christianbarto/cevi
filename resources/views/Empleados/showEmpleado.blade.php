@@ -26,10 +26,26 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="nombre">
-                                    Nombre
+                                    Nombre(s)
                                 </label>
                                 <label class="form-control" id="nombre" name="nombre" type="text">
-                                    {{$empleados->nombre}} {{$empleados->ap_paterno}} {{$empleados->ap_materno}}
+                                    {{$empleados->nombre}}
+                                </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label text-muted" for="nombre">
+                                    Apellido Paterno
+                                </label>
+                                <label class="form-control" id="nombre" name="nombre" type="text">
+                                    {{$empleados->ap_paterno}}
+                                </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label text-muted" for="nombre">
+                                    Apellido Materno
+                                </label>
+                                <label class="form-control" id="nombre" name="nombre" type="text">
+                                    {{$empleados->ap_materno}}
                                 </label>
                             </div>
                             <div class="form-group col-md-3">
@@ -45,7 +61,25 @@
                                     Fecha de Alta
                                 </label>
                                 <label class="form-control" id="fecha_alta" name="fecha_alta" type="text">
-                                    {{Date::parse($empleados->fecha_alta)->format('l j \d\e F \d\e Y')}}
+                                    {{Date::parse($empleados->fecha_alta)->format('j \d\e F \d\e Y')}}
+                                </label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label class="control-label text-muted" for="Tcontrato">
+                                    Relacion Laboral
+                                </label>
+                                <label class="form-control" id="Tcontrato" name="Tcontrato" type="text">
+                                    @if($empleados->Tcontrato=='base')
+                                        PERSONAL DE BASE
+                                    @elseif($empleados->Tcontrato=='contrato')
+                                        PERSONAL DE CONTRATO
+                                    @elseif($empleados->Tcontrato=='nombremientoConfianza')
+                                        NOMBRAMIENTO CONFIANZA
+                                    @elseif($empleados->Tcontrato=='mandosMedios')
+                                        MANDOS MEDIOS
+                                    @elseif($empleados->Tcontrato=='contratoConfianza')
+                                        CONTRATO CONFIANZA
+                                    @endif                                    
                                 </label>
                             </div>
                             <div class="form-group col-md-3">
@@ -56,7 +90,7 @@
                                     @if($empleados->fecha_nombramiento==null)
                                         Sin Fecha de Nombramiento
                                     @else
-                                    {{Date::parse($empleados->fecha_nombramiento)->format('l j \d\e F \d\e Y')}}
+                                    {{Date::parse($empleados->fecha_nombramiento)->format('j \d\e F \d\e Y')}}
                                     @endif
                                 </label>
                             </div>
@@ -64,7 +98,7 @@
                                 <label class="control-label text-muted" for="telefono">
                                     Telefono
                                 </label>
-                                <label class="form-control" id="telefono" name="telefono" type="text">
+                                <label class="form-control" id="telefono" name="telefono" >
                                     {{$empleados->telefono}}
                                 </label>
                             </div>
@@ -86,7 +120,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">
-                                    Puesto
+                                    Categoria
                                 </label>
                                 <label class="form-control" id="puesto" name="puesto" type="text">
                                     {{$empleados->puesto}}
@@ -98,24 +132,6 @@
                                 </label>
                                 <label class="form-control" id="departamento" name="departamento" type="text">
                                     {{$empleados->departamento}}
-                                </label>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label class="control-label text-muted" for="Tcontrato">
-                                    Relacion Laboral
-                                </label>
-                                <label class="form-control" id="Tcontrato" name="Tcontrato" type="text">
-                                    @if($empleados->Tcontrato=='base')
-                                        PERSONAL DE BASE
-                                    @elseif($empleados->Tcontrato=='contrato')
-                                        PERSONAL DE CONTRATO
-                                    @elseif($empleados->Tcontrato=='nombremientoConfianza')
-                                        NOMBRAMIENTO CONFIANZA
-                                    @elseif($empleados->Tcontrato=='mandosMedios')
-                                        MANDOS MEDIOS
-                                    @elseif($empleados->Tcontrato=='contratoConfianza')
-                                        CONTRATO CONFIANZA
-                                    @endif                                    
                                 </label>
                             </div>
                         </div>
