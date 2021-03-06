@@ -7,6 +7,11 @@
                 <h1>
                    Exportar Reportes
                 </h1>
+                @if(session('verifi'))
+                    <div class="alert alert-danger" role="alert">
+                            {{session('verifi')}}
+                    </div>
+                @endif
             </div> 
                 <div class="card-body" style="background-color: #DCDCDC">
                     <div class="row justify-content-center">
@@ -60,7 +65,18 @@
                             </button>
                            </form>
                         </div>
-
+                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
+                           <form action="{{route('reportes.TDepartamentos')}}" method="GET">
+                            <h4 style="color:black">
+                                Departamentos con sus Empleados
+                            </h4>                            
+                                <br>
+                            <!-- Submit Button -->
+                            <button class="btn btn-primary " type="submit">
+                               Generar
+                            </button>
+                           </form>
+                        </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                             <h4 style="color:black">
                                 Reporte de Quinquenios
@@ -80,10 +96,10 @@
                                 Asistencias por Periodo
                             </h4>
                             <label style="color:black">Inicio</label>
-                            <input class="form-control" id="inicio" name="inicio" type="date" value="{{date('Y-m-d')}}"> 
+                            <input class="form-control" id="inicio" name="inicio" type="date" value="{{old('inicio')}}"> 
                             </input>
                             <label style="color:black">Fin</label>
-                            <input class="form-control" id="fin" name="fin" type="date" value="{{date('Y-m-d')}}">
+                            <input class="form-control" id="fin" name="fin" type="date" value="{{old('fin')}}">
                             </input>
                             <!-- Submit Button -->
                             <button class="btn btn-primary " type="submit">
@@ -97,7 +113,11 @@
                                 Asistencias por Empleado
                             </h4>                            
                             <br>
-                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre de empleado"> 
+                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre"> 
+                            </input>
+                            <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" placeholder="Apellido Paterno"> 
+                            </input>
+                            <input class="form-control" id="ap_materno" name="ap_materno" type="text" placeholder="Apellido Materno"> 
                             </input>
                             <br>
                             <br>
@@ -115,6 +135,10 @@
                             <br>
                             <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre de empleado"> 
                             </input>
+                            <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" placeholder="Apellido Paterno"> 
+                            </input>
+                            <input class="form-control" id="ap_materno" name="ap_materno" type="text" placeholder="Apellido Materno"> 
+                            </input>    
                             <label style="color:black">Inicio</label>
                             <input class="form-control" id="inicio" name="inicio" type="date" value="{{date('Y-m-d')}}"> 
                             </input>

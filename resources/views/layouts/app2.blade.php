@@ -76,6 +76,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/IndexCategorias')}}">
+                                    Categorias
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{route('checador.index')}}">
                                     Reloj
                                 </a>

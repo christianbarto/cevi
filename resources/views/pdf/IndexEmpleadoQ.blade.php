@@ -1,11 +1,17 @@
-<img height="140" src="img/CEVILOGO2020.jpg" width="460"></img>
-<h1 style="text-align: center">
-    Empleados Con Quinquenios
-</h1>
-<div class="table-responsive">
-    <table border="1" style="margin: 0 auto;">
+<img height="90" src="img/CEVILOGO2020.jpg" width="428" style="margin-top:0px;"></img>
+<h4 style="text-align: left;">
+    Generado: {{Date::parse(now())->format('j \d\e F \d\e Y')}}<br>
+    Usuario: {{Auth::user()->name}}
+</h4>
+<h3>
+    Empleados con Quinquenios
+</h3>
+    <table border="1" align="center" cellspacing="0" cellpadding="1" style="text-align: center;">
         <thead class="thead-light">
             <tr>
+                <th scope="col">
+                    RFC
+                </th>
                 <th scope="col">
                     Nombre(s)
                 </th>
@@ -14,10 +20,7 @@
                 </th>
                 <th scope="col">
                     Apellido Materno
-                </th>
-                <th scope="col">
-                    RFC
-                </th>
+                </th>                
                 <th scope="col">
                     Quinquenios
                 </th>
@@ -28,6 +31,9 @@
             @if($Empleado->quinquenio>0)
             <tr>
                 <td>
+                    {{$Empleado->RFC}}
+                </td>
+                <td>
                     {{$Empleado->nombre}}
                 </td>
                 <td>
@@ -35,10 +41,7 @@
                 </td>
                 <td>
                     {{$Empleado->ap_materno}}
-                </td>
-                <td>
-                    {{$Empleado->RFC}}
-                </td>
+                </td>                
                 <td>
                     {{$Empleado->quinquenio}}
                 </td>
@@ -46,5 +49,4 @@
             @endif
             @endforeach
         </tbody>
-    </table>
-</div>
+</table>

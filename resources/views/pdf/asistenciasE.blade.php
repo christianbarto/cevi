@@ -4,66 +4,73 @@
     Usuario: {{Auth::user()->name}}
 </h4>
 <h3>
-    Empleados Inactivos
+    Asistencias por Empleado
 </h3>
     <table border="1" align="center" cellspacing="0" cellpadding="1" style="text-align: center;">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">
-                    RFC
-                </th>
-                <th scope="col">
-                    Nombre(s)
-                </th>
-                <th scope="col">
-                    Apellido Paterno
-                </th>
-                <th scope="col">
-                    Apellido Materno
-                </th>
-                <th scope="col">
-                    Relacion Laboral
-                </th>
-                <th scope="col">
-                    Categoria
-                </th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($empleados as $Empleado)
-            @if($Empleado->estatus == 'inactivo')
-            <tr>
-                <td>
-                    {{$Empleado->RFC}}
-                </td>
-                <td>
-                    {{$Empleado->nombre}}
-                </td>
-                <td>
-                    {{$Empleado->ap_paterno}}
-                </td>
-                <td>
-                    {{$Empleado->ap_materno}}
-                </td>
-                <td>
-                    @if($Empleado->Tcontrato=='base')
-                        PERSONAL DE BASE
-                    @elseif($Empleado->Tcontrato=='contrato')
-                        PERSONAL DE CONTRATO
-                    @elseif($Empleado->Tcontrato=='nombremientoConfianza')
-                        NOMBRAMIENTO CONFIANZA
-                    @elseif($Empleado->Tcontrato=='mandosMedios')
-                        MANDOS MEDIOS
-                    @elseif($Empleado->Tcontrato=='contratoConfianza')
-                        CONTRATO CONFIANZA
-                    @endif                                    
-                </td>
-                <td>
-                    {{$Empleado->puesto}}
-                </td>
-            </tr>
-            @endif
-            @endforeach
-        </tbody>
-    </table>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                RFC
+                            </th>
+                            <th scope="col">
+                                Nombre(s)
+                            </th>
+                            <th scope="col">
+                                Ap. Paterno
+                            </th>
+                            <th scope="col">
+                                Ap. Materno
+                            </th>
+                            <th scope="col">
+                                Fecha
+                            </th>
+                            <th scope="col">
+                                Hora Entrada
+                            </th>
+                            <th scope="col">
+                                Hora salida
+                            </th>
+                            <th scope="col">
+                                Incidencia
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($empleados as $empleado)
+                        <tr>
+                            <td>
+                                {{$empleado->RFC}}
+                            </td>
+                            <td>
+                                {{$empleado->nombre}}
+                            </td>
+                            <td>
+                                {{$empleado->ap_paterno}}
+                            </td>
+                            <td>
+                                {{$empleado->ap_materno}}
+                            </td>
+                            <td>
+                                {{Date::parse($empleado->fecha)->format('j \d\e F \d\e Y')}}
+                            </td>
+                            <td>
+                                @if(($empleado->entrada)===('00:00:00'))
+                                    N/A
+                                @else
+                                    {{Date::parse($empleado->entrada)->isoFormat('h:mm A')}}   
+                                @endif                            
+                            </td>
+                            <td>
+                                @if(($empleado->salida)===('00:00:00'))
+                                    N/A
+                                @else
+                                    {{Date::parse($empleado->salida)->isoFormat('h:mm A')}}
+                                @endif
+                            </td>
+                            <td>
+                                {{$empleado->incidencia}}
+                            </td>
+                            @endforeach
+                        </tr>
+                    </tbody>
+                </table>

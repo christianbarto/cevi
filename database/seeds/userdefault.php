@@ -15,7 +15,7 @@ class userdefault extends Seeder
         DB::table('users')->insert([
           'name'      =>'Agustín Eliseo',
           'ap_paterno'=>' López Matías',
-          'ap_paterno'=>' Matías',
+          'ap_materno'=>' Matías',
           'email'     =>'admin_agustin@mail.com',
           'password'  =>bcrypt('13269018'),
           'role_id'   =>2,
@@ -24,7 +24,7 @@ class userdefault extends Seeder
         DB::table('users')->insert([
           'name'      =>'default',
           'ap_paterno'=>'default',
-          'ap_paterno'=>'default',
+          'ap_materno'=>'default',
           'email'    =>'user@mail.com',
           'password' =>bcrypt('123456'),
           'role_id'  =>1,

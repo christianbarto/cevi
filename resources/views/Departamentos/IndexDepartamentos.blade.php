@@ -80,9 +80,6 @@
                                     Descripción
                                 </th>
                                 <th scope="col">
-                                    Estatus
-                                </th>
-                                <th scope="col">
                                     Editar
                                 </th>
                                 @if(Auth::user()->role_id==2)
@@ -102,9 +99,6 @@
 
                                 <td>
                                     {{$departamento->descripcion}}
-                                </td>
-                                <td>
-                                    {{$departamento->status}}
                                 </td>
                                 <td>
                                     @if(Auth::user()->role_id==2)

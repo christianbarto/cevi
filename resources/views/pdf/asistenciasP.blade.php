@@ -9,6 +9,9 @@ Del {{Date::parse($inicio)->format('j \d\e F \d\e Y')}} al {{Date::parse($fin)->
                     <thead>
                         <tr>
                             <th scope="col">
+                                Fecha
+                            </th>
+                            <th scope="col">
                                 RFC
                             </th>
                             <th scope="col">
@@ -19,9 +22,6 @@ Del {{Date::parse($inicio)->format('j \d\e F \d\e Y')}} al {{Date::parse($fin)->
                             </th>
                             <th scope="col">
                                 Apellido Materno
-                            </th>
-                            <th scope="col">
-                                Fecha
                             </th>
                             <th scope="col">
                                 Hora de Entrada
@@ -38,6 +38,9 @@ Del {{Date::parse($inicio)->format('j \d\e F \d\e Y')}} al {{Date::parse($fin)->
                         @foreach($Relojes as $Reloj)
                         <tr>
                             <td>
+                                {{Date::parse($Reloj->fecha)->format('j \d\e F \d\e Y')}}
+                            </td>
+                            <td>
                                 {{$Reloj->RFC}}
                             </td>
                             <td>
@@ -50,20 +53,17 @@ Del {{Date::parse($inicio)->format('j \d\e F \d\e Y')}} al {{Date::parse($fin)->
                                 {{$Reloj->ap_materno}}
                             </td>
                             <td>
-                                {{Date::parse($Reloj->fecha)->format('j \d\e F \d\e Y')}}
-                            </td>
-                            <td>
                                 @if(($Reloj->entrada)===('00:00:00'))
                                     N/A
                                 @else
-                                    {{$Reloj->entrada}}   
+                                {{Date::parse($Reloj->entrada)->isoFormat('h:mm A')}}      
                                 @endif                            
                             </td>
                             <td>
                                 @if(($Reloj->salida)===('00:00:00'))
                                     N/A
                                 @else
-                                    {{$Reloj->salida}}
+                                {{Date::parse($Reloj->salida)->isoFormat('h:mm A')}}   
                                 @endif
                             </td>
                             <td>

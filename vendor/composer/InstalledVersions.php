@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a87791f794411896892830f6325d3071a572e5f2',
+    'reference' => 'aee238d8460be7eca6096edbf98de4682aefdc14',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -419,7 +419,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a87791f794411896892830f6325d3071a572e5f2',
+      'reference' => 'aee238d8460be7eca6096edbf98de4682aefdc14',
     ),
     'laravel/tinker' => 
     array (
@@ -501,6 +501,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1817faadd1846cd08be9a49e905dc68823bc38c0',
+    ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.0.10',
+      'version' => '8.0.10.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1333a962cd2f7ae1a127b7534b7734b58179186f',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -914,6 +923,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
+    ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
     ),
     'swiftmailer/swiftmailer' => 
     array (

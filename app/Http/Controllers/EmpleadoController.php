@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Empleado;
 use App\Departamentos;
+use App\Categoria;
 use App\files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -24,13 +25,15 @@ class EmpleadoController extends Controller
     {
         $empleados = Empleado::all();
         $departamentos = Departamentos::all();
-        return view('Empleados/IndexEmpleado',compact('empleados','departamentos'));
+        $categorias = Categoria::all();
+        return view('Empleados/IndexEmpleado',compact('empleados','departamentos','categorias'));
     }
 
     public function create()
     {   
         $departamentos = Departamentos::all();
-        return view('Empleados/createEmpleados',compact('departamentos'));
+        $categorias = Categoria::all();
+        return view('Empleados/createEmpleados',compact('departamentos','categorias'));
     }
 
     public function show (Request $request)
@@ -42,6 +45,14 @@ class EmpleadoController extends Controller
         $nombre = null;
         $campo='default';
         return view('Empleados/showEmpleado',compact('empleados','seleccion','campo','adicionales','extra','nombre'));
+    }
+
+    public function edit (Request $request)
+    {
+        $empleados = Empleado::findOrFail($request->id);
+        $departamentos = Departamentos::all();
+        $categorias = Categoria::all();
+        return view('Empleados/editEmpleados',compact('empleados','departamentos','categorias'));
     }
 
     public function documento(Request $request)
@@ -449,20 +460,24 @@ class EmpleadoController extends Controller
         }
         if($request->Tcontrato==null && $request->departamento==null){
             $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
-            'ap_paterno','ap_materno','nombre','correo','puesto'));
+            'ap_paterno','ap_materno','nombre','correo'));
         }elseif($request->departamento==null){
             $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
-            'ap_paterno','ap_materno','nombre','correo','Tcontrato','puesto'));
+            'ap_paterno','ap_materno','nombre','correo','Tcontrato'));
         }elseif($request->Tcontrato==null){
             $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
-            'ap_paterno','ap_materno','nombre','correo','puesto','departamento'));
+            'ap_paterno','ap_materno','nombre','correo','departamento'));
         }elseif($request->Tcontrato!=null && $request->departamento!=null){
             $Empleado->update($request->only('fecha_alta','fecha_nombramiento','telefono',
-            'ap_paterno','ap_materno','nombre','correo','puesto','Tcontrato','departamento'));
+            'ap_paterno','ap_materno','nombre','correo','Tcontrato','departamento'));
         }
         $genero=$request->genero;
         if($request->genero!=null){
             $Empleado->genero=$genero;
+        }
+        $puesto=$request->puesto;
+        if($request->puesto!=null){
+            $Empleado->puesto=$puesto;
         }
         $RFC=strtoupper($request->RFC);
         $Empleado->RFC=$RFC;

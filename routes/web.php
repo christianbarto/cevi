@@ -29,9 +29,18 @@ Route::post('/storeDepartamento','DepartamentosController@store')->name('departa
 Route::put('/Deparamento/{departamento}/update', 'DepartamentosController@update')->name('departamentos.update');
 Route::POST('/DeleteDepartamento/{id}', 'DepartamentosController@destroy')->name('departamentos.delete');
 
+//Ruta Categorias
+Route::get('/IndexCategorias', 'CategoriasController@index')->name('categoria.index');
+Route::get('/buscarCategoria','CategoriasController@search')->name('categoria.buscar');
+Route::post('/storeCategoria','CategoriasController@store')->name('categoria.store');
+Route::POST('/DeleteCategoria/{id}', 'CategoriasController@destroy')->name('categoria.delete');
+Route::put('/Categoria/{departamento}/update', 'CategoriasController@update')->name('categoria.update');
+
+
 //Rutas Empleado
 Route::get('/IndexEmpleado', 'EmpleadoController@index')->name('empleados.index');
 Route::get('/Empleado', 'EmpleadoController@show')->name('empleados.busqueda');
+Route::get('/editarEmpleado', 'EmpleadoController@edit')->name('empleados.edit');
 Route::get('/createEmpleado', 'EmpleadoController@create')->name('empleados.create');
 Route::post('/StoreEmpleado', 'EmpleadoController@store')->name('empleados.store');
 Route::put('/empleado/{empleado}/update', 'EmpleadoController@update')->name('empleado.update');
@@ -58,5 +67,6 @@ Route::get('/Antiguedad', 'ReportesController@antiguedad')->name('reportes.antig
 Route::get('/AntiguedadE', 'ReportesController@antiguedadE')->name('reportes.antiguedadE');
 Route::get('/EmpleadosReportesQ', 'ReportesController@empleadosQuinquenio')->name('reportes.EmpleadosReportesQ');
 Route::get('/EmpleadosReportesD', 'ReportesController@empleadosDepartamento')->name('reportes.EmpleadosReportesD');
+Route::get('/EmpleadosReportesTD', 'ReportesController@empleadosDepartamentoT')->name('reportes.TDepartamentos');
 
 });

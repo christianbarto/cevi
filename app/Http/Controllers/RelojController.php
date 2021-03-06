@@ -75,7 +75,7 @@ class relojController extends Controller
           if (strcmp($incidenciaentrada,$incidenciasalida) === 0){
             $incidencia = $incidenciasalida;
           }else{
-            $incidencia = 'E̲N̲T̲R̲A̲D̲A̲:  '.$incidenciaentrada.'-'.'S̲A̲L̲I̲D̲A̲:  '.$incidenciasalida;   
+            $incidencia = 'Entrada:  '.$incidenciaentrada.'-'.'Salida:  '.$incidenciasalida;   
           }
 
           Reloj::create([

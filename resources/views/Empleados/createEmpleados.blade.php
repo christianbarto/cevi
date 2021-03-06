@@ -93,7 +93,7 @@
                                 <label class="control-label text-muted" for="telefono">
                                     Numero Telefonico
                                 </label>
-                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" required  type="number">
+                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" min="0" max="9999999999" required  type="number">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -113,15 +113,20 @@
                                 <label class="control-label text-muted" for="RFC">
                                     RFC
                                 </label>
-                                <input class="form-control" id="RFC" name="RFC" value="{{old('RFC')}}" required style="text-transform:uppercase;" type="text">
+                                <input class="form-control" id="RFC" name="RFC" value="{{old('RFC')}}" required style="text-transform:uppercase;" type="text" maxlength="13">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">
                                     Categoria
                                 </label>
-                                <input class="form-control" id="puesto" name="puesto" value="{{old('puesto')}}" required type="text">
-                                </input>
+                                <select class="form-control" id="puesto" name="puesto" required>
+                                @foreach($categorias as $categoria)
+                                    <option value="{{$categoria->descripcion}}">
+                                        {{$categoria->identificador}}---{{$categoria->descripcion}}
+                                    </option>
+                                @endforeach
+                                </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="departamento">
@@ -129,7 +134,7 @@
                                 </label>
                                 <select class="form-control" id="departamento" name="departamento" required>
                                 @foreach($departamentos as $departamento)
-                                    <option value="{{$departamento->id}} {{$departamento->descripcion}}">
+                                    <option value="{{$departamento->descripcion}}">
                                         {{$departamento->id}} {{$departamento->descripcion}}
                                     </option>
                                 @endforeach

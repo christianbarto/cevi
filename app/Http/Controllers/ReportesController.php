@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\Hash;
 use \PDF;
+use Mpdf\Mpdf;
 
 class ReportesController extends Controller
 {
@@ -53,7 +54,10 @@ class ReportesController extends Controller
      public function asistenciasE(Request $request)
      {
        $nombre=$request->nombre;
-       $empleados = DB::table('relojs')->Where('nombre','like','%'.$nombre.'%')->orderBy('fecha','desc')->get();
+       $empleados = DB::table('relojs')->Where('nombre','like','%'.$nombre.'%')
+                                       ->Where('ap_paterno','like','%'.$request->ap_paterno.'%')
+                                       ->Where('ap_materno','like','%'.$request->ap_materno.'%')
+                                       ->orderBy('fecha','desc')->get();
        $pdf = PDF::loadView('pdf/asistenciasE',compact('empleados'));
        set_time_limit(300); 
        return $pdf->stream('Reporte por Empleado.pdf');
@@ -63,21 +67,29 @@ class ReportesController extends Controller
      {
        $inicio=$request->inicio;
        $fin=$request->fin;
+       if($inicio>$fin){
+        return back()->with('verifi','La fecha de inicio es mayor a la fecha final')->withInput();
+       }
        $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->get();
-       $pdf = PDF::loadView('pdf/asistenciasP',compact('Relojes','inicio','fin'));
-        set_time_limit(300);          
-       return $pdf->stream('Reporte por Periodo.pdf');
+      $html = view('pdf/asistenciasP',compact('Relojes','inicio','fin'))->render();
+      ini_set("pcre.backtrack_limit", "10000000");
+      $mpdf = new \Mpdf\Mpdf();
+      $mpdf->WriteHTML($html);
+      $mpdf->Output('Reporte por Periodo.pdf',"I");
      }
 
      public function asistenciasEP(Request $request)
      {
-       $nombre=$request->nombre;
+       $nombre=strtoupper($request->nombre).' '.strtoupper($request->ap_paterno).' '.strtoupper($request->ap_materno);
        $inicio=$request->inicio;
        $fin=$request->fin;
-       $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->where('nombre','LIKE','%'.$nombre.'%')->get();
+       $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])
+                                     ->where('nombre','LIKE','%'.$request->nombre.'%')
+                                     ->Where('ap_paterno','like','%'.$request->ap_paterno.'%')
+                                     ->Where('ap_materno','like','%'.$request->ap_materno.'%')->get();
        $pdf = PDF::loadView('pdf/asistenciasEP',compact('Relojes','inicio','fin','nombre'));
        set_time_limit(300);         
-       return $pdf->stream('Reporte por Periodo.pdf');
+       return $pdf->stream('Reporte por Periodo y Empleado.pdf');
      }
 
      public function antiguedad()
@@ -124,4 +136,17 @@ class ReportesController extends Controller
       set_time_limit(300); 
       return $pdf->stream('Reporte de Quinquenios.pdf');
      }
+
+     public function empleadosDepartamentoT(Request $request)
+     {
+        $empleados = Empleado::all();
+        $departamentos = Departamentos::all();
+        //dd($departamentos);
+        $html = view('pdf/IndexEmpleadoTD',compact('empleados','departamentos'))->render();
+        ini_set("pcre.backtrack_limit", "10000000");
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('Reporte empleados de cada departamento.pdf',"I");
+     }
 }
+  
