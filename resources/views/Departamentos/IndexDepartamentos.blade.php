@@ -79,9 +79,11 @@
                                 <th scope="col">
                                     Descripción
                                 </th>
+                                @if(Auth::user()->role_id==2)
                                 <th scope="col">
                                     Editar
                                 </th>
+                                @endif
                                 @if(Auth::user()->role_id==2)
                                 <th scope="col">
                                     Eliminar
@@ -100,8 +102,8 @@
                                 <td>
                                     {{$departamento->descripcion}}
                                 </td>
+                                @if(Auth::user()->role_id==2)
                                 <td>
-                                    @if(Auth::user()->role_id==2)
                                     <a class="btn btn-warning pull-right" data-target="#EditUsuario{{$departamento->id}}" data-toggle="modal" href="#" type="submit">
                                            <i class="fas fa-user-edit"></i>
                                             </i>
@@ -147,19 +149,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-                                    </td>
                                 </td>
+                                @endif
+                                @if(Auth::user()->role_id==2)
                                 <td>
-                                    @if(Auth::user()->role_id==2)
                                         <form action="{{route ('departamentos.delete',$departamento->id)}}" method="POST">
                                             {{csrf_field()}}
                                             <button class="btn btn-danger" onclick="return confirm('¿Borrar?');" type="submit">
                                                 <i class="fas fa-user-times"></i>
                                             </button>
                                         </form>
-                                    @endif
                                 </td>
+                                @endif
                             </tr>
                             @endif
                             @endforeach

@@ -115,9 +115,9 @@ class ReportesController extends Controller
         if($seleccion==='paterno')
             $Empleados = Empleado::orderBy('empleados.id','asc')->Where('ap_paterno','like','%'.$valor.'%')->get();
 
-        $pdf = PDF::loadView('pdf/antiguedad', compact('Empleados'));
+        $pdf = PDF::loadView('pdf/antiguedad', compact('Empleados','valor'));
         set_time_limit(300); 
-        return $pdf->stream('Reporte de antiguedad de empleados.pdf');
+        return $pdf->stream('Reporte de antiguedad del empleado '.$valor.'.pdf');
      }
 
      public function empleadosQuinquenio()

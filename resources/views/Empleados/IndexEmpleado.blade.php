@@ -300,18 +300,4 @@
     </div>
 </div>
 @endsection
-@section('scripts')
-<script type="text/javascript">
-    function prueba() {
- 
-    var relacion = document.getElementById("Tcontrato");
-    var campo = document.getElementById("fecha_nombramiento");
-    alert({{$Empleado->id}});
-    if (relacion.value === 'base' || relacion.value === 'nombremientoConfianza' 
-        || relacion.value === 'mandosMedios') {
-        campo.disabled = false;
-    }
 
-}
-</script>
-@endsection
