@@ -96,10 +96,10 @@
                                 Asistencias por Periodo
                             </h4>
                             <label style="color:black">Inicio</label>
-                            <input class="form-control" id="inicio" name="inicio" type="date" value="{{old('inicio')}}"> 
+                            <input class="form-control" id="inicio" name="inicio" type="date" min="1980-01-01" value={{now()}}  max={{now()}}> 
                             </input>
                             <label style="color:black">Fin</label>
-                            <input class="form-control" id="fin" name="fin" type="date" value="{{old('fin')}}">
+                            <input class="form-control" id="fin" name="fin" type="date" min="1980-01-01" value={{now()}}  max={{now()}}>
                             </input>
                             <!-- Submit Button -->
                             <button class="btn btn-primary " type="submit">
@@ -140,10 +140,10 @@
                             <input class="form-control" id="ap_materno" name="ap_materno" type="text" placeholder="Apellido Materno"> 
                             </input>    
                             <label style="color:black">Inicio</label>
-                            <input class="form-control" id="inicio" name="inicio" type="date" value="{{date('Y-m-d')}}"> 
+                            <input class="form-control" id="inicio" name="inicio" type="date" min="1980-01-01" value={{now()}}  max={{now()}}> 
                             </input>
                             <label style="color:black">Fin</label>
-                            <input class="form-control" id="fin" name="fin" type="date" value="{{date('Y-m-d')}}">
+                            <input class="form-control" id="fin" name="fin" type="date" min="1980-01-01" value={{now()}}  max={{now()}}>
                             </input>
                             <!-- Submit Button -->
                             <button class="btn btn-primary " type="submit">

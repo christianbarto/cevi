@@ -46,7 +46,7 @@
                                 <label class="control-label text-muted" for="fecha_alta">
                                     Fecha de Alta
                                 </label>
-                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value="{{date('Y-m-d')}}">
+                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value="{{date('Y-m-d')}}" min="1980-01-01" max={{now()}}>
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -79,7 +79,7 @@
                                     Fecha de Nombramiento
                                 </label>
                                 <input class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" value="{{old('fecha_nombramiento')}}" 
-                                type="date" disabled >
+                                type="date" disabled min="1980-01-01" max={{now()}}>
                                 </input>
                             </div>
                             <div class="form-group col-md-3">

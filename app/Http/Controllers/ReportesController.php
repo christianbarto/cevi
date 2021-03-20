@@ -32,7 +32,7 @@ class ReportesController extends Controller
        $usuarios = User::all();
        $pdf = PDF::loadView('pdf/IndexUser',compact('usuarios'));
        set_time_limit(300); 
-       return $pdf->stream('Reporte de Usuarios.pdf');
+       return $pdf->setPaper('a4', 'landscape')->stream('Reporte de Usuarios.pdf');
      }
 
      public function empleadosA()
@@ -40,7 +40,7 @@ class ReportesController extends Controller
        $empleados = Empleado::all();
        $pdf = PDF::loadView('pdf/IndexEmpleadoA',compact('empleados'));
        set_time_limit(300); 
-       return $pdf->stream('Reporte de Empleados Activos.pdf');
+       return $pdf->setPaper('a4', 'landscape')->stream('Reporte de Empleados Activos.pdf');
      }
 
      public function empleadosI()
@@ -48,7 +48,7 @@ class ReportesController extends Controller
        $empleados = Empleado::all();
        $pdf = PDF::loadView('pdf/IndexEmpleadoI',compact('empleados'));
        set_time_limit(300); 
-       return $pdf->stream('Reporte de Empleados.pdf');
+       return $pdf->setPaper('a4', 'landscape')->stream('Reporte de Empleados.pdf');
      }
 
      public function asistenciasE(Request $request)
@@ -60,7 +60,7 @@ class ReportesController extends Controller
                                        ->orderBy('fecha','desc')->get();
        $pdf = PDF::loadView('pdf/asistenciasE',compact('empleados'));
        set_time_limit(300); 
-       return $pdf->stream('Reporte por Empleado.pdf');
+       return $pdf->setPaper('a4', 'landscape')->stream('Reporte por Empleado.pdf');
      }
 
      public function asistenciasP(Request $request)
@@ -73,7 +73,7 @@ class ReportesController extends Controller
        $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->get();
       $html = view('pdf/asistenciasP',compact('Relojes','inicio','fin'))->render();
       ini_set("pcre.backtrack_limit", "10000000");
-      $mpdf = new \Mpdf\Mpdf();
+      $mpdf = new \Mpdf\Mpdf(["format" => "A4-L"]);
       $mpdf->WriteHTML($html);
       $mpdf->Output('Reporte por Periodo.pdf',"I");
      }
@@ -89,7 +89,7 @@ class ReportesController extends Controller
                                      ->Where('ap_materno','like','%'.$request->ap_materno.'%')->get();
        $pdf = PDF::loadView('pdf/asistenciasEP',compact('Relojes','inicio','fin','nombre'));
        set_time_limit(300);         
-       return $pdf->stream('Reporte por Periodo y Empleado.pdf');
+       return $pdf->setPaper('a4', 'landscape')->stream('Reporte por Periodo y Empleado.pdf');
      }
 
      public function antiguedad()
@@ -97,7 +97,7 @@ class ReportesController extends Controller
         $Empleados = Empleado::orderBy('nombre','asc')->get();
         $pdf = PDF::loadView('pdf/antiguedad',compact('Empleados'));
         set_time_limit(300); 
-        return $pdf->stream('Reporte de antiguedad de empleados.pdf');
+        return $pdf->setPaper('a4', 'landscape')->stream('Reporte de antiguedad de empleados.pdf');
      }
 
      public function antiguedadE(Request $request)
@@ -117,7 +117,7 @@ class ReportesController extends Controller
 
         $pdf = PDF::loadView('pdf/antiguedad', compact('Empleados','valor'));
         set_time_limit(300); 
-        return $pdf->stream('Reporte de antiguedad del empleado '.$valor.'.pdf');
+        return $pdf->setPaper('a4', 'landscape')->stream('Reporte de antiguedad del empleado '.$valor.'.pdf');
      }
 
      public function empleadosQuinquenio()
@@ -125,7 +125,7 @@ class ReportesController extends Controller
        $empleados = Empleado::all();
        $pdf = PDF::loadView('pdf/IndexEmpleadoQ',compact('empleados'));
        set_time_limit(300); 
-       return $pdf->stream('Reporte de Quinquenios.pdf');
+       return $pdf->setPaper('a4', 'landscape')->stream('Reporte de Quinquenios.pdf');
      }
 
      public function empleadosDepartamento(Request $request)
@@ -134,7 +134,7 @@ class ReportesController extends Controller
       $empleados = Empleado::all();
       $pdf = PDF::loadView('pdf/IndexEmpleadoD',compact('empleados','departamento'));
       set_time_limit(300); 
-      return $pdf->stream('Reporte de Quinquenios.pdf');
+      return $pdf->setPaper('a4', 'landscape')->stream('Reporte de Quinquenios.pdf');
      }
 
      public function empleadosDepartamentoT(Request $request)
@@ -144,7 +144,7 @@ class ReportesController extends Controller
         //dd($departamentos);
         $html = view('pdf/IndexEmpleadoTD',compact('empleados','departamentos'))->render();
         ini_set("pcre.backtrack_limit", "10000000");
-        $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new \Mpdf\Mpdf(["format" => "A4-L"]);
         $mpdf->WriteHTML($html);
         $mpdf->Output('Reporte empleados de cada departamento.pdf',"I");
      }

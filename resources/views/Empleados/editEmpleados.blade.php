@@ -77,7 +77,7 @@
                                 <label class="control-label text-muted" for="fecha_alta">
                                     {{Date::parse($empleados->fecha_alta)->format('j \d\e F \d\e Y')}}
                                 </label>
-                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" value={{$empleados->fecha_alta}}>
+                                <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" min="1980-01-01" value={{$empleados->fecha_alta}}  max={{now()}}>
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -128,7 +128,7 @@
                                             {{Date::parse($empleados->fecha_nombramiento)->format('j \d\e F \d\e Y')}}
                                         @endif
                                     </label>
-                                    <input  disabled class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" value={{$empleados->fecha_nombramiento}}>
+                                    <input  disabled class="form-control" id="fecha_nombramiento" name="fecha_nombramiento" type="date" min="1980-01-01" max={{now()}} value={{$empleados->fecha_nombramiento}}>
                                     </input>
                             </div>
                             <div class="form-group col-md-3">
