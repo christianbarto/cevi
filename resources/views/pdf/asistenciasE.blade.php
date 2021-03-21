@@ -10,13 +10,13 @@
 </head>
 <body>
 <img height="90" src="img/CEVILOGO2020.jpg" width="428" style="margin-top:0px;"></img>
+<h3 style="text-align: center;">
+    Asistencias por Empleado
+</h3>
 <h4 style="text-align: right;">
     Generado: {{Date::parse(now())->format('j \d\e F \d\e Y')}}<br>
     Usuario: {{Auth::user()->name}}
 </h4>
-<h3>
-    Asistencias por Empleado
-</h3>
     <table border="1" align="center" cellspacing="0" cellpadding="1" style="text-align: center;">
                     <thead>
                         <tr class="color">

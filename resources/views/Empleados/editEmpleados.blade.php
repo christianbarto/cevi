@@ -216,7 +216,7 @@
                                         Actualizar Contrato
                                         </label>
                                     @endif
-                                    <input style="width: 92%" accept="application/pdf" name="contrato" type="file">
+                                    <input onchange="validarExt('contrato')" id="contrato" style="width: 92%" accept="application/pdf" name="contrato" type="file">
                                         <label for="contrato">
                                         </label>
                                     </input>
@@ -233,7 +233,7 @@
                                         Actualizar Credencial de Elector        
                                         </label>
                                     @endif
-                                    <input style="width: 92%" accept="application/pdf" name="creden_elect" type="file">
+                                    <input onchange="validarExt('creden_elect')" id="creden_elect" style="width: 92%" accept="application/pdf" name="creden_elect" type="file">
                                     <label for="creden_elect">
                                     </label>
                                     </input>
@@ -250,7 +250,7 @@
                                         Actualizar Acta de Nacimiento
                                         </label>
                                     @endif
-                                    <input style="width: 92%" accept="application/pdf" name="acta_nac" type="file">
+                                    <input onchange="validarExt('acta_nac')" id="acta_nac" style="width: 92%" accept="application/pdf" name="acta_nac" type="file">
                                     <label for="acta_nac">
                                     </label>
                                     </input>
@@ -267,7 +267,7 @@
                                             Actualizar Curriculum
                                         </label>
                                     @endif
-                                    <input style="width: 92%" accept="application/pdf" name="curriculum" type="file">
+                                    <input onchange="validarExt('curriculum')" id="curriculum" style="width: 92%" accept="application/pdf" name="curriculum" type="file">
                                     <label for="curriculum">
                                     </label>
                                     </input>
@@ -277,14 +277,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->solicitud==null)
                                                                     <label class="control-label text-muted" for="solicitud">
-                                                                       ----Ingresar Solicitud de Empleo-----
+                                                                       Ingresar Solicitud de Empleo...
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="solicitud">
-                                                                       ---Actualizar Solicitud de Empleo----
+                                                                       Actualizar Solicitud de Empleo...
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="solicitud" type="file">
+                                                                <input onchange="validarExt('solicitud')" id="solicitud" style="width: 92%" accept="application/pdf" name="solicitud" type="file">
                                                                     <label for="solicitud">
                                                                     </label>
                                                                 </input>
@@ -295,14 +295,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->cert_medico==null)
                                                                     <label class="control-label text-muted" for="cert_medico">
-                                                                       -----Ingresar Certificado Medico-----
+                                                                       Ingresar Certificado Medico
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="cert_medico">
-                                                                       ----Actualizar Certificado Medico----
+                                                                       Actualizar Certificado Medico
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="cert_medico" type="file">
+                                                                <input onchange="validarExt('cert_medico')" id="cert_medico" style="width: 92%" accept="application/pdf" name="cert_medico" type="file">
                                                                     <label for="cert_medico">
                                                                     </label>
                                                                 </input>
@@ -313,14 +313,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->cart_recomend==null)
                                                                     <label class="control-label text-muted" for="cart_recomend">
-                                                                       ---Ingresar Carta de Recomendacion---  
+                                                                       Ingresar Carta de Recomendacion  
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="cart_recomend">
-                                                                       --Actualizar Carta de Recomendacion--
+                                                                       Actualizar Carta de Recomendacion
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="cart_recomend" type="file">
+                                                                <input onchange="validarExt('cart_recomend')" id="cart_recomend" style="width: 92%" accept="application/pdf" name="cart_recomend" type="file">
                                                                     <label for="cart_recomend">
                                                                     </label>
                                                                 </input>
@@ -331,14 +331,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->fotografia==null)
                                                                     <label class="control-label text-muted" for="fotografia">
-                                                                       ---------Ingresar Fotografia---------  
+                                                                       Ingresar Fotografia
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="fotografia">
-                                                                       --------Actualizar Fotografia--------
+                                                                       Actualizar Fotografia
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="fotografia" type="file">
+                                                                <input onchange="validarExt('fotografia')" id="fotografia" style="width: 92%" accept="application/pdf" name="fotografia" type="file">
                                                                     <label for="fotografia">
                                                                     </label>
                                                                 </input>
@@ -357,7 +357,7 @@
                                                                     </label>
                                                                 @endif
 
-                                                                <input style="width: 92%" accept="application/pdf" name="const_Noinhab" type="file">
+                                                                <input onchange="validarExt('const_Noinhab')" id="const_Noinhab" style="width: 92%" accept="application/pdf" name="const_Noinhab" type="file">
                                                                     <label for="const_Noinhab">
                                                                     </label>
                                                                 </input>
@@ -368,15 +368,15 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->comp_Dom==null)
                                                                     <label class="control-label text-muted" for="comp_Dom">
-                                                                       --Ingresar Comprobante de Domicilio--  
+                                                                       Ingresar Comprobante de Domicilio 
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="comp_Dom">
-                                                                       -Actualizar Comprobante de Domicilio-
+                                                                       Actualizar Comprobante de Domicilio
                                                                     </label>
                                                                 @endif
 
-                                                                <input style="width: 92%" accept="application/pdf" name="comp_Dom" type="file">
+                                                                <input onchange="validarExt('comp_Dom')" id="comp_Dom" style="width: 92%" accept="application/pdf" name="comp_Dom" type="file">
                                                                     <label for="comp_Dom">
                                                                     </label>
                                                                 </input>
@@ -387,15 +387,15 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->licencia==null)
                                                                     <label class="control-label text-muted" for="licencia">
-                                                                       ----Ingresar Licencia de Conducir----
+                                                                       Ingresar Licencia de Conducir
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="licencia">
-                                                                       ---Actualizar Licencia de Conducir---
+                                                                       Actualizar Licencia de Conducir
                                                                     </label>
                                                                 @endif
 
-                                                                <input style="width: 92%" accept="application/pdf" name="licencia" type="file">
+                                                                <input onchange="validarExt('licencia')" id="licencia" style="width: 92%" accept="application/pdf" name="licencia" type="file">
                                                                     <label for="licencia">
                                                                     </label>
                                                                 </input>
@@ -405,14 +405,14 @@
                                                         <div class="form-group col-md-4 text-dark">
                                                                 @if($empleados->nss==null)
                                                                     <label class="control-label text-muted" for="nss">
-                                                                       ---Ingresar Numero de Seguro Social--
+                                                                       Ingresar Numero de Seguro Social
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="nss">
-                                                                       --Actualizar Numero de Seguro Social--
+                                                                       Actualizar Numero de Seguro Social
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="nss" type="file">
+                                                                <input onchange="validarExt('nss')" id="nss" style="width: 92%" accept="application/pdf" name="nss" type="file">
                                                                     <label for="nss">
                                                                     </label>
                                                                 </input>
@@ -422,14 +422,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->infonavit==null)
                                                                     <label class="control-label text-muted" for="infonavit">
-                                                                       ---------Ingresar Infonavit----------
+                                                                       Ingresar Infonavit
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="infonavit">
-                                                                       --------Actualizar Infonavit---------
+                                                                       Actualizar Infonavit
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="infonavit" type="file">
+                                                                <input onchange="validarExt('infonavit')" id="infonavit" style="width: 92%" accept="application/pdf" name="infonavit" type="file">
                                                                     <label for="infonavit">
                                                                     </label>
                                                                 </input>
@@ -440,14 +440,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->rfc_doc==null)
                                                                     <label class="control-label text-muted" for="rfc_doc">
-                                                                       -----Ingresar Comprobante de RFC-----
+                                                                       Ingresar Comprobante de RFC
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="rfc_doc">
-                                                                       ----Actualizar Comprobante de RFC----
+                                                                       Actualizar Comprobante de RFC
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="rfc_doc" type="file">
+                                                                <input onchange="validarExt('rfc_doc')" id="rfc_doc" style="width: 92%" accept="application/pdf" name="rfc_doc" type="file">
                                                                     <label for="rfc_doc">
                                                                     </label>
                                                                 </input>
@@ -458,14 +458,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->cartilla==null)
                                                                     <label class="control-label text-muted" for="cartilla">
-                                                                       --Ingresar Cartilla Militar Liberada--
+                                                                       Ingresar Cartilla Militar Liberada
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="cartilla">
-                                                                       -Actualizar Cartilla Militar Liberada-
+                                                                       Actualizar Cartilla Militar Liberada
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="cartilla" type="file">
+                                                                <input onchange="validarExt('cartilla')" id="cartilla" style="width: 92%" accept="application/pdf" name="cartilla" type="file">
                                                                     <label for="cartilla">
                                                                     </label>
                                                                 </input>
@@ -476,14 +476,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->curp==null)
                                                                     <label class="control-label text-muted" for="curp">
-                                                                       ----Ingresar Comprobante de CURP-----
+                                                                       Ingresar Comprobante de CURP
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="curp">
-                                                                       ---Actualizar Comprobante de CURP----
+                                                                       Actualizar Comprobante de CURP
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="curp" type="file">
+                                                                <input onchange="validarExt('curp')" id="curp" style="width: 92%" accept="application/pdf" name="curp" type="file">
                                                                     <label for="curp">
                                                                     </label>
                                                                 </input>
@@ -494,14 +494,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->diploma==null)
                                                                     <label class="control-label text-muted" for="diploma">
-                                                                       --Ingresar Diploma Grado de Estudio--
+                                                                       Ingresar Diploma Grado de Estudio
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="diploma">
-                                                                       -Actualizar Diploma Grado de Estudio-
+                                                                       Actualizar Diploma Grado de Estudio
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="diploma" type="file">
+                                                                <input onchange="validarExt('diploma')" id="diploma" style="width: 92%" accept="application/pdf" name="diploma" type="file">
                                                                     <label for="diploma">
                                                                     </label>
                                                                 </input>
@@ -512,14 +512,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->nombramiento==null)
                                                                     <label class="control-label text-muted" for="nombramiento">
-                                                                       --------Ingresar Nombramiento--------  
+                                                                       Ingresar Nombramiento
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="nombramiento">
-                                                                       -------Actualizar Nombramiento-------
+                                                                       Actualizar Nombramiento
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="nombramiento" type="file">
+                                                                <input onchange="validarExt('nombramiento')" id="nombramiento" style="width: 92%" accept="application/pdf" name="nombramiento" type="file">
                                                                     <label for="nombramiento">
                                                                     </label>
                                                                 </input>
@@ -530,14 +530,14 @@
                                                             <div class="text-dark">
                                                                 @if($empleados->dictamen==null)
                                                                     <label class="control-label text-muted" for="dictamen">
-                                                                       ----------Ingresar Dictamen----------  
+                                                                       Ingresar Dictamen
                                                                     </label>
                                                                 @else
                                                                     <label class="control-label text-muted" for="dictamen">
-                                                                       ---------Actualizar Dictamen---------
+                                                                       Actualizar Dictamen
                                                                     </label>
                                                                 @endif
-                                                                <input style="width: 92%" accept="application/pdf" name="dictamen" type="file">
+                                                                <input onchange="validarExt('dictamen')" id="dictamen" style="width: 92%" accept="application/pdf" name="dictamen" type="file">
                                                                     <label for="dictamen">
                                                                     </label>
                                                                 </input>
@@ -549,7 +549,7 @@
                                                                 <h5>
                                                                     Agrega Documento Adicional
                                                                 </h5>
-                                                                <input style="width: 92%" accept="application/pdf" name="adicional" type="file">
+                                                                <input onchange="validarExt('adicional')" id="adicional" style="width: 92%" accept="application/pdf" name="adicional" type="file">
                                                                     <label for="adicional">
                                                                     </label>
                                                                 </input>

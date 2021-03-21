@@ -95,7 +95,7 @@ class ReportesController extends Controller
      public function antiguedad()
      {
         $Empleados = Empleado::orderBy('nombre','asc')->get();
-        $pdf = PDF::loadView('pdf/antiguedad',compact('Empleados'));
+        $pdf = PDF::loadView('pdf/antiguedadT',compact('Empleados'));
         set_time_limit(300); 
         return $pdf->setPaper('a4', 'landscape')->stream('Reporte de antiguedad de empleados.pdf');
      }

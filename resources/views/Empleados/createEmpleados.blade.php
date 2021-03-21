@@ -153,9 +153,7 @@
                                     <label class="control-label text-muted" for="contrato">
                                         Contrato
                                     </label>
-                                    <input accept="application/pdf" name="contrato" value="{{old('contrato')}}" type="file">
-                                        <label for="contrato">
-                                        </label>
+                                    <input onchange="validarExt('contrato')" accept="application/pdf" id="contrato" name="contrato" type="file">
                                     </input>
                                 </div>
                             </div>
@@ -164,7 +162,7 @@
                                     <label class="control-label text-muted"  for="creden_elect">
                                         Credencial de Elector
                                     </label>
-                                    <input accept="application/pdf" required  name="creden_elect" value="{{old('creden_elect')}}" type="file">
+                                    <input onchange="validarExt('creden_elect')" id="creden_elect" accept="application/pdf" required  name="creden_elect" type="file">
                                         <label for="creden_elect">
                                         </label>
                                     </input>
@@ -175,7 +173,7 @@
                                     <label class="control-label text-muted" for="acta_nac">
                                         Acta de nacimiento
                                     </label>
-                                    <input accept="application/pdf" required name="acta_nac" value="{{old('acta_nac')}}" type="file">
+                                    <input onchange="validarExt('acta_nac')" id="acta_nac" accept="application/pdf" required name="acta_nac" value="{{old('acta_nac')}}" type="file">
                                         <label for="acta_nac">
                                         </label>
                                     </input>
@@ -186,7 +184,7 @@
                                     <label class="control-label text-muted" for="curriculum">
                                         Curriculum
                                     </label>
-                                    <input accept="application/pdf" required name="curriculum" value="{{old('curriculum')}}" type="file">
+                                    <input onchange="validarExt('curriculum')" id="curriculum" accept="application/pdf" required name="curriculum" value="{{old('curriculum')}}" type="file">
                                         <label for="curriculum">
                                         </label>
                                     </input>
@@ -197,7 +195,7 @@
                                     <label class="control-label text-muted" for="solicitud">
                                         Solicitud de Empleo
                                     </label>
-                                    <input accept="application/pdf" required name="solicitud" value="{{old('solicitud')}}" type="file">
+                                    <input onchange="validarExt('solicitud')" id="solicitud" accept="application/pdf" required name="solicitud" value="{{old('solicitud')}}" type="file">
                                         <label for="solicitud">
                                         </label>
                                     </input>
@@ -208,7 +206,7 @@
                                     <label class="control-label text-muted" for="cert_medico">
                                         Certificado Medico
                                     </label>
-                                    <input accept="application/pdf" required name="cert_medico" value="{{old('cert_medico')}}" type="file">
+                                    <input onchange="validarExt('cert_medico')" id="cert_medico" accept="application/pdf" required name="cert_medico" value="{{old('cert_medico')}}" type="file">
                                         <label for="cert_medico">
                                         </label>
                                     </input>
@@ -219,7 +217,7 @@
                                     <label class="control-label text-muted" for="cart_recomend">
                                         Carta de Recomendacion
                                     </label>
-                                    <input accept="application/pdf" required name="cart_recomend" value="{{old('cart_recomend')}}" type="file">
+                                    <input onchange="validarExt('cart_recomend')" id="cart_recomend" accept="application/pdf" required name="cart_recomend" value="{{old('cart_recomend')}}" type="file">
                                         <label for="cart_recomend">
                                         </label>
                                     </input>
@@ -230,7 +228,7 @@
                                     <label class="control-label text-muted" for="fotografia">
                                         Fotografia
                                     </label>
-                                    <input accept="application/pdf" required name="fotografia" value="{{old('fotografia')}}" type="file">
+                                    <input onchange="validarExt('fotografia')" id="fotografia" accept="application/pdf" required name="fotografia" value="{{old('fotografia')}}" type="file">
                                         <label for="fotografia">
                                         </label>
                                     </input>
@@ -241,7 +239,7 @@
                                     <label class="control-label text-muted" for="const_Noinhab">
                                         Constancia de No Inhabilitacion
                                     </label>
-                                    <input accept="application/pdf" required name="const_Noinhab" value="{{old('const_Noinhab')}}" type="file">
+                                    <input onchange="validarExt('const_Noinhab')" id="const_Noinhab" accept="application/pdf" required name="const_Noinhab" value="{{old('const_Noinhab')}}" type="file">
                                         <label for="const_Noinhab">
                                         </label>
                                     </input>
@@ -252,7 +250,7 @@
                                     <label class="control-label text-muted" for="comp_Dom">
                                         Comprobante de Domicilio
                                     </label>
-                                    <input accept="application/pdf" required name="comp_Dom" value="{{old('comp_Dom')}}" type="file">
+                                    <input onchange="validarExt('comp_Dom')" id="comp_Dom" accept="application/pdf" required name="comp_Dom" value="{{old('comp_Dom')}}" type="file">
                                         <label for="comp_Dom">
                                         </label>
                                     </input>
@@ -263,7 +261,7 @@
                                     <label class="control-label text-muted" for="licencia">
                                         Licencia de Conducir
                                     </label>
-                                    <input accept="application/pdf" name="licencia" value="{{old('licencia')}}" type="file">
+                                    <input onchange="validarExt('licencia')" id="licencia" accept="application/pdf" name="licencia" value="{{old('licencia')}}" type="file">
                                         <label for="licencia">
                                         </label>
                                     </input>
@@ -274,7 +272,7 @@
                                     <label class="control-label text-muted" for="nss">
                                         Numero de Seguro Social
                                     </label>
-                                    <input accept="application/pdf" required name="nss" value="{{old('nss')}}" type="file">
+                                    <input onchange="validarExt('nss')" id="nss" accept="application/pdf" required name="nss" value="{{old('nss')}}" type="file">
                                         <label for="nss">
                                         </label>
                                     </input>
@@ -285,7 +283,7 @@
                                     <label class="control-label text-muted" for="infonavit">
                                         Infonavit
                                     </label>
-                                    <input accept="application/pdf" name="infonavit" value="{{old('infonavit')}}" type="file">
+                                    <input onchange="validarExt('infonavit')" id="infonavit" accept="application/pdf" name="infonavit" value="{{old('infonavit')}}" type="file">
                                         <label for="infonavit">
                                         </label>
                                     </input>
@@ -296,7 +294,7 @@
                                     <label class="control-label text-muted" for="rfc_doc">
                                         Constancia de RFC
                                     </label>
-                                    <input accept="application/pdf" required name="rfc_doc" value="{{old('rfc_doc')}}" type="file">
+                                    <input onchange="validarExt('rfc_doc')" id="rfc_doc" accept="application/pdf" required name="rfc_doc" value="{{old('rfc_doc')}}" type="file">
                                         <label for="rfc_doc">
                                         </label>
                                     </input>
@@ -307,7 +305,7 @@
                                     <label class="control-label text-muted" for="cartilla">
                                         Cartilla Militar Liberada
                                     </label>
-                                    <input accept="application/pdf" name="cartilla" value="{{old('cartilla')}}" type="file">
+                                    <input onchange="validarExt('cartilla')" id="cartilla" accept="application/pdf" name="cartilla" value="{{old('cartilla')}}" type="file">
                                         <label for="cartilla">
                                         </label>
                                     </input>
@@ -318,7 +316,7 @@
                                     <label class="control-label text-muted"  for="curp">
                                         Clave Única de Registro de Poblacional (CURP)
                                     </label>
-                                    <input accept="application/pdf" required name="curp" value="{{old('curp')}}" type="file">
+                                    <input onchange="validarExt('curp')" id="curp" accept="application/pdf" required name="curp" value="{{old('curp')}}" type="file">
                                         <label for="curp">
                                         </label>
                                     </input>
@@ -329,7 +327,7 @@
                                     <label class="control-label text-muted" for="diploma">
                                         Diploma de Grado de Estudio
                                     </label>
-                                    <input accept="application/pdf" required name="diploma" value="{{old('diploma')}}" type="file">
+                                    <input onchange="validarExt('diploma')" id="diploma" accept="application/pdf" required name="diploma" value="{{old('diploma')}}" type="file">
                                         <label for="diploma">
                                         </label>
                                     </input>
@@ -340,7 +338,7 @@
                                     <label class="control-label text-muted" for="nombramiento">
                                         Nombramiento
                                     </label>
-                                    <input accept="application/pdf" name="nombramiento" value="{{old('nombramiento')}}" type="file">
+                                    <input onchange="validarExt('nombramiento')" id="nombramiento" accept="application/pdf" name="nombramiento" value="{{old('nombramiento')}}" type="file">
                                         <label for="nombramiento">
                                         </label>
                                     </input>
@@ -351,7 +349,7 @@
                                     <label class="control-label text-muted" for="dictamen">
                                         Dictamen
                                     </label>
-                                    <input accept="application/pdf" required name="dictamen" value="{{old('dictamen')}}" type="file">
+                                    <input onchange="validarExt('dictamen')" id="dictamen" accept="application/pdf" required name="dictamen" value="{{old('dictamen')}}" type="file">
                                         <label for="dictamen">
                                         </label>
                                     </input>
@@ -362,7 +360,7 @@
                                     <label class="control-label text-muted" for="adicionales">
                                         Documentos Adicionales
                                     </label>
-                                    <input accept="application/pdf" name="adicionales" value="{{old('adicionales')}}" type="file">
+                                    <input onchange="validarExt('adicionales')" id="adicionales" accept="application/pdf" name="adicionales" value="{{old('adicionales')}}" type="file">
                                         <label for="adicionales">
                                         </label>
                                     </input>

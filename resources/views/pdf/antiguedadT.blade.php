@@ -11,20 +11,15 @@
 <body>
 <img height="90" src="img/CEVILOGO2020.jpg" width="428" style="margin-top:0px;"></img>
 <h3 style="text-align: center;">
-    Empleados por Departamento <br>
+    Antigüedad de Todos los Empleados
 </h3>
 <h4 style="text-align: right;">
     Generado: {{Date::parse(now())->format('j \d\e F \d\e Y')}}<br>
     Usuario: {{Auth::user()->name}}
 </h4>
-<h4>
-    Departamento: <br>
-    {{$departamento}}
-</h4>
-
 
     <table border="1" align="center" cellspacing="0" cellpadding="1" style="text-align: center;">
-        <thead class="thead-light">
+        <thead>
             <tr class="color">
                 <th scope="col">
                     RFC
@@ -39,22 +34,17 @@
                     Apellido Materno
                 </th>
                 <th scope="col">
-                    Relacion Laboral
+                    Fecha de ingreso
                 </th>
                 <th scope="col">
-                    Departamento
+                    Antiguedad
                 </th>
-                <th scope="col">
-                    Categoria
-                </th>
-                
             </tr>
         </thead>
         <tbody>
-            @foreach($empleados as $Empleado)
-            @if($Empleado->departamento==$departamento)
+            @foreach($Empleados as $Empleado)
             <tr>
-                <td>
+                <td >
                     {{$Empleado->RFC}}
                 </td>
                 <td>
@@ -67,27 +57,14 @@
                     {{$Empleado->ap_materno}}
                 </td>
                 <td>
-                    @if($Empleado->Tcontrato=='base')
-                        PERSONAL DE BASE
-                    @elseif($Empleado->Tcontrato=='contrato')
-                        PERSONAL DE CONTRATO
-                    @elseif($Empleado->Tcontrato=='nombremientoConfianza')
-                        NOMBRAMIENTO CONFIANZA
-                    @elseif($Empleado->Tcontrato=='mandosMedios')
-                        MANDOS MEDIOS
-                    @elseif($Empleado->Tcontrato=='contratoConfianza')
-                        CONTRATO CONFIANZA
-                    @endif                                    
+                    {{Date::parse($Empleado->fecha_alta)->format('j \d\e F \d\e Y')}}
                 </td>
                 <td>
-                    {{$Empleado->departamento}}
-                </td>
-                <td>
-                    {{$Empleado->puesto}}
+                    {{Date::parse($Empleado->fecha_alta)->age}} Años
+                    
                 </td>
             </tr>
-            @endif
             @endforeach
         </tbody>
     </table>
-    </body>
+</body>
