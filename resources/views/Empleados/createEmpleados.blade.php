@@ -113,8 +113,12 @@
                                 <label class="control-label text-muted" for="RFC">
                                     RFC
                                 </label>
-                                <input class="form-control" id="RFC" name="RFC" value="{{old('RFC')}}" required style="text-transform:uppercase;" type="text" maxlength="13">
+                                <input class="form-control" id="RFC" name="RFC" 
+                                        value="{{old('RFC')}}" style="text-transform:uppercase;" 
+                                        type="text" oninput="validaRFC()"
+                                         maxlength="13" required>
                                 </input>
+                                <label id="estatus" ></label>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">

@@ -13,6 +13,8 @@
                     </script>
                     <script type="text/javascript" src="{{ asset('js/desabilitar.js') }}">
                     </script>
+                    <script type="text/javascript" src="{{ asset('js/RFC.js') }}">
+                    </script>
                     <script crossorigin="anonymous" src="https://kit.fontawesome.com/afca8b434b.js">
                     </script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

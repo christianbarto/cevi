@@ -135,8 +135,11 @@
                                 <label class="control-label text-muted" for="RFC">
                                     RFC
                                 </label>
-                                <input style="text-transform:uppercase;" class="form-control" id="RFC" name="RFC" type="text" value="{{$empleados->RFC}}" maxlength="13">
+                                <input style="text-transform:uppercase;" class="form-control" id="RFC" 
+                                name="RFC" type="text" value="{{$empleados->RFC}}" oninput="validaRFC()"
+                                         maxlength="13" required>
                                 </input>
+                                <label id="estatus"></label>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="telefono">
