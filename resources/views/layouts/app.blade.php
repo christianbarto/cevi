@@ -20,23 +20,26 @@
                     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
                     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet"/>
     </head>
-{{--     <style>
+    <style>
         body{
-                background-image: url(img/fondo.png);
-                background-color: rgba(0,0,0,0.6);
-                background-size: 4000px;
+                background-image: url(img/fondo-.png);
+                background-attachment: fixed;
                 text-align: center;
                 background-position: center center;
                 background-size: cover;
-                background-repeat: repeat-x;
-                position: relative;
+                position: absolute;
+                overflow-x: hidden;
             }
-    </style> --}}
+    </style>
     <body>
         <div class="row">
-            <img alt="Comisión Estatal de Vivienda" class="img-fluid" height="100" src="img/texturaSuperior.png" width="1566">
+            <img alt="Comisión Estatal de Vivienda" class="img-fluid" src="img/texturaSuperior.png">
             </img>
         </div>
+        <div class="row">
+                <img alt="" class="img-fluid" src="img/barra-colores-footer.png">
+                </img>
+            </div>
 
         <main class="py-3">
             @yield('content')

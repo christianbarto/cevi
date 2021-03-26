@@ -35,17 +35,27 @@
     <style>
         body{
                 background-image: url(img/fondo-.png);
+                background-attachment: fixed;
                 text-align: center;
                 background-position: center center;
                 background-size: cover;
-                background-repeat: repeat-x;
-                position: relative;
+                position: absolute;
                 overflow-x: hidden;
+            }
+            h1, h2, h3, h4, h5 {
+                font-family: "UniviaPro-Regular", sans-serif;
             }
     </style>
     <body>
-            <img alt="Comisión Estatal de Vivienda" class="img-fluid" src="img/texturaSuperior.png">
-            </img>
+            <div class="row">
+                <img alt="Comisión Estatal de Vivienda" class="img-fluid" src="img/texturaSuperior.png">
+                </img>
+            </div>
+            <div class="row">
+                <img alt="" class="img-fluid" src="img/barra-colores-footer.png">
+                </img>
+            </div>
+            
             <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm "> 
                 <div class="container-fluid d-flex justify-content-around">
                     @if(Auth::user()->role_id==2)
