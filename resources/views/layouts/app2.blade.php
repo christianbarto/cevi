@@ -17,33 +17,35 @@
                     </script>
                     <script type="text/javascript" src="{{ asset('js/extension.js') }}">
                     </script>
+                    <script type="text/javascript" src="{{ asset('js/mostrar.js') }}">
+                    </script>
                     <script crossorigin="anonymous" src="https://kit.fontawesome.com/afca8b434b.js">
                     </script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
                     <!-- Fonts -->
                     <link href="//fonts.gstatic.com" rel="dns-prefetch"/>
                     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"/>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
                     <!-- Styles -->
                     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
                     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet"/>
     </head>
     <style>
         body{
-                background-image: url(img/fondo.png);
-                background-color: rgba(0,0,0,0.6);
-                background-size: 4000px;
+                background-image: url(img/fondo-.png);
                 text-align: center;
                 background-position: center center;
                 background-size: cover;
                 background-repeat: repeat-x;
                 position: relative;
+                overflow-x: hidden;
             }
     </style>
     <body>
-        <div class="row">
-            <img alt="Comisión Estatal de Vivienda" class="img-fluid" height="100" src="img/texturaSuperior.png" width="1566">
+            <img alt="Comisión Estatal de Vivienda" class="img-fluid" src="img/texturaSuperior.png">
             </img>
-        </div>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm "> 
                 <div class="container-fluid d-flex justify-content-around">
                     @if(Auth::user()->role_id==2)

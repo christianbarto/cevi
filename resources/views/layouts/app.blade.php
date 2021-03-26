@@ -20,7 +20,7 @@
                     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
                     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet"/>
     </head>
-    <style>
+{{--     <style>
         body{
                 background-image: url(img/fondo.png);
                 background-color: rgba(0,0,0,0.6);
@@ -31,7 +31,7 @@
                 background-repeat: repeat-x;
                 position: relative;
             }
-    </style>
+    </style> --}}
     <body>
         <div class="row">
             <img alt="Comisión Estatal de Vivienda" class="img-fluid" height="100" src="img/texturaSuperior.png" width="1566">

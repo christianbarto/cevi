@@ -53,8 +53,13 @@
                                 </label>
                                 <input class="form-control" id="password" name="password" type="password" required>
                                 </input>
+                                <div class="input-group-append">
+                                    <button id="show_password" class="btn btn-success" type="button" onclick="mostrarPassword()"> 
+                                        <span class="fa fa-eye-slash icon"></span> 
+                                    </button>
+                                </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-2">
                                 <label class="control-label" for="role_id" style="color:black">
                                     Role
                                 </label>
@@ -66,6 +71,38 @@
                                         Usuario
                                     </option>
                                 </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label class="control-label" for="pregunta" style="color:black">
+                                    Pregunta de Seguridad
+                                </label>
+                                <select class="form-control" id="pregunta" name="pregunta" style="color:black">
+                                    <option value="¿Cual fue su primer trabajo?">
+                                        ¿Cuál fue su primer trabajo?
+                                    </option>
+                                    <option value="¿Cual era el nombre de su primera mascota?">
+                                        ¿Cuál era el nombre de su primera mascota?
+                                    </option>
+                                    <option value="¿Cual es su comida favorita?">
+                                        ¿Cuál es su comida favorita?
+                                    </option>
+                                    <option value="¿Cual es el segundo apellido de su padre?">
+                                        ¿Cuál es el segundo apellido de su padre?
+                                    </option>
+                                    <option value="¿Cual era la marca y modelo de su primer coche?">
+                                        ¿Cuál era la marca y modelo de su primer coche?
+                                    </option>
+                                    <option value="¿Como se llamaba la primera escuela a la que asistió?">
+                                        ¿Cómo se llamaba la primera escuela a la que asistió?
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label class="control-label" for="respuesta" style="color:black">
+                                    Respuesta
+                                </label>
+                                <input class="form-control" id="respuesta" name="respuesta" type="text" required>
+                                </input>
                             </div>
                         </div>
                         <div class="form-group text-center">
