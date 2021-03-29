@@ -15,14 +15,8 @@
                             {{ "" }}
                         </label>
                         <div class="col-md-4">
-                            <input autocomplete="off"  style="background-color: #F2F4F4 " autofocus="" class="form-control @error('email') is-invalid @enderror" id="entrada_text" name="email" type="text" value="{{ old('email') }}" placeholder="Direccion de Correo">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>
-                                        Usuario invalido
-                                    </strong>
-                                </span>
-                                @enderror
+                            <input style="background-color: #F2F4F4" class="form-control" id="entrada_text" 
+                            name="email" type="text" value="{{ old('email') }}" placeholder="Usuario" required>
                             </input>
                         </div>
                     </div>
@@ -32,15 +26,18 @@
                         </label>
                         <div class="col-md-4">
                             <input autocomplete="current-password" class="form-control @error('password') is-invalid @enderror" style="background-color: #F2F4F4 " id="password" name="password" required="" type="password" placeholder="Contraseña">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>
-                                        {{ $message }}
-                                    </strong>
-                                </span>
-                                @enderror
                             </input>
                         </div>
+                    </div>
+                    @if ($errors->any())
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-4" style="margin-top: 8px;">
+                                    <strong style="color: red">
+                                        <p>Usuario o contraseña invalidos</p>
+                                    </strong>
+                            </div>
+                        </div>
+                    @endif
                         <div class="col-md-10" style="margin-top: 8px;">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -51,7 +48,6 @@
                                 </div>
                         </div>
 
-                    </div>
                     <div class="form-group" align="center">
                         <button class="btn btn-primary" type="submit">
                             {{ __('Login') }}
