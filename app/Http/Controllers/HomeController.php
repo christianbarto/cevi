@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Reloj;
+use App\User;
 use App\Empleado;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,34 +31,40 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $date = Carbon::now();
-        $Relojs = Reloj::orderBy('fecha','asc')->get();
-        $Empleados = Empleado::all();
-        $lengh = Empleado::count();
-        for($i=0;$i<$lengh;$i++){
-            if($Empleados[$i]->estatus=='activo'){
-                if($Empleados[$i]->Tcontrato=='base' 
-                || $Empleados[$i]->Tcontrato=='nombremientoConfianza'
-                || $Empleados[$i]->Tcontrato=='mandosMedios'){
-                    if(!$Empleados[$i]->fecha_nombramiento==null){
-                        $fecha=$Empleados[$i]->fecha_nombramiento;
-                        $diff=$date->diff($fecha);
-                        $diferencia=$diff->y;
-                        settype($diferencia, 'int');
-                        $total = $diferencia / 5;
-                        $entero = explode('.',$total);
-                        $quinquenio = $entero[0];
-                        if($Empleados[$i]->quinquenio<$quinquenio){
-                            $Empleado = Empleado::findOrFail($Empleados[$i]->id);
-                            $Empleado->quinquenio=$quinquenio;
-                            $Empleado->save();
+        if(Auth::User()->respuesta == null)
+        {
+            return view('user/cambioContrasena');
+        }
+        else{
+            $date = Carbon::now();
+            $Relojs = Reloj::orderBy('fecha','asc')->get();
+            $Empleados = Empleado::all();
+            $lengh = Empleado::count();
+            for($i=0;$i<$lengh;$i++){
+                if($Empleados[$i]->estatus=='activo'){
+                    if($Empleados[$i]->Tcontrato=='base' 
+                    || $Empleados[$i]->Tcontrato=='nombremientoConfianza'
+                    || $Empleados[$i]->Tcontrato=='mandosMedios'){
+                        if(!$Empleados[$i]->fecha_nombramiento==null){
+                            $fecha=$Empleados[$i]->fecha_nombramiento;
+                            $diff=$date->diff($fecha);
+                            $diferencia=$diff->y;
+                            settype($diferencia, 'int');
+                            $total = $diferencia / 5;
+                            $entero = explode('.',$total);
+                            $quinquenio = $entero[0];
+                            if($Empleados[$i]->quinquenio<$quinquenio){
+                                $Empleado = Empleado::findOrFail($Empleados[$i]->id);
+                                $Empleado->quinquenio=$quinquenio;
+                                $Empleado->save();
+                            }
                         }
                     }
                 }
             }
+            return view('HomeAdmin',compact('Relojs','Empleados'));
         }
-        return view('HomeAdmin',compact('Relojs','Empleados'));
-                                
+                                    
     }
     //         if($dateBefore>=$fecha && $fecha>=$date){
     //             $nombre = $Empleados[$i]->nombre.' '.$Empleados[$i]->ap_paterno.' '.$Empleados[$i]->ap_materno;

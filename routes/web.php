@@ -9,6 +9,11 @@ Route::get('/', function () {
         return redirect('/login');
 });
 
+Route::get('/ResetPassword','UserController@resetPassword')->name('resetPassword');
+Route::get('/searchUser','UserController@search')->name('user.search');
+Route::get('/submitUser','UserController@submit')->name('user.submit');
+Route::post('/recuperaContrasena','UserController@recuperar')->name('recuperaContrasena');
+
 Route::group(['middleware' => 'auth'], function () {
 //Rutas de login
 Route::get('/home', 'HomeController@index')->name('home');
@@ -19,7 +24,10 @@ Route::post('/altaUser', 'UserController@store')->name('empleado.store');
 Route::get('/usuarios', 'UserController@index')->name('usuarios');;
 Route::get('/EditUser/{id}', 'UserController@edit');
 Route::put('/usuario/{user}/update', 'UserController@update')->name('user.update');
+Route::get('/Contrasena','UserController@updateContrasena')->name('user.cambioContrasena');
+Route::post('/updateContrasena','UserController@cambioContrasena')->name('user.updateContrasena');
 Route::POST('/DeleteUsuarios/{id}', 'UserController@destroy');
+
 
 //Ruta Deparamentos
 Route::get('/IndexDepartamento', 'DepartamentosController@index')->name('departamentos.index');
