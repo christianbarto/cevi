@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 logo-dep" style="background-color: #D5DBDB">
                 <div class="img">
-                    <img class="img-fluid" src="img/cevi2.png" width="30%">
+                    <img class="img-fluid" src="img/cevi20.png" width="30%">
                     </img>
                 </div>
                 <form action="{{ route('login') }}" method="POST">

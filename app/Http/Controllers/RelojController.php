@@ -93,7 +93,7 @@ class relojController extends Controller
       
       }
 
-      return back()->with('message','Importación de usuarios completada');
+      return back()->with('message','Importación de asistencias completada');
     }
 
 }
