@@ -77,4 +77,11 @@ Route::get('/EmpleadosReportesQ', 'ReportesController@empleadosQuinquenio')->nam
 Route::get('/EmpleadosReportesD', 'ReportesController@empleadosDepartamento')->name('reportes.EmpleadosReportesD');
 Route::get('/EmpleadosReportesTD', 'ReportesController@empleadosDepartamentoT')->name('reportes.TDepartamentos');
 
+//Rutas calendario
+Route::get('Evento/form','ControllerEvent@form');
+Route::post('Evento/create','ControllerEvent@create');
+Route::get('Evento/details/{id}','ControllerEvent@details');
+Route::get('Evento/index','ControllerEvent@index');
+Route::get('Evento/index/{month}','ControllerEvent@index_month');
+Route::post('Evento/calendario','ControllerEvent@calendario');
 });

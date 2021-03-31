@@ -71,11 +71,13 @@ class ReportesController extends Controller
         return back()->with('verifi','La fecha de inicio es mayor a la fecha final')->withInput();
        }
        $Relojes = DB::table('relojs')->whereBetween('fecha',[$inicio,$fin])->get();
-      $html = view('pdf/asistenciasP',compact('Relojes','inicio','fin'))->render();
-      ini_set("pcre.backtrack_limit", "10000000");
-      $mpdf = new \Mpdf\Mpdf(["format" => "A4-L"]);
-      $mpdf->WriteHTML($html);
-      $mpdf->Output('Reporte por Periodo.pdf',"I");
+      //$html = view('pdf/asistenciasP',compact('Relojes','inicio','fin'))->render();
+      return view('pdf/asistenciasP',compact('Relojes','inicio','fin')); 
+      //echo $html;
+      // ini_set("pcre.backtrack_limit", "10000000");
+      // $mpdf = new \Mpdf\Mpdf(["format" => "A4-L"]);
+      // $mpdf->WriteHTML($html);
+      // $mpdf->Output('Reporte por Periodo.pdf',"I");
      }
 
      public function asistenciasEP(Request $request)

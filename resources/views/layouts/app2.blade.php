@@ -31,19 +31,21 @@
                     <!-- Styles -->
                     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
                     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet"/>
+                    
     </head>
     <style>
         body{
-                background-image: url(img/fondo-.png);
-                background-attachment: fixed;
-                text-align: center;
-                background-position: center center;
-                background-size: cover;
-                position: absolute;
-                overflow-x: hidden;
+
+              background-image: url({{ asset('img/fondo-.png') }});
+              background-attachment: fixed;
+              text-align: center;
+              background-position: center center;
+              background-size: cover;
             }
             h1, h2, h3, h4, h5 {
                 font-family: "UniviaPro-Regular", sans-serif;
+                font-size: 2em;
+                margin: 0.67em 0;
             }
     </style>
     <body>
@@ -100,6 +102,11 @@
                                 <a class="nav-link" href="{{route('checador.index')}}">
                                     Reloj
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url('Evento/index')}}">
+                                Programación
+                              </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('reportes.index')}}">
