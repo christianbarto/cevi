@@ -8,6 +8,10 @@
     <style>
     body{
       font-family: 'Exo', sans-serif;
+      background-image: url({{ asset('img/fondo-.png') }});
+      background-attachment: fixed;
+      background-position: center center;
+      background-size: cover;
     }
     .header-col{
       background: #E3E9E5;
@@ -32,11 +36,17 @@
 
   </head>
   <body>
+    <div class="row">
+      <img alt="Comisión Estatal de Vivienda" class="img-fluid" src={{ asset('img/texturaSuperior.png') }}>
+      </img>
+    </div>
+    <div class="row">
+      <img alt="" class="img-fluid" src={{ asset('img/barra-colores-footer.png') }} >
+      </img>
+    </div>
 
     <div class="container">
       <div style="height:50px"></div>
-      <h1>< tutofox /> <small>Oh my code!</small></h1>
-      <p class="lead">
       <h3>Evento</h3>
       <p>Detalles de evento</p>
       <a class="btn btn-default"  href="{{ asset('/Evento/index') }}">Atras</a>
@@ -45,10 +55,13 @@
 
 
       <div class="col-md-6">
-        <form action="{{ asset('/Evento/create/') }}" method="post">
           <div class="fomr-group">
             <h4>Titulo</h4>
             {{ $event->titulo }}
+          </div>
+          <div class="fomr-group">
+            <h4>Empleado</h4>
+            {{ $event->empleado }}
           </div>
           <div class="fomr-group">
             <h4>Descripcion del Evento</h4>
@@ -59,8 +72,8 @@
             {{ $event->fecha }}
           </div>
           <br>
-          <input type="submit" class="btn btn-info" value="Guardar">
-        </form>
+          {{-- <input type="submit" class="btn btn-info" value="Editar"> --}}
+          
       </div>
 
 
@@ -68,17 +81,5 @@
 
 
     </div> <!-- /container -->
-
-    <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">
-    Developed by Artyom from
-    <a href="https://www.tutofox.com/">  < tutofox/></a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
-
   </body>
 </html>

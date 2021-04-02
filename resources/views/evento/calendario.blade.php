@@ -151,7 +151,7 @@
             </nav>
     <div class="container">
       <h2 style="margin-top: 20px">Programación</h2>
-      <a class="btn btn-default"  href="{{ asset('/Evento/form') }}">Crear un evento</a>
+      <a class="btn btn-default"  href="{{ asset('/Evento/form') }}">Programar un evento</a>
 
 
       <hr>

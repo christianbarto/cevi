@@ -1,5 +1,6 @@
 @extends('layouts.app2')
 @section('content')
+@toastr_css
 <div class="row justify-content-center">
     <div class="form-group col-md-9">
         <div class="card">
@@ -159,4 +160,7 @@
         </div>
     </div>
 </div>
+@jquery
+@toastr_js
+@toastr_render
 @endsection

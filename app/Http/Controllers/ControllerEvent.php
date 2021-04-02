@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Empleado;
 
 class ControllerEvent extends Controller
 {
-    //
+    
     public function form(){
-      return view("evento/form");
+      $empleados = Empleado::all();
+      return view("evento/form",compact('empleados'));
     }
 
     public function create(Request $request){
@@ -22,11 +24,12 @@ class ControllerEvent extends Controller
 
       Event::insert([
         'titulo'       => $request->input("titulo"),
+        'empleado'     => $request->input("empleado"),
         'descripcion'  => $request->input("descripcion"),
         'fecha'        => $request->input("fecha")
       ]);
 
-      return back()->with('success', 'Enviado exitosamente!');
+      return back()->with('success', 'Programado exitosamente!');
 
     }
 

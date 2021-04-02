@@ -8,6 +8,7 @@ use App\Reloj;
 use App\User;
 use App\Empleado;
 use Carbon\Carbon;
+use App\Event;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -62,14 +63,23 @@ class HomeController extends Controller
                     }
                 }
             }
+            $eventos = Event::all();
+            foreach ($eventos as $evento) {
+                if($evento->fecha==date('Y-m-d')){
+                   toastr()->warning("Tienes un evento programado para el dia de hoy: $evento->titulo <br /><br /><button type='button' >Ok</button>",
+                            "",['positionClass' => 'toast-bottom-left','closeButton'=>true,'timeOut'=>0,
+                            'extendedTimeOut'=>0]);
+                }
+            }
+            
             return view('HomeAdmin',compact('Relojs','Empleados'));
         }
                                     
     }
-    //         if($dateBefore>=$fecha && $fecha>=$date){
-    //             $nombre = $Empleados[$i]->nombre.' '.$Empleados[$i]->ap_paterno.' '.$Empleados[$i]->ap_materno;
-    //             toastr()->warning("El empleado $nombre Esta proximo a cumplir un periodo de quinquenio <br /><br /><button type='button' >Ok</button>",
-    //                        "",['positionClass' => 'toast-bottom-left','closeButton'=>true,'timeOut'=>0,
-    //                        'extendedTimeOut'=>0]);
+             // if($dateBefore>=$fecha && $fecha>=$date){
+             //     $nombre = $Empleados[$i]->nombre.' '.$Empleados[$i]->ap_paterno.' '.$Empleados[$i]->ap_materno;
+             //     toastr()->warning("El empleado $nombre Esta proximo a cumplir un periodo de quinquenio <br /><br /><button type='button' >Ok</button>",
+             //                "",['positionClass' => 'toast-bottom-left','closeButton'=>true,'timeOut'=>0,
+             //                'extendedTimeOut'=>0]);
     
 }

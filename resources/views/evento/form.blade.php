@@ -8,6 +8,10 @@
     <style>
     body{
       font-family: 'Exo', sans-serif;
+      background-image: url({{ asset('img/fondo-.png') }});
+      background-attachment: fixed;
+      background-position: center center;
+      background-size: cover;
     }
     .header-col{
       background: #E3E9E5;
@@ -32,13 +36,18 @@
 
   </head>
   <body>
-
+    <div class="row">
+      <img alt="Comisión Estatal de Vivienda" class="img-fluid" src={{ asset('img/texturaSuperior.png') }}>
+      </img>
+    </div>
+    <div class="row">
+      <img alt="" class="img-fluid" src={{ asset('img/barra-colores-footer.png') }} >
+      </img>
+    </div>
     <div class="container">
       <div style="height:50px"></div>
-      <h1>< tutofox /> <small>Oh my code!</small></h1>
       <p class="lead">
-      <h3>Evento</h3>
-      <p>Formulario de evento</p>
+      <h3>Nuevo registro</h3>
       <a class="btn btn-default"  href="{{ asset('/Evento/index') }}">Atras</a>
       <hr>
 
@@ -58,18 +67,45 @@
           <strong>{{ $message }}</strong>
        </div>
        @endif
-
-
       <div class="col-md-6">
         <form action="{{ asset('/Evento/create/') }}" method="post">
           @csrf
           <div class="fomr-group">
             <label>Titulo</label>
-            <input type="text" class="form-control" name="titulo">
+            <input type="text" class="form-control" name="titulo" required>
           </div>
           <div class="fomr-group">
-            <label>Descripcion del Evento</label>
-            <input type="text" class="form-control" name="descripcion">
+            <label>Empleado</label>
+            <select class="form-control" id="empleado" name="empleado">
+              <option value="" >
+                Seleccione una opción
+              </option>
+              @foreach($empleados as $empleado)
+                <option value="{{$empleado->nombre}} {{$empleado->ap_paterno}} {{$empleado->ap_materno}}">
+                  {{$empleado->nombre}} {{$empleado->ap_paterno}} {{$empleado->ap_materno}}
+                </option>
+              @endforeach
+            </select>
+          </div>
+          <div class="fomr-group">
+            <label>Descripcion</label>
+            <select class="form-control" id="descripcion" name="descripcion">
+              <option value="" >
+                Seleccione una opción
+              </option>
+              <option value="Vacaciones" >
+                Vacaciones
+              </option>
+              <option value="Ausencia">
+                Ausencia
+              </option>
+              <option value="Permiso">
+                Permiso
+              </option>
+              <option value="Plan de carrera">
+                Plan de carrera
+              </option>
+            </select>
           </div>
           <div class="fomr-group">
             <label>Fecha</label>
@@ -80,23 +116,7 @@
         </form>
       </div>
 
-
-      <!-- inicio de semana -->
-
-
     </div> <!-- /container -->
-
-    <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">
-    Developed by Artyom from
-    <a href="https://www.tutofox.com/">  < tutofox/></a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
 
   </body>
 </html>

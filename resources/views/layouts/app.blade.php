@@ -24,13 +24,12 @@
     </head>
     <style>
         body{
-                background-image: url(img/fondo-.png);
+                font-family: 'Exo', sans-serif;
+                background-image: url({{ asset('img/fondo-.png') }});
                 background-attachment: fixed;
                 text-align: center;
                 background-position: center center;
                 background-size: cover;
-                position: absolute;
-                overflow-x: hidden;
             }
     </style>
     <body>
