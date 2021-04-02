@@ -80,7 +80,7 @@ Route::get('/EmpleadosReportesTD', 'ReportesController@empleadosDepartamentoT')-
 //Rutas calendario
 Route::get('Evento/form','ControllerEvent@form');
 Route::post('Evento/create','ControllerEvent@create');
-Route::get('Evento/details/{id}','ControllerEvent@details');
+Route::get('Evento/details/{id}','ControllerEvent@details')->name('detalles');
 Route::get('Evento/index','ControllerEvent@index');
 Route::get('Evento/index/{month}','ControllerEvent@index_month');
 Route::post('Evento/calendario','ControllerEvent@calendario');

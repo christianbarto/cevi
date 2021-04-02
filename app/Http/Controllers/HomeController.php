@@ -66,7 +66,7 @@ class HomeController extends Controller
             $eventos = Event::all();
             foreach ($eventos as $evento) {
                 if($evento->fecha==date('Y-m-d')){
-                   toastr()->warning("Tienes un evento programado para el dia de hoy: $evento->titulo <br /><br /><button type='button' >Ok</button>",
+                   toastr()->info("Tienes un evento programado para el dia de hoy: <a href='Evento/details/$evento->id' >$evento->titulo</a> <br /><br /><button class='btn-success' type='button' >Ok</button>",
                             "",['positionClass' => 'toast-bottom-left','closeButton'=>true,'timeOut'=>0,
                             'extendedTimeOut'=>0]);
                 }
