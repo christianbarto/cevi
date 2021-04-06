@@ -44,7 +44,7 @@
                         <div class="justify-content-center row" style="margin-top: 20px;">
                             <div class="col-md-10">
                                 <select class="form-control" id="pregunta" name="pregunta" style="color:black">
-                                    <option selected="" value="¿Cual fue su primer trabajo?">
+                                    <option selected="" value="">
                                         Selecciona una pregunta de seguridad
                                     </option>
                                     <option value="¿Cual fue su primer trabajo?">

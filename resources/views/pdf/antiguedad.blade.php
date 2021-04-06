@@ -1,12 +1,19 @@
 <head>
-<style type="text/css">
-    .color{
-        background-color: #D4EFDF;
-    }
-    tr:nth-child(even){
-        background-color: #ddd;
-    }
-</style>
+    <style type="text/css">
+        .color{
+            background-color: #D4EFDF;
+        }
+        tr:nth-child(even){
+            background-color: #ddd;
+        }
+        body{
+          font-family: 'Exo', sans-serif;
+          background-image: url({{ asset('img/fondo-.png') }});
+          background-attachment: fixed;
+          background-position: center center;
+          background-size: cover;
+        }
+    </style>
 </head>
 <body>
 <img height="90" src="img/CEVILOGO2020.jpg" width="428" style="margin-top:0px;"></img>

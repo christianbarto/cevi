@@ -60,6 +60,9 @@ class UserController extends Controller
         if($verificador>0)
         {   
             $usuario = DB::table('users')->Where('email','=',$request->usuario)->get();
+            if($usuario[0]->pregunta==null || $usuario[0]->respuesta==null){
+                return back()->with('verifi',$request->usuario.' no ha ingresado por primera vez al sistema, contacta con el administrador')->withInput();
+            }
             return view('user/ResetPassword',compact('usuario'));
         }
         else 
@@ -73,6 +76,7 @@ class UserController extends Controller
         $usuario = User::findOrFail($request->id);
         if($usuario->respuesta==$request->respuesta)
         {   
+
             return view('user/updatePassword',compact('usuario'));
         }
         else 
@@ -89,8 +93,11 @@ class UserController extends Controller
         ],
         ['password.confirmed'=>'Los campos de Contraseña deben ser iguales'],
         ['password.min'=>'La contraseña debe ser almenos de 6 caracteres']);
-        // Note la regla de validación "confirmed", que solicitará que usted agregue un campo extra llamado password_confirm
+        // Note la regla de validación "confirmed", que solicitará que usted agregu un campo extra llamado password_confirm
 
+        if($request->pregunta==null){
+            return back()->with('verifi','Seleccione una pregunta de seguridad')->withInput();
+        }
 
         $user = $usuario = User::findOrFail($request->id);
 
@@ -113,7 +120,9 @@ class UserController extends Controller
         ['password.confirmed'=>'Los campos de Contraseña deben ser iguales'],
         ['password.min'=>'La contraseña debe ser almenos de 6 caracteres']);
         // Note la regla de validación "confirmed", que solicitará que usted agregue un campo extra llamado password_confirm
-
+        if($request->pregunta==null){
+            return back()->with('verifi','Seleccione una pregunta de seguridad')->withInput();
+        }
 
         $user = Auth::user(); // Obtenga la instancia del usuario en sesión
 

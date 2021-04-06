@@ -17,10 +17,16 @@ class ControllerEvent extends Controller
     public function create(Request $request){
 
       $this->validate($request, [
-      'titulo'     =>  'required',
+      'titulo'       =>  'required',
+      'empleado'     =>  'required',
       'descripcion'  =>  'required',
-      'fecha' =>  'required'
-     ]);
+      'fecha'        =>  'required'
+     ],
+     ['titulo.required'=>'El campo Titulo es obligatorio',
+      'empleado.required'=>'El campo Empleado es obligatorio',
+      'descripcion.required'=>'El campo Descripcion es obligatorio',
+      'fecha.required'=>'El campo Fecha es obligatorio'
+    ]);
 
       Event::insert([
         'titulo'       => $request->input("titulo"),
@@ -36,9 +42,10 @@ class ControllerEvent extends Controller
     public function details($id){
 
       $event = Event::find($id);
-
+      $empleados = Empleado::all();
       return view("evento/evento",[
-        "event" => $event
+        "event" => $event,
+        "empleados" => $empleados
       ]);
 
     }
@@ -196,6 +203,29 @@ class ControllerEvent extends Controller
           $mes = $month;
         }
         return $mes;
+    }
+
+    public function update(Request $request, $id)
+    {
+      $evento = Event::findOrFail($id);
+      if($request->empleado==null){
+        $empleado=$evento->empleado;
+      }else{
+        $empleado=$request->empleado;
+      }
+
+      if($request->descripcion==null){
+        $descripcion=$evento->descripcion;
+      }else{
+        $descripcion=$request->descripcion;
+      }
+
+      $evento->titulo        = $request->titulo;
+      $evento->empleado      = $empleado;
+      $evento->descripcion   = $descripcion;
+      $evento->fecha         = $request->fecha;
+      $evento->save();
+      return redirect('Evento/details/'.$id);
     }
 
 }

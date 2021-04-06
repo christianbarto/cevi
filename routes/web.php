@@ -84,4 +84,5 @@ Route::get('Evento/details/{id}','ControllerEvent@details')->name('detalles');
 Route::get('Evento/index','ControllerEvent@index');
 Route::get('Evento/index/{month}','ControllerEvent@index_month');
 Route::post('Evento/calendario','ControllerEvent@calendario');
+Route::post('Evento/update/{id}','ControllerEvent@update')->name('evento.update');
 });

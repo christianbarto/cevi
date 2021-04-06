@@ -7,13 +7,6 @@
                 <h1>
                    Cambia tus Credenciales
                 </h1>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            {{$error}}
-                        @endforeach
-                    </div>
-                @endif
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <div class="row justify-content-center">
@@ -22,6 +15,13 @@
                         @if(session('verifi'))
                             <div class="alert alert-danger" role="alert">
                                 {{session('verifi')}}
+                            </div>
+                        @endif
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    {{$error}}
+                                @endforeach
                             </div>
                         @endif
                         <div class="justify-content-center row">
@@ -44,7 +44,7 @@
                         <div class="justify-content-center row" style="margin-top: 20px;">
                             <div class="col-md-10">
                                 <select class="form-control" id="pregunta" name="pregunta" style="color:black">
-                                    <option selected="" value="¿Cual fue su primer trabajo?">
+                                    <option value="">
                                         Selecciona una pregunta de seguridad
                                     </option>
                                     <option value="¿Cual fue su primer trabajo?">

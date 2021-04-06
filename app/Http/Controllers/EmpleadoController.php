@@ -508,6 +508,6 @@ class EmpleadoController extends Controller
 
     public function validarRFC($rfc){
         $regex = '/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$/';
-    return preg_match($regex, $rfc);
+        return preg_match($regex, $rfc);
     }
 }

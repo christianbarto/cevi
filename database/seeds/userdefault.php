@@ -16,7 +16,7 @@ class userdefault extends Seeder
           'name'      =>'Agustín Eliseo',
           'ap_paterno'=>' López Matías',
           'ap_materno'=>' Matías',
-          'email'     =>'admin_agustin@mail.com',
+          'email'     =>'admin_agustin',
           'password'  =>bcrypt('13269018'),
           'role_id'   =>2,
           ]);
@@ -25,7 +25,7 @@ class userdefault extends Seeder
           'name'      =>'default',
           'ap_paterno'=>'default',
           'ap_materno'=>'default',
-          'email'    =>'user@mail.com',
+          'email'    =>'user',
           'password' =>bcrypt('123456'),
           'role_id'  =>1,
           ]);

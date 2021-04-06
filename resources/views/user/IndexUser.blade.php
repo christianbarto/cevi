@@ -82,7 +82,7 @@
                                                                 </span>
                                                             </button>
                                                         </div>
-                                                        <div class="modal-body">
+                                                        <div class="modal-body" style="background-color: #DCDCDC">
                                                             <form action="{{route ('user.update',$User)}}" method="post">
                                                             {{csrf_field()}} {{method_field('put')}}
                                                             <div class="form-group">
@@ -132,7 +132,7 @@
                                                                 </select>
                                                             </div>
                                                             </div>
-                                                                <div class="modal-footer">
+                                                                <div class="modal-footer" style="background-color: #DCDCDC">
                                                                     <button class="btn btn-primary" type="submit">
                                                                         Guardar
                                                                     </button>
@@ -142,7 +142,7 @@
                                                     </div>
                                                 </div>
                                                 <td>
-                                                @if($User->email=='admin_agustin@mail.com' || $User->email=='user@mail.com')
+                                                @if($User->email=='admin_agustin')
                                                     <form action="{{ url('/DeleteUsuarios/'.$User->id)}}" method="POST">
                                                         {{csrf_field()}}
                                                         <button class="btn btn-danger" onclick="return confirm('¿Borrar?');" type="submit" disabled>

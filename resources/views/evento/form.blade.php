@@ -45,12 +45,9 @@
       </img>
     </div>
     <div class="container">
-      <div style="height:50px"></div>
       <p class="lead">
-      <h3>Nuevo registro</h3>
-      <a class="btn btn-default"  href="{{ asset('/Evento/index') }}">Atras</a>
-      <hr>
-
+      <h3>Nuevo registro de evento</h3>
+      <a class="btn btn-default"  href="{{ asset('/Evento/index') }}">Atras</a></p>
       @if (count($errors) > 0)
         <div class="alert alert-danger">
          <button type="button" class="close" data-dismiss="alert">×</button>
@@ -72,13 +69,13 @@
           @csrf
           <div class="fomr-group">
             <label>Titulo</label>
-            <input type="text" class="form-control" name="titulo" required>
+            <input type="text" class="form-control" name="titulo" required value="{{old('titulo')}}">
           </div>
-          <div class="fomr-group">
+          <div class="fomr-group" style="margin-top: 10px;">
             <label>Empleado</label>
             <select class="form-control" id="empleado" name="empleado">
               <option value="" >
-                Seleccione una opción
+                Seleccione un empleado
               </option>
               @foreach($empleados as $empleado)
                 <option value="{{$empleado->nombre}} {{$empleado->ap_paterno}} {{$empleado->ap_materno}}">
@@ -87,7 +84,7 @@
               @endforeach
             </select>
           </div>
-          <div class="fomr-group">
+          <div class="fomr-group" style="margin-top: 10px;">
             <label>Descripcion</label>
             <select class="form-control" id="descripcion" name="descripcion">
               <option value="" >
@@ -107,16 +104,14 @@
               </option>
             </select>
           </div>
-          <div class="fomr-group">
+          <div class="fomr-group" style="margin-top: 10px;">
             <label>Fecha</label>
-            <input type="date" class="form-control" name="fecha">
+            <input type="date" class="form-control" name="fecha" min={{now()}} value={{now()}}>
           </div>
           <br>
           <input type="submit" class="btn btn-info" value="Guardar">
         </form>
       </div>
-
-    </div> <!-- /container -->
-
+    </div>
   </body>
 </html>

@@ -16,27 +16,27 @@
                 <div class="card-body" style="background-color: #DCDCDC">
                     <div class="row justify-content-center">
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                                <h4 style="color:black">
+                                <h5 style="color:black">
                                     Roles y Usuarios
-                                </h4>
+                                </h5>
                                 <div class="form-group text-center">
                                    <!-- Submit Button -->
                                    <a class="btn btn-primary" style="color:black" href="{{route('reportes.usuarios')}}" target="_blank">Generar</a>
                                 </div>
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Empleados Activos
-                            </h4>
+                            </h5>
                             <div class="form-group text-center">
                             <!-- Submit Button -->
                                 <a class="btn btn-primary" style="color:black" href="{{route('reportes.empleadosA')}}" target="_blank">Generar</a>
                             </div>
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Empleados Inactivos
-                            </h4>
+                            </h5>
                             <div class="form-group text-center">
                             <!-- Submit Button -->
                                 <a class="btn btn-primary" style="color:black" href="{{route('reportes.empleadosI')}}" target="_blank">Generar</a>
@@ -45,9 +45,9 @@
 
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.EmpleadosReportesD')}}" method="GET">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Empleados por Departamento
-                            </h4>                            
+                            </h5>                            
                                 <label class="control-label text-muted" for="departamento">
                                     Departamento
                                 </label>
@@ -67,9 +67,9 @@
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.TDepartamentos')}}" method="GET">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Departamentos con sus Empleados
-                            </h4>                            
+                            </h5>                            
                                 <br>
                             <!-- Submit Button -->
                             <button class="btn btn-primary " type="submit">
@@ -78,9 +78,9 @@
                            </form>
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Reporte de Quinquenios
-                            </h4>
+                            </h5>
                             <br>
                             <br>
                             <div class="form-group text-center">
@@ -92,9 +92,9 @@
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.asistenciasP')}}" method="GET">
 
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Asistencias por Periodo
-                            </h4>
+                            </h5>
                             <label style="color:black">Inicio</label>
                             <input class="form-control" id="inicio" name="inicio" type="date" min="1980-01-01" value={{now()}}  max={{now()}}> 
                             </input>
@@ -107,11 +107,11 @@
                             </button>
                            </form>
                         </div>
-                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
+                        {{-- <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.asistenciasE')}}" method="GET">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Asistencias por Empleado
-                            </h4>                            
+                            </h5>                            
                             <br>
                             <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre"> 
                             </input>
@@ -121,17 +121,17 @@
                             </input>
                             <br>
                             <br>
-                            <!-- Submit Button -->
+                             Submit Button 
                             <button class="btn btn-primary " type="submit">
                                Generar
                             </button>
                            </form>
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                            <form action="{{route('reportes.asistenciasEP')}}" method="GET">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Asistencias por Empleado y Periodo
-                            </h4>                            
+                            </h5>                            
                             <br>
                             <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre de empleado"> 
                             </input>
@@ -152,20 +152,21 @@
                            </form>
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                            <h4 style="color:black">
+                            <h5 style="color:black">
                                 Antiguedad de Empleados
-                            </h4>                            
-                            <br>
-                            <br>
+                            </h5>     
+                            <br>                       
                             <!-- Submit Button -->
                             <a class="btn btn-primary" style="color:black" href="{{route('reportes.antiguedad')}}" target="_blank">Generar</a>
-                        </div>
-                        <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                           <form action="{{route('reportes.antiguedadE')}}" method="GET">
-                            <h4 style="color:black">
-                                Antiguedad por Empleado
-                            </h4>                            
                             <br>
+                            <br>
+                            <br>
+                            <br>
+                            
+                            <form action="{{route('reportes.antiguedadE')}}" method="GET">
+                            <h5 style="color:black">
+                                Antiguedad por Empleado
+                            </h5>                            
                             <select class="form-control" id="seleccion" name="seleccion">
                             <option value="id">
                                 N° de Trabajador

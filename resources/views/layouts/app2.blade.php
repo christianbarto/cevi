@@ -41,20 +41,40 @@
               text-align: center;
               background-position: center center;
               background-size: cover;
+              overflow-x: hidden;
             }
             h1, h2, h3, h4, h5 {
                 font-family: "UniviaPro-Regular", sans-serif;
-                font-size: 2em;
+                /*font-size: 2em;*/
                 margin: 0.67em 0;
+            }
+            .header-col{
+              background: #E3E9E5;
+              color:#536170;
+              text-align: center;
+              font-size: 20px;
+              font-weight: bold;
+            }
+            .header-calendar{
+              background: #622779;color:white;
+            }
+            .box-day{
+              border:1px solid #E3E9E5;
+              height:150px;
+            }
+            .box-dayoff{
+              border:1px solid #E3E9E5;
+              height:150px;
+              background-color: #ccd1ce;
             }
     </style>
     <body>
             <div class="row">
-                <img alt="Comisión Estatal de Vivienda" class="img-fluid" src="img/texturaSuperior.png">
+                <img alt="Comisión Estatal de Vivienda" class="img-fluid" src="{{ asset('img/texturaSuperior.png')}}">
                 </img>
             </div>
             <div class="row">
-                <img alt="" class="img-fluid" src="img/barra-colores-footer.png">
+                <img alt="" class="img-fluid" src="{{ asset('img/barra-colores-footer.png')}}">
                 </img>
             </div>
             
