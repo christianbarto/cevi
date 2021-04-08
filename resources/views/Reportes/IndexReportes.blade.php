@@ -48,9 +48,6 @@
                             <h5 style="color:black">
                                 Empleados por Departamento
                             </h5>                            
-                                <label class="control-label text-muted" for="departamento">
-                                    Departamento
-                                </label>
                                 <select class="form-control" id="departamento" name="departamento" required>
                                 @foreach($departamentos as $departamento)
                                     <option value="{{$departamento->descripcion}}">
@@ -60,22 +57,18 @@
                                 </select>
                                 <br>
                             <!-- Submit Button -->
-                            <button class="btn btn-primary " type="submit">
+                            <button class="btn btn-primary " type="submit" style="margin-top: -15px;color: black">
                                Generar
                             </button>
                            </form>
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
-                           <form action="{{route('reportes.TDepartamentos')}}" method="GET">
                             <h5 style="color:black">
                                 Departamentos con sus Empleados
                             </h5>                            
                                 <br>
                             <!-- Submit Button -->
-                            <button class="btn btn-primary " type="submit">
-                               Generar
-                            </button>
-                           </form>
+                            <a class="btn btn-primary" style="color:black" href="{{route('reportes.TDepartamentos')}}" target="_blank">Generar</a>
                         </div>
                         <div class="form-group col-md-3 border border-4 margen" style="background-color: #A9A9A9">
                             <h5 style="color:black">
@@ -95,14 +88,14 @@
                             <h5 style="color:black">
                                 Asistencias por Periodo
                             </h5>
-                            <label style="color:black">Inicio</label>
+                            <label style="color:black;">Inicio</label>
                             <input class="form-control" id="inicio" name="inicio" type="date" min="1980-01-01" value={{now()}}  max={{now()}}> 
                             </input>
-                            <label style="color:black">Fin</label>
+                            <label style="color:black;margin-top: 15px;">Fin</label>
                             <input class="form-control" id="fin" name="fin" type="date" min="1980-01-01" value={{now()}}  max={{now()}}>
                             </input>
                             <!-- Submit Button -->
-                            <button class="btn btn-primary " type="submit">
+                            <button class="btn btn-primary " type="submit" style="color: black;margin-top: 20px;">
                                Generar
                             </button>
                            </form>
@@ -133,20 +126,20 @@
                                 Asistencias por Empleado y Periodo
                             </h5>                            
                             <br>
-                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre de empleado"> 
+                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre de empleado" style="margin-top: -14px;"> 
                             </input>
                             <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" placeholder="Apellido Paterno"> 
                             </input>
                             <input class="form-control" id="ap_materno" name="ap_materno" type="text" placeholder="Apellido Materno"> 
                             </input>    
-                            <label style="color:black">Inicio</label>
+                            <label style="color:black;margin-top: 4px;">Inicio</label>
                             <input class="form-control" id="inicio" name="inicio" type="date" min="1980-01-01" value={{now()}}  max={{now()}}> 
                             </input>
-                            <label style="color:black">Fin</label>
+                            <label style="color:black;margin-top: 4px">Fin</label>
                             <input class="form-control" id="fin" name="fin" type="date" min="1980-01-01" value={{now()}}  max={{now()}}>
                             </input>
                             <!-- Submit Button -->
-                            <button class="btn btn-primary " type="submit">
+                            <button class="btn btn-primary " type="submit" style="color: black;margin-top: 5px">
                                Generar
                             </button>
                            </form>
@@ -186,9 +179,8 @@
                         </select>
                         <input class="form-control" id="search" name="search" type="text" ></input>
                             <br>
-                            <br>
                             <!-- Submit Button -->
-                            <button class="btn btn-primary " type="submit">
+                            <button class="btn btn-primary " type="submit" style="color: black">
                                Generar
                             </button>
                            </form>

@@ -70,12 +70,17 @@ Route::get('/EmpleadosReportesA', 'ReportesController@empleadosA')->name('report
 Route::get('/EmpleadosReportesI', 'ReportesController@empleadosI')->name('reportes.empleadosI');
 Route::get('/AsistenciasE', 'ReportesController@asistenciasE')->name('reportes.asistenciasE');
 Route::get('/AsistenciasP', 'ReportesController@asistenciasP')->name('reportes.asistenciasP');
+Route::get('/AsistenciasP/Exportar', 'ReportesController@asistenciasPExportar')->name('reportes.asistenciasPExportar');
 Route::get('/AsistenciasEP', 'ReportesController@asistenciasEP')->name('reportes.asistenciasEP');
+Route::get('/AsistenciasEP/Exportar', 'ReportesController@asistenciasEPExportar')->name('reportes.asistenciasEPExportar');
 Route::get('/Antiguedad', 'ReportesController@antiguedad')->name('reportes.antiguedad');
+Route::get('/Antiguedad/Exportar', 'ReportesController@antiguedadEExportar')->name('reportes.antiguedadExportar');
 Route::get('/AntiguedadE', 'ReportesController@antiguedadE')->name('reportes.antiguedadE');
 Route::get('/EmpleadosReportesQ', 'ReportesController@empleadosQuinquenio')->name('reportes.EmpleadosReportesQ');
 Route::get('/EmpleadosReportesD', 'ReportesController@empleadosDepartamento')->name('reportes.EmpleadosReportesD');
+Route::get('/EmpleadosReportes/Exportar/{departamento}', 'ReportesController@empleadosDepartamentoExportar')->name('reportes.EmpleadosReportesExportar');
 Route::get('/EmpleadosReportesTD', 'ReportesController@empleadosDepartamentoT')->name('reportes.TDepartamentos');
+
 
 //Rutas calendario
 Route::get('Evento/form','ControllerEvent@form');

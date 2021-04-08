@@ -92,43 +92,43 @@
                     <div class="navbar-nav ">
                         <ul class="navbar-nav ">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{route('home')}}">
+                                <a class="nav-link {{request()->is('home')? 'active':''}}" href="{{route('home')}}">
                                     Inicio
                                 </a>
                             </li>
                             @if(Auth::user()->role_id==2)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('usuarios')}}">
+                                <a class="nav-link {{request()->is('usuarios')? 'active':''}}" href="{{route('usuarios')}}">
                                     Usuarios
                                 </a>
                             </li>
                             @endif
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('empleados.index')}}">
+                                <a class="nav-link {{request()->is('IndexEmpleado')? 'active':''}}" href="{{route('empleados.index')}}">
                                     Empleados
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/IndexDepartamento')}}">
+                                <a class="nav-link {{request()->is('IndexDepartamento')? 'active':''}}" href="{{ url('/IndexDepartamento')}}">
                                     Departamentos
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/IndexCategorias')}}">
+                                <a class="nav-link {{request()->is('IndexCategorias')? 'active':''}}" href="{{ url('/IndexCategorias')}}">
                                     Categorias
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {{request()->is('IndexReloj')? 'active':''}}">
                                 <a class="nav-link" href="{{route('checador.index')}}">
                                     Reloj
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {{request()->is('Evento/index')? 'active':''}}">
                               <a class="nav-link" href="{{url('Evento/index')}}">
                                 Programación
                               </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {{request()->is('IndexReportes')? 'active':''}}">
                                 <a class="nav-link" href="{{route('reportes.index')}}">
                                     Reportes
                                 </a>
