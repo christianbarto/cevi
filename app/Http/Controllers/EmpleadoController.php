@@ -31,7 +31,7 @@ class EmpleadoController extends Controller
 
     public function create()
     {   
-        $departamentos = Departamentos::all();
+        $departamentos = Departamentos::orderBy('departamentos.descripcion')->get();;
         $categorias = Categoria::all();
         return view('Empleados/createEmpleados',compact('departamentos','categorias'));
     }

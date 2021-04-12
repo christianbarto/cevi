@@ -139,7 +139,7 @@
                                 name="RFC" type="text" value="{{$empleados->RFC}}" oninput="validaRFC()"
                                          maxlength="13" required>
                                 </input>
-                                <label id="estatus"></label>
+                                <label id="estatus" style="background-color: #DCDCDC;margin-top: 10px;"></label>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="telefono">

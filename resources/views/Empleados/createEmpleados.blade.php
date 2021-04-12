@@ -93,7 +93,8 @@
                                 <label class="control-label text-muted" for="telefono">
                                     Numero Telefonico
                                 </label>
-                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" min="0" max="9999999999" required  type="number">
+                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" type="number" 
+                                maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -118,7 +119,7 @@
                                         type="text" oninput="validaRFC()"
                                          maxlength="13" required>
                                 </input>
-                                <label id="estatus" ></label>
+                                <label id="estatus" style="background-color: #DCDCDC;margin-top: 10px;"></label>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">
@@ -127,7 +128,7 @@
                                 <select class="form-control" id="puesto" name="puesto" required>
                                 @foreach($categorias as $categoria)
                                     <option value="{{$categoria->descripcion}}">
-                                        {{$categoria->identificador}}---{{$categoria->descripcion}}
+                                        {{$categoria->identificador}}  {{$categoria->descripcion}}
                                     </option>
                                 @endforeach
                                 </select>
@@ -139,7 +140,7 @@
                                 <select class="form-control" id="departamento" name="departamento" required>
                                 @foreach($departamentos as $departamento)
                                     <option value="{{$departamento->descripcion}}">
-                                        {{$departamento->id}} {{$departamento->descripcion}}
+                                        {{$departamento->descripcion}}
                                     </option>
                                 @endforeach
                                 </select>

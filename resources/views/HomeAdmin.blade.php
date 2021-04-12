@@ -74,7 +74,7 @@
         <div class="card">
             <div class="card-header" style="color:black">
                 <h3>
-                    Notificaciones
+                    Quinquenios
                 </h3>
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
