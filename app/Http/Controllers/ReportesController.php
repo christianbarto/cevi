@@ -26,7 +26,7 @@ class ReportesController extends Controller
 
      public function index()
      {
-       $departamentos = Departamentos::all();
+       $departamentos = Departamentos::orderBy('departamentos.descripcion')->get();
        return view('Reportes/IndexReportes',compact('departamentos'));
      }
 
@@ -194,8 +194,7 @@ class ReportesController extends Controller
      public function empleadosDepartamentoT(Request $request)
      {
         $empleados = Empleado::all();
-        $departamentos = Departamentos::all();
-        //dd($departamentos);
+        $departamentos = Departamentos::orderBy('departamentos.descripcion')->get();
         $html = view('pdf/IndexEmpleadoTD',compact('empleados','departamentos'))->render();
         ini_set("pcre.backtrack_limit", "10000000");
         $mpdf = new \Mpdf\Mpdf(["format" => "A4-L"]);

@@ -31,7 +31,7 @@ class EmpleadoController extends Controller
 
     public function create()
     {   
-        $departamentos = Departamentos::orderBy('departamentos.descripcion')->get();;
+        $departamentos = Departamentos::orderBy('departamentos.descripcion')->get();
         $categorias = Categoria::all();
         return view('Empleados/createEmpleados',compact('departamentos','categorias'));
     }
@@ -50,7 +50,7 @@ class EmpleadoController extends Controller
     public function edit (Request $request)
     {
         $empleados = Empleado::findOrFail($request->id);
-        $departamentos = Departamentos::all();
+        $departamentos = Departamentos::orderBy('departamentos.descripcion')->get();
         $categorias = Categoria::all();
         return view('Empleados/editEmpleados',compact('empleados','departamentos','categorias'));
     }
@@ -89,10 +89,11 @@ class EmpleadoController extends Controller
             'Tcontrato' => 'required'
          ]);
 
-        $verifiName = Empleado::Where('nombre','like',$request->nombre)
-                                            ->Where('ap_paterno','like','%'.$request->ap_paterno.'%')
-                                            ->Where('ap_materno','like','%'.$request->materno.'%')->count();
-        $verifiRFC = DB::table('empleados')->Where('RFC','like','%'.$request->RFC.'%')->count();
+        $verifiName = Empleado::Where('nombre',$request->nombre)
+                                  ->Where('ap_paterno',$request->ap_paterno)
+                                  ->Where('ap_materno',$request->ap_materno)
+                                  ->count();
+        $verifiRFC = DB::table('empleados')->Where('RFC',$request->RFC)->count();
 
         if($verifiName>0){   
             return back()->with('verifi',$request->nombre.' '.$request->ap_paterno.' '.$request->ap_materno.' Ya esta registrado')->withInput();
@@ -510,4 +511,26 @@ class EmpleadoController extends Controller
         $regex = '/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$/';
         return preg_match($regex, $rfc);
     }
+
+    public function buscador(Request $request){
+
+            $verifiName = Empleado::Where('nombre',$request->nombre)
+                                  ->Where('ap_paterno',$request->ap_paterno)
+                                  ->Where('ap_materno',$request->ap_materno)
+                                  ->count();
+            
+            if($verifiName>0){   
+                return response()->json(['mensaje'=>'El empleado'.' '.$request->nombre.' '.$request->ap_paterno.' '.$request->ap_materno.' '.'ya se encuentra registrado']);
+            }
+
+    }
+
+    public function buscadorR(Request $request){
+
+            $verifiRFC = DB::table('empleados')->Where('RFC',$request->RFC)->count();
+            
+            if($verifiRFC>0){   
+                return response()->json(['mensaje'=>'El RFC'.' '.$request->RFC.' ya se encuentra registrado']);
+            }
+        }
 }

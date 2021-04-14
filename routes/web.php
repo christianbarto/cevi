@@ -57,6 +57,8 @@ Route::put('/empleado/{empleado}/enable', 'EmpleadoController@enable')->name('em
 Route::get('/buscarEmpleado','EmpleadoController@search')->name('empleados.buscar');
 Route::get('/buscarDocumento','EmpleadoController@documento')->name('empleados.buscarDocumento');
 Route::get('/buscarDocumentoAdicional','EmpleadoController@documentoAdicional')->name('empleados.buscarDocumentoAdicional');
+Route::get('/empleado/buscador','EmpleadoController@buscador')->name('empleados.buscardor');
+Route::get('/empleado/buscadorR','EmpleadoController@buscadorR')->name('empleados.buscardorR');
 
 //Rutas del reloj checador
 Route::get('/IndexReloj', 'RelojController@index')->name('checador.index');

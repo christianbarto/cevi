@@ -118,7 +118,7 @@
                                     {{$empleados->correo}}
                                 </label>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label class="control-label text-muted" for="puesto">
                                     Categoria
                                 </label>

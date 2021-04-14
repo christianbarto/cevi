@@ -51,7 +51,7 @@
                                 <select class="form-control" id="departamento" name="departamento" required>
                                 @foreach($departamentos as $departamento)
                                     <option value="{{$departamento->descripcion}}">
-                                        {{$departamento->id}} {{$departamento->descripcion}}
+                                        {{$departamento->descripcion}}
                                     </option>
                                 @endforeach
                                 </select>

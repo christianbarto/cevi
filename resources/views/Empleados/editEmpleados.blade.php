@@ -80,7 +80,7 @@
                                 <input class="form-control" id="fecha_alta" name="fecha_alta" type="date" min="1980-01-01" value={{$empleados->fecha_alta}}  max={{now()}}>
                                 </input>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label class="control-label text-muted" for="Tcontrato">
                                     Relacion Laboral:
                                 </label>
@@ -145,7 +145,8 @@
                                 <label class="control-label text-muted" for="telefono">
                                     Telefono
                                 </label>
-                                <input class="form-control" id="telefono" name="telefono" type="number" value="{{$empleados->telefono}}" min="0" max="9999999999">
+                                <input class="form-control" id="telefono" name="telefono" type="number" value="{{$empleados->telefono}}" 
+                                maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -168,22 +169,22 @@
                                 <label class="control-label text-muted" for="correo">
                                     Correo
                                 </label>
-                                <input class="form-control" id="correo" name="correo" type="text" value="{{$empleados->correo}}">
+                                <input class="form-control" id="correo" name="correo" type="email" value="{{$empleados->correo}}">
                                 </input>
                                 </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label class="control-label text-muted" for="puesto">
                                     Categoria: {{$empleados->puesto}}
                                 </label>
                                 <select class="form-control" id="puesto" name="puesto" value="{{$empleados->puesto}}">
                                     <option value="">Seleccione una opción</option>                                   @foreach($categorias as $categoria)
                                         <option value="{{$categoria->descripcion}}">
-                                            {{$categoria->identificador}}---{{$categoria->descripcion}}
+                                            {{$categoria->identificador}} {{$categoria->descripcion}}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-5">
                                 <label class="control-label text-muted" for="departamento">
                                     Departamento: {{$empleados->departamento}}
                                 </label>
@@ -193,7 +194,7 @@
                                     </option>
                                     @foreach($departamentos as $departamento)
                                         <option value="{{$departamento->descripcion}}">
-                                            {{$departamento->id}} {{$departamento->descripcion}}
+                                            {{$departamento->descripcion}}
                                         </option>
                                     @endforeach
                                 </select>
