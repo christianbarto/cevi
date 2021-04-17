@@ -21,7 +21,7 @@ class relojController extends Controller
       $incidencia=null;
       $request->validate([
             'xml' => 'required|mimes:xml'],
-           ['xml.required' => 'Selecciona Un Documento'],
+           ['xml.required' => 'Selecciona Un Documento']
          );
       $control = simplexml_load_file($request->xml);  
       $total_empleados=count($control->CONTROL);
