@@ -136,6 +136,7 @@
                                                                     <button class="btn btn-primary" type="submit">
                                                                         Guardar
                                                                     </button>
+                                                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
                                                                 </div>
                                                             </form>
                                                         </div>
