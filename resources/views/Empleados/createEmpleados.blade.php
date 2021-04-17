@@ -13,12 +13,15 @@
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <div class="row justify-content-center">
-                    <div class="col-md-5" id="comprobacion"></div>
-                    @if(session('verifi'))
-                        <div class="alert alert-danger" role="alert">
-                            {{session('verifi')}}
-                        </div>
-                    @endif
+                    <div class="col-md-5" id="comprobacion">
+                        @if(session('verifi'))
+                            <div class="alert alert-danger" role="alert" style="color: red;">
+                                {{session('verifi')}}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-5" id="comprobacion2">
+                    </div>
                     <form action="{{route('empleados.store')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         {!! csrf_field() !!}
@@ -43,7 +46,7 @@
                                 </label>
                                 <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}"  required type="text">
                                 </input>
-                                <button class="btn-success" style="margin-top: 10px;" id="verificador">Verificar</button>
+                                {{-- <button class="btn-success" style="margin-top: 10px;" id="verificador">Verificar</button> --}}
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="fecha_alta">
@@ -123,7 +126,7 @@
                                          maxlength="13" required>
                                 </input>
                                 <label id="estatus" style="background-color: #DCDCDC;margin-top: 10px;"></label>
-                                <button class="btn-success" id="verificadorR" style="margin-top: 10px;">Verificar</button>
+                                
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="puesto">
@@ -148,6 +151,7 @@
                                     </option>
                                 @endforeach
                                 </select>
+                                <button class="btn-success" type="button" onclick="verificador()" style="margin-top: 10px;">Verificar</button>
                             </div>
                             
                         </div>
