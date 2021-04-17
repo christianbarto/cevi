@@ -560,13 +560,14 @@
                                                         <button class="btn btn-primary" type="submit">
                                                             Guardar
                                                         </button>
+                                                        <button class="btn btn-danger" href="{{ asset('/IndexEmpleado') }}">
+                                                            Cancelar
+                                                        </button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
-
-                        
+                                    </div>     
                 </div>
             </div>
     </div>

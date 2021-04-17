@@ -78,6 +78,9 @@
                             <button class="btn btn-primary " type="submit">
                                 Guardar
                             </button>
+                            <a class="btn btn-danger" href="{{ asset('/usuarios') }}">
+                                Cancelar
+                            </a>
                         </div>
                     </form>
                 </div>

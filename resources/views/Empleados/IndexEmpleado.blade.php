@@ -1,6 +1,5 @@
 @extends('layouts.app2')
 @section('content')
-@include('sweet::alert')
 <div class="row justify-content-center overflow-auto">
     <div class="form-group col-md-9">
         <div class="card">

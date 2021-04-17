@@ -96,7 +96,7 @@
                                 <label class="control-label text-muted" for="telefono">
                                     Numero Telefonico
                                 </label>
-                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" type="number" 
+                                <input class="form-control" id="telefono" name="telefono" value="{{old('telefono')}}" type="number" min="9000000000" 
                                 maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </input>
                             </div>
@@ -377,6 +377,9 @@
                             <button class="btn btn-primary " type="submit">
                                 Guardar
                             </button>
+                            <a class="btn btn-danger" href="{{ asset('/IndexEmpleado') }}">
+                                cancelar
+                            </a>
                         </div> 
                     </form>
                 </div>    
