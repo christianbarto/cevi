@@ -70,7 +70,7 @@ class DepartamentosController extends Controller
     public function destroy($id)
     {
         Departamentos::destroy($id);
-        return redirect('/IndexDepartamento');
+        return redirect('/IndexDepartamento')->with('eliminar','ok');
 
     }
 

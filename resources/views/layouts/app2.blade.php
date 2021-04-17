@@ -9,8 +9,7 @@
                         {{'CEVI'}}
                     </title>
                     <!-- Scripts -->
-                    <script defer="" src="{{ asset('js/app.js') }}">
-                    </script>
+                    <script src="{{ asset('js/app.js') }}"></script>
                     <script type="text/javascript" src="{{ asset('js/desabilitar.js') }}">
                     </script>
                     <script type="text/javascript" src="{{ asset('js/RFC.js') }}">
@@ -83,7 +82,7 @@
                 <img alt="" class="img-fluid" src="{{ asset('img/barra-colores-footer.png')}}">
                 </img>
             </div>
-            
+            <div id='app'></div>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm "> 
                 <div class="container-fluid d-flex justify-content-around">
                     @if(Auth::user()->role_id==2)
@@ -181,5 +180,6 @@
         </main>
 
         @yield('scripts')
+        @yield('js')
     </body>
 </html>

@@ -56,7 +56,7 @@
                                 <label class="control-label text-muted" for="Tcontrato">
                                     Relacion Laboral
                                 </label>
-                                <select onChange="prueba()" class="form-control" id="Tcontrato" name="Tcontrato">
+                                <select onChange="desabilitar()" class="form-control" id="Tcontrato" name="Tcontrato">
                                     <option value="" >
                                         Seleccione una opción
                                     </option>
@@ -384,5 +384,8 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @endsection
 

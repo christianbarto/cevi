@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'aee238d8460be7eca6096edbf98de4682aefdc14',
+    'reference' => '3930989e137e113d6a50effa25931766c96127b3',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -406,7 +406,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'aee238d8460be7eca6096edbf98de4682aefdc14',
+      'reference' => '3930989e137e113d6a50effa25931766c96127b3',
     ),
     'laravel/tinker' => 
     array (
@@ -1194,6 +1194,15 @@
       array (
       ),
       'reference' => 'b43b05cf43c1b6d849478965062b6ef73e223bb5',
+    ),
+    'uxweb/sweet-alert' => 
+    array (
+      'pretty_version' => '2.0.5',
+      'version' => '2.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e9eb83d7d991de0fcb74398a698e0cdfef6d189d',
     ),
     'vlucas/phpdotenv' => 
     array (

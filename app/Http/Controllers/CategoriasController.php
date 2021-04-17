@@ -70,7 +70,7 @@ class CategoriasController extends Controller
     public function destroy($id)
     {
         Categoria::destroy($id);
-        return redirect('/IndexCategorias');
+        return redirect('/IndexCategorias')->with('eliminar','ok');
 
     }
 }

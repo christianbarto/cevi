@@ -17,6 +17,7 @@
         "maatwebsite/excel": "^3.1",
         "mpdf/mpdf": "^8.0",
         "nesbot/carbon": "^2.43",
+        "uxweb/sweet-alert": "^2.0",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

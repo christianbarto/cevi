@@ -151,9 +151,9 @@
                                 @endif
                                 @if(Auth::user()->role_id==2)
                                 <td>
-                                        <form action="{{route ('categoria.delete',$categoria->id)}}" method="POST">
+                                        <form action="{{route ('categoria.delete',$categoria->id)}}" method="POST" class="eliminar">
                                             {{csrf_field()}}
-                                            <button class="btn btn-danger" onclick="return confirm('¿Borrar?');" type="submit">
+                                            <button class="btn btn-danger" type="submit">
                                                 <i class="fas fa-user-times"></i>
                                             </button>
                                         </form>
@@ -168,4 +168,35 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if(session('eliminar')=='ok')
+        <script type="text/javascript">
+        Swal.fire(
+            '¡Eliminado!',
+            'El registro ha sido eliminado con éxito',
+            'success'
+                )
+        </script>
+    @endif
+    <script type="text/javascript">
+        $('.eliminar').submit(function(e){
+            e.preventDefault();
+            Swal.fire({
+              title: '¿Estas seguro de eliminar esta categoria?',
+              text: "Esta accion sera permanente",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              cancelButtonText:'Cancelar', 
+              confirmButtonText: '¡Si, Eliminar!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.submit(); 
+              }
+            })
+        }) 
+    </script>
 @endsection

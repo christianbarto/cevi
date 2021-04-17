@@ -9,8 +9,7 @@
                         {{'CEVI'}}
                     </title>
                     <!-- Scripts -->
-                    <script defer="" src="{{ asset('js/app.js') }}">
-                    </script>
+                    <script src="{{ asset('js/app.js') }}"></script>
                     <script crossorigin="anonymous" src="https://kit.fontawesome.com/afca8b434b.js">
                     </script>
                     <script type="text/javascript" src="{{ asset('js/mostrar.js') }}">
@@ -41,9 +40,10 @@
                 <img alt="" class="img-fluid" src="img/barra-colores-footer.png">
                 </img>
             </div>
-
+            <div id='app'></div>
         <main class="py-3">
             @yield('content')
         </main>
+        @yield('js')
     </body>
 </html>

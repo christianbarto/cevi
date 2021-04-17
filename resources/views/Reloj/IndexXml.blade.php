@@ -27,7 +27,7 @@
                             </ul>
                         @endif
                         <div class="form-group">
-                            <input class="form-control form-control-lg" style="background-color: #DCDCDC" accept=".xml" name="xml" type="file"/>
+                            <input class="form-control form-control-lg" style="background-color: #DCDCDC" accept=".xml" name="xml" id="xml" type="file"/>
                         </div>
                         <button class="btn btn-primary">
                             Agregar
@@ -114,4 +114,33 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript">
+        const MAXIMO_TAMANIO_BYTES = 5000000; // 1MB = 1 millón de bytes
+
+        // Obtener referencia al elemento
+        const $miInput = document.querySelector("#xml");
+
+        $miInput.addEventListener("change", function () {
+            // si no hay archivos, regresamos
+            if (this.files.length <= 0) return;
+
+            // Validamos el primer archivo únicamente
+            const archivo = this.files[0];
+            if (archivo.size > MAXIMO_TAMANIO_BYTES) {
+                const tamanioEnMb = MAXIMO_TAMANIO_BYTES / 1000000;
+                Swal.fire(
+                    'Excedio el tamaño maximo del archivo!',
+                    'El tamaño maximo de los archivos es de 5MB',
+                    'warning'
+                )
+                // Limpiar
+                $miInput.value = "";
+            } else {
+                // Validación pasada. Envía el formulario o haz lo que tengas que hacer
+            }
+        });
+    </script>
 @endsection

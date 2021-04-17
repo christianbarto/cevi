@@ -42,9 +42,9 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label class="control-label" for="username" style="color:black">
-                                    Correo
+                                    Usuario
                                 </label>
-                                <input class="form-control" type="email" id="email" name="email" value="{{old('email')}}" type="text" required>
+                                <input class="form-control" type="text" id="email" name="email" value="{{old('email')}}" type="text" required>
                                 </input>
                             </div>
                             <div class="form-group col-md-2">
