@@ -23,28 +23,32 @@
                                 <label class="control-label" for="name" style="color:black">
                                     Nombre
                                 </label>
-                                <input class="form-control" id="name" name="name" value="{{old('name')}}" type="text" required>
+                                <input class="form-control" id="name" name="name" 
+                                value="{{old('name')}}" type="text" required onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                             </div>
                             <div class="form-group col-md-2">
                                 <label class="control-label" for="ap_paterno" style="color:black">
                                     Apellido Paterno
                                 </label>
-                                <input class="form-control" id="ap_paterno" name="ap_paterno" value="{{old('ap_paterno')}}" type="text" required>
+                                <input class="form-control" id="ap_paterno" name="ap_paterno" 
+                                value="{{old('ap_paterno')}}" type="text" required onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                             </div>
                             <div class="form-group col-md-2">
                                 <label class="control-label" for="ap_materno" style="color:black">
                                     Apellido Materno
                                 </label>
-                                <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}" type="text" required>
+                                <input class="form-control" id="ap_materno" name="ap_materno" 
+                                value="{{old('ap_materno')}}" type="text" required onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                             </div>
                             <div class="form-group col-md-2">
                                 <label class="control-label" for="username" style="color:black">
                                     Usuario
                                 </label>
-                                <input class="form-control" type="text" id="email" name="email" value="{{old('email')}}" type="text" required>
+                                <input class="form-control" type="text" id="email" name="email" 
+                                value="{{old('email')}}" type="text" required>
                                 </input>
                             </div>
                             <div class="form-group col-md-2">

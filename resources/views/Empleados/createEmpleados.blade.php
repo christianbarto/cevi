@@ -30,23 +30,25 @@
                                 <label class="control-label text-muted" for="nombre">
                                     Nombre
                                 </label>
-                                <input class="form-control" id="nombre" name="nombre" required type="text" value="{{ old('nombre') }}" >
+                                <input class="form-control" id="nombre" name="nombre" required type="text" 
+                                value="{{ old('nombre') }}" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                             </div>
                             <div class="form-group col-md-3" style="">
                                 <label class="control-label text-muted" for="ap_paterno">
                                     Apellido Paterno
                                 </label>
-                                <input  class="form-control" id="ap_paterno" name="ap_paterno" value="{{old('ap_paterno')}}"  required type="text">
+                                <input  class="form-control" id="ap_paterno" name="ap_paterno" 
+                                value="{{old('ap_paterno')}}" required type="text" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="ap_materno">
                                     Apellido Materno
                                 </label>
-                                <input class="form-control" id="ap_materno" name="ap_materno" value="{{old('ap_materno')}}"  required type="text">
+                                <input class="form-control" id="ap_materno" name="ap_materno" 
+                                value="{{old('ap_materno')}}" required type="text" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
-                                {{-- <button class="btn-success" style="margin-top: 10px;" id="verificador">Verificar</button> --}}
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label text-muted" for="fecha_alta">
@@ -92,7 +94,8 @@
                                 <label class="control-label text-muted" for="correo">
                                     Correo Electronico
                                 </label>
-                                <input class="form-control" id="correo" name="correo" value="{{old('correo')}}" type="email" required >
+                                <input class="form-control" id="correo" name="correo" 
+                                value="{{old('correo')}}" type="email" required onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                             </div>
                             <div class="form-group col-md-3">
@@ -108,10 +111,10 @@
                                     Genero
                                 </label>
                                 <select class="form-control" id="genero" name="genero">
-                                    <option value="Hombre">
+                                    <option value="HOMBRE">
                                         HOMBRE
                                     </option>
-                                    <option value="Mujer">
+                                    <option value="MUJER">
                                         MUJER
                                     </option>
                                 </select>

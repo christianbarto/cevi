@@ -29,21 +29,24 @@
                                         <label class="control-label text-muted" for="nombre">
                                             Nombre
                                         </label>
-                                        <input class="form-control" id="nombre" name="nombre" type="text" value="{{$empleados->nombre}}">
+                                        <input class="form-control" id="nombre" name="nombre" type="text" 
+                                        value="{{$empleados->nombre}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </input>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label class="control-label text-muted" for="ap_paterno">
                                             Apellido Paterno
                                         </label>
-                                        <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" value="{{$empleados->ap_paterno}}">
+                                        <input class="form-control" id="ap_paterno" name="ap_paterno" type="text" 
+                                        value="{{$empleados->ap_paterno}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </input>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label class="control-label text-muted" for="ap_materno">
                                             Apellido Materno
                                         </label>
-                                        <input class="form-control" id="ap_materno" name="ap_materno" type="text" value="{{$empleados->ap_materno}}">
+                                        <input class="form-control" id="ap_materno" name="ap_materno" type="text" 
+                                        value="{{$empleados->ap_materno}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                         </input>
                                     </div>
                                 @endif
@@ -169,7 +172,8 @@
                                 <label class="control-label text-muted" for="correo">
                                     Correo
                                 </label>
-                                <input class="form-control" id="correo" name="correo" type="email" value="{{$empleados->correo}}">
+                                <input class="form-control" id="correo" name="correo" type="email" 
+                                value="{{$empleados->correo}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 </input>
                                 </div>
                             <div class="form-group col-md-4">
