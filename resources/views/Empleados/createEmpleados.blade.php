@@ -61,7 +61,7 @@
                                 <label class="control-label text-muted" for="Tcontrato">
                                     Relacion Laboral
                                 </label>
-                                <select onChange="desabilitar()" class="form-control" id="Tcontrato" name="Tcontrato">
+                                <select onChange="desabilitar()" class="form-control" id="Tcontrato" name="Tcontrato" required>
                                     <option value="" >
                                         Seleccione una opción
                                     </option>
@@ -110,7 +110,10 @@
                                 <label class="control-label text-muted" for="genero">
                                     Genero
                                 </label>
-                                <select class="form-control" id="genero" name="genero">
+                                <select class="form-control" id="genero" name="genero" required>
+                                    <option value="" >
+                                        Seleccione una opción
+                                    </option>
                                     <option value="HOMBRE">
                                         HOMBRE
                                     </option>
@@ -136,11 +139,14 @@
                                     Categoria
                                 </label>
                                 <select class="form-control" id="puesto" name="puesto" required>
-                                @foreach($categorias as $categoria)
-                                    <option value="{{$categoria->descripcion}}">
-                                        {{$categoria->identificador}}  {{$categoria->descripcion}}
+                                    <option value="" >
+                                        Seleccione una opción
                                     </option>
-                                @endforeach
+                                    @foreach($categorias as $categoria)
+                                        <option value="{{$categoria->descripcion}}">
+                                            {{$categoria->identificador}}  {{$categoria->descripcion}}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
@@ -148,11 +154,14 @@
                                     Departamento
                                 </label>
                                 <select class="form-control" id="departamento" name="departamento" required>
-                                @foreach($departamentos as $departamento)
-                                    <option value="{{$departamento->descripcion}}">
-                                        {{$departamento->descripcion}}
+                                    <option value="" >
+                                        Seleccione una opción
                                     </option>
-                                @endforeach
+                                    @foreach($departamentos as $departamento)
+                                        <option value="{{$departamento->descripcion}}">
+                                            {{$departamento->descripcion}}
+                                        </option>
+                                    @endforeach
                                 </select>
                                 <button class="btn-success" type="button" onclick="verificador()" style="margin-top: 10px;">Verificar</button>
                             </div>
@@ -385,7 +394,7 @@
                                 Guardar
                             </button>
                             <a class="btn btn-danger" href="{{ asset('/IndexEmpleado') }}">
-                                cancelar
+                                Cancelar
                             </a>
                         </div> 
                     </form>

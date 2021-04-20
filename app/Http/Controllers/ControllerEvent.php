@@ -10,17 +10,20 @@ class ControllerEvent extends Controller
 {
     
     public function form(){
-      $empleados = Empleado::all();
+      $empleados = Empleado::orderBy('empleados.nombre')->get();
       return view("evento/form",compact('empleados'));
     }
 
     public function create(Request $request){
 
+
       $this->validate($request, [
       'titulo'       =>  'required',
+      'detalle'      =>  'required',
       'empleado'     =>  'required',
       'descripcion'  =>  'required',
-      'fecha'        =>  'required'
+      'fecha_inicio' =>  'required',
+      'fecha_fin'    =>  'required',
      ],
      ['titulo.required'=>'El campo Titulo es obligatorio',
       'empleado.required'=>'El campo Empleado es obligatorio',
@@ -28,11 +31,24 @@ class ControllerEvent extends Controller
       'fecha.required'=>'El campo Fecha es obligatorio'
     ]);
 
+      if($request->fecha_fin < $request->fecha_incio){
+            return back()->with('verifi','La fecha fin es mayor a la fecha de inicio')->withInput();
+        }
+      $seleccionado = Empleado::findOrFail($request->empleado);
       Event::insert([
-        'titulo'       => $request->input("titulo"),
+        'titulo'       => 'Inicio '.$request->input("titulo").' '.$seleccionado->nombre.' '.$seleccionado->ap_paterno,
+        'detalleTitulo'=> $request->input("detalle"),
         'empleado'     => $request->input("empleado"),
         'descripcion'  => $request->input("descripcion"),
-        'fecha'        => $request->input("fecha")
+        'fecha'        => $request->input("fecha_inicio"),
+      ]);
+
+      Event::insert([
+        'titulo'       => 'Fin '.$request->input("titulo").' '.$seleccionado->nombre.' '.$seleccionado->ap_paterno,
+        'detalleTitulo'=> $request->input("detalle"),
+        'empleado'     => $request->input("empleado"),
+        'descripcion'  => $request->input("descripcion"),
+        'fecha'        => $request->input("fecha_fin"),
       ]);
 
       return back()->with('success', 'Programado exitosamente!');
@@ -42,10 +58,10 @@ class ControllerEvent extends Controller
     public function details($id){
 
       $event = Event::find($id);
-      $empleados = Empleado::all();
+      $seleccionado = Empleado::findOrFail($event->empleado);
       return view("evento/evento",[
         "event" => $event,
-        "empleados" => $empleados
+        "seleccionado"=>$seleccionado,
       ]);
 
     }

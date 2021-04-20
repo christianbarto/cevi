@@ -7,34 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script defer="" src="{{ asset('js/app.js') }}"></script>
     <style>
-    body{
-      font-family: 'Exo', sans-serif;
-      background-image: url({{ asset('img/fondo-.png') }});
-      background-attachment: fixed;
-      background-position: center center;
-      background-size: cover;
-    }
-    .header-col{
-      background: #E3E9E5;
-      color:#536170;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .header-calendar{
-      background: #EE192D;color:white;
-    }
-    .box-day{
-      border:1px solid #E3E9E5;
-      height:150px;
-    }
-    .box-dayoff{
-      border:1px solid #E3E9E5;
-      height:150px;
-      background-color: #ccd1ce;
-    }
+      body{
+        font-family: 'Exo', sans-serif;
+        background-image: url({{ asset('img/fondo-.png') }});
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+      }
     </style>
-
   </head>
   <body>
     <div class="row">
@@ -57,8 +37,75 @@
             {{ $event->titulo }}
           </div>
           <div class="fomr-group">
+            <h4 style="margin-top: 12px;">Detalle Titulo</h4>
+            {{ $event->detalleTitulo }}
+          </div>
+          <div class="fomr-group">
             <h4 style="margin-top: 12px;">Empleado</h4>
-            {{ $event->empleado }}
+            <div>
+              {{ $seleccionado->nombre }} {{ $seleccionado->ap_paterno }} {{ $seleccionado->ap_materno }}
+              <a class="btn alert-success pull-right" data-target="#empleado{{$event->id}}" data-toggle="modal" href="#" type="submit">
+                <i class="fas fa-user-tie"></i>
+              </a>
+              <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="empleado{{$event->id}}" tabindex="-1">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title text-dark">
+                        Detalles del empleado 
+                      </h5>
+                      <button class="close" data-dismiss="modal" type="button">
+                        <span>
+                          &times;
+                        </span>
+                      </button>
+                    </div>
+                    <div class="modal-body" style="background-color: #DCDCDC;text-align: center;">
+                      <div class="form-group">
+                        <label >Nombre</label>
+                        <label name ="nombre" class="form-control">
+                          {{$seleccionado->nombre}} {{ $seleccionado->ap_paterno }} {{ $seleccionado->ap_materno }}
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>RFC</label>
+                        <label name ="RFC" class="form-control">
+                          {{$seleccionado->RFC}}
+                        </label>
+                      </div>  
+                      <div class="form-group">
+                        <label>Relacion laboral</label>
+                        <label name ="Tcontrato" class="form-control">
+                          @if($seleccionado->Tcontrato=='base')
+                            PERSONAL DE BASE
+                          @elseif($seleccionado->Tcontrato=='contrato')
+                            PERSONAL DE CONTRATO
+                          @elseif($seleccionado->Tcontrato=='nombremientoConfianza')
+                            NOMBRAMIENTO CONFIANZA
+                          @elseif($seleccionado->Tcontrato=='mandosMedios')
+                            MANDOS MEDIOS
+                          @elseif($seleccionado->Tcontrato=='contratoConfianza')
+                            CONTRATO CONFIANZA
+                          @endif 
+                        </label>
+                      </div> 
+                      <div class="form-group">
+                        <label>Categoria</label>
+                        <label name ="Tcontrato" class="form-control">
+                          {{$seleccionado->puesto}}
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label>Departamento</label>
+                        <label name ="Tcontrato" class="form-control">
+                          {{$seleccionado->departamento}}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="fomr-group">
             <h4 style="margin-top: 12px;">Descripcion del Evento</h4>
@@ -69,83 +116,7 @@
             {{Date::parse($event->fecha)->format('j \d\e F \d\e Y')}}
           </div>
           <br>
-          <a class="btn btn-warning pull-right" data-target="#EditEvento{{$event->id}}" data-toggle="modal" href="#" type="submit">
-            <i class="fas fa-pencil-alt"></i>
-          </a>
-          <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="EditEvento{{$event->id}}" tabindex="-1">
-            <div class="modal-dialog modal-sm">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title text-dark">
-                    Editar Evento
-                  </h5>
-                  <button class="close" data-dismiss="modal" type="button">
-                    <span>
-                      &times;
-                    </span>
-                  </button>
-                </div>
-                <div class="modal-body" style="background-color: #DCDCDC">
-                  <form action="{{route ('evento.update',$event->id)}}" method="post">
-                    {{csrf_field()}} {{method_field('post')}}
-                    <div class="form-group">
-                      <label for="" class="text-dark float-left">Titulo</label>
-                      <input type="text" name ="titulo" class="form-control" value="{{$event->titulo}}">
-                      </input>
-                    </div>
-                    <div class="fomr-group">
-                      <label>
-                        Empleado:<br>
-                        {{$event->empleado}}
-                      </label>
-                      <select class="form-control" id="empleado" name="empleado">
-                        <option value="" >
-                          Seleccione un empleado
-                        </option>
-                        @foreach($empleados as $empleado)
-                          <option value="{{$empleado->nombre}} {{$empleado->ap_paterno}} {{$empleado->ap_materno}}">
-                            {{$empleado->nombre}} {{$empleado->ap_paterno}} {{$empleado->ap_materno}}
-                          </option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="fomr-group" style="margin-top: 10px;"> 
-                      <label>Descripcion:<br>
-                        {{$event->descripcion}}</label>
-                      <select class="form-control" id="descripcion" name="descripcion">
-                        <option value="" >
-                          Seleccione una opción
-                        </option>
-                        <option value="Vacaciones" >
-                          Vacaciones
-                        </option>
-                        <option value="Ausencia">
-                          Ausencia
-                        </option>
-                        <option value="Permiso">
-                          Permiso
-                        </option>
-                        <option value="Plan de carrera">
-                          Plan de carrera
-                        </option>
-                      </select>
-                    </div>
-                    <div class="fomr-group" style="margin-top: 10px;">
-                      <label>Fecha:<br>
-                        {{Date::parse($event->fecha)->format('j \d\e F \d\e Y')}}
-                      </label>
-                      <input type="date" class="form-control" name="fecha" min={{now()}} value={{$event->fecha}}>
-                    </div>
-                    <div class="modal-footer">
-                      <button class="btn btn-primary" type="submit">
-                        Guardar
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+
       </div>
     </div> 
   </body>
