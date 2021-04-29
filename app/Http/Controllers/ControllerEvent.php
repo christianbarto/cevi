@@ -36,7 +36,7 @@ class ControllerEvent extends Controller
         }
       $seleccionado = Empleado::findOrFail($request->empleado);
       Event::insert([
-        'titulo'       => 'Inicio '.$request->input("titulo").' '.$seleccionado->nombre.' '.$seleccionado->ap_paterno,
+        'titulo'       => 'INICIO '.$request->input("titulo").' '.$seleccionado->nombre.' '.$seleccionado->ap_paterno,
         'detalleTitulo'=> $request->input("detalle"),
         'empleado'     => $request->input("empleado"),
         'descripcion'  => $request->input("descripcion"),
@@ -44,7 +44,7 @@ class ControllerEvent extends Controller
       ]);
 
       Event::insert([
-        'titulo'       => 'Fin '.$request->input("titulo").' '.$seleccionado->nombre.' '.$seleccionado->ap_paterno,
+        'titulo'       => 'FIN '.$request->input("titulo").' '.$seleccionado->nombre.' '.$seleccionado->ap_paterno,
         'detalleTitulo'=> $request->input("detalle"),
         'empleado'     => $request->input("empleado"),
         'descripcion'  => $request->input("descripcion"),

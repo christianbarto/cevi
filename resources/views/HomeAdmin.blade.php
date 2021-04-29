@@ -11,8 +11,8 @@
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <div class="table-responsive" style="width:100%;overflow:auto; max-height:430px;">
-                    <table class="table table-dark ">
-                        <thead class="thead-light">
+                    <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
                             <tr>
                                 <th scope="col">
                                     Fecha
@@ -79,8 +79,8 @@
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <div class="table-responsive" style="width:100%;overflow:auto; max-height:430px;">
-                    <table class="table table-dark table-hover">
-                        <thead class="thead-light">
+                    <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
                             <tr>
                                 <th scope="col">
                                     RFC
@@ -123,7 +123,13 @@
                                                     {{$Empleado->ap_materno}}
                                                 </td>
                                                 <td>
-                                                    {{$Empleado->quinquenio}}
+                                                    @if($Empleado->quinquenio>0)
+                                                        <div style="color:red;">
+                                                            {{$Empleado->quinquenio}}
+                                                        </div>
+                                                    @else
+                                                        {{$Empleado->quinquenio}}
+                                                    @endif
                                                 </td>
                                                 <td>           
                                                     @if($Empleado->quinquenio<1)

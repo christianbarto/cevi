@@ -10,15 +10,15 @@
             </div>
             <div class="card-body" style="background-color: #DCDCDC">
                 <form action="{{ url('/alta')}}" method="get">
-                    <button class="btn btn-primary btn-sm float-left" type="submit">
+                    <button class="btn btn-primary float-right" type="submit">
                         + Agregar
                     </button>
                 </form>
                 <br>
                     <br>
                         <div class="table-responsive">
-                            <table class="table table-dark ">
-                                <thead class="thead-light">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">
                                             Nombre
@@ -102,14 +102,14 @@
                                                             </div>
                                                             @if($User->email=='admin_agustin@mail.com' || $User->email=='user@mail.com')
                                                                 <div class="form-group">
-                                                                    <label for="" class="text-dark float-left">Correo</label>
-                                                                    <input type="text" readonly name="email" class="form-control" value={{$User->email}}>
+                                                                    <label for="" class="text-dark float-left">Usuario</label>
+                                                                    <input type="text" readonly name="email" class="form-control" disabled value={{$User->email}} >
                                                                     </input>
                                                                 </div>
                                                             @else
                                                                 <div class="form-group">
-                                                                    <label for="" class="text-dark float-left">Correo</label>
-                                                                    <input type="text"  name="email" class="form-control" value={{$User->email}}>
+                                                                    <label for="" class="text-dark float-left">Usuario</label>
+                                                                    <input type="text"  name="email" class="form-control" disabled value={{$User->email}} >
                                                                     </input>
                                                                 </div>
                                                             @endif

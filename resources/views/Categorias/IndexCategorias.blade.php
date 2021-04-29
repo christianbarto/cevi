@@ -14,65 +14,63 @@
                 </div>
             @endif
             <div class="card-body" style="background-color: #DCDCDC">
-                <div class="row float-left col-md-10">
-                    <div class="form-group">
-                        <div class="card">
-                            <form class="form-inline" action="{{ url('/buscarCategoria')}}" method="get">
-                                <select class="form-control" id="seleccion" name="seleccion">
-                                    <option value="id">
-                                        Id
-                                    </option>
-                                    <option value="descripcion">
-                                        Descripción
-                                    </option>
-                                </select>
-                                <input class="form-control" id="search" name="search" type="text" ></input>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                                <button method="get" href="{{ url('/IndexCategorias')}}" class="btn btn-success">
-                                    <i class="fas fa-sync-alt"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <a class="btn btn-primary float-left" data-target="#createCategoria" data-toggle="modal" href="#" type="submit">
-                    + Agregar
-                </a>
-                <div aria-hidden="true" aria-labelledby="exampleModalLabl" class="modal fade" id="createCategoria" tabindex="-1">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="text-center text-muted" style="color:gray">
-                                    Crear Nueva Categoria
-                                </h3>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{{route ('categoria.store')}}" method="post">
-                                    {{csrf_field()}} {{method_field('post')}}
-                                <div class="form-group col-md-12">
-                                    <input class="form-control" id="identificador" name="identificador" type="text" placeholder="Id" required>
-                                    </input>
+                <div class="row float-right col-md-16">
+                    <div class="form-group" style="margin-top: -15px;">
+                        <a class="btn btn-primary float-right" data-target="#createCategoria" data-toggle="modal" href="#" type="submit">
+                            + Agregar
+                        </a>
+                        <div aria-hidden="true" aria-labelledby="exampleModalLabl" class="modal fade" id="createCategoria" tabindex="-1">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="text-center text-muted" style="color:gray">
+                                            Crear Nueva Categoria
+                                        </h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{route ('categoria.store')}}" method="post">
+                                            {{csrf_field()}} {{method_field('post')}}
+                                        <div class="form-group col-md-12">
+                                            <input class="form-control" id="identificador" name="identificador" type="text" placeholder="Id" required>
+                                            </input>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <input class="form-control" id="descripcion" name="descripcion" type="text" placeholder="Descripción" required>
+                                            </input>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary" type="submit">
+                                                Guardar
+                                            </button>
+                                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
+                                        </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <input class="form-control" id="descripcion" name="descripcion" type="text" placeholder="Descripción" required>
-                                    </input>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit">
-                                        Guardar
-                                    </button>
-                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancelar</button>
-                                </div>
-                                </form>
                             </div>
                         </div>
+                        <form class="form-inline row" style="margin-top: 40px;margin-left: 730px;" action="{{ url('/buscarCategoria')}}" method="get">
+                            <select class="form-control" id="seleccion" name="seleccion">
+                                <option value="id">
+                                    Id
+                                </option>
+                                <option value="descripcion">
+                                    Descripción
+                                </option>
+                            </select>
+                            <input class="form-control" id="search" name="search" type="text" ></input>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button method="get" href="{{ url('/IndexCategorias')}}" class="btn btn-success">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <div class="table-responsive" style="width:100%;overflow:auto; max-height:430px;">
-                    <table class="table table-dark ">
-                        <thead class="thead-light">
+                    <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
                             <tr>
                                 <th scope="col">
                                     Id

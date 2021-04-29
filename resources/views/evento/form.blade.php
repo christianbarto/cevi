@@ -55,17 +55,17 @@
               <option value="" >
                 Seleccione una opción
               </option>
-              <option value="Vacaciones" >
-                Vacaciones
+              <option value="VACACIONES" >
+                VACACIONES
               </option>
-              <option value="Ausencia">
-                Ausencia
+              <option value="AUSENCIA">
+                AUSENCIA
               </option>
-              <option value="Permiso">
-                Permiso
+              <option value="PERMISO">
+                PERMISO
               </option>
-              <option value="Plan de carrera">
-                Plan de carrera
+              <option value="PLAN DE CARRERA">
+                PLAN DE CARRERA
               </option>
             </select>
           </div>
@@ -89,7 +89,7 @@
           <div class="fomr-group" style="margin-top: 10px;">
             <label>Descripcion</label>
             <input type="text" class="form-control" name="descripcion" 
-            required value="{{old('titulo')}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
+            required value="{{old('descripcion')}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
           </div>
           <div class="form-row"  style="margin-top: 10px;">
             <label>Periodo:</label>

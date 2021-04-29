@@ -100,7 +100,7 @@
                                         CONTRATO CONFIANZA
                                     @endif                                    
                                 </label>
-                                <select onChange="prueba()" class="form-control" id="Tcontrato" name="Tcontrato">
+                                <select onChange="desabilitar()" class="form-control" id="Tcontrato" name="Tcontrato">
                                     <option value="">
                                         Seleccione una opción
                                     </option>

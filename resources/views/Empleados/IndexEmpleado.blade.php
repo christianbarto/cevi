@@ -2,64 +2,59 @@
 @section('content')
 <div class="row justify-content-center overflow-auto">
     <div class="form-group col-md-9">
-        <div class="card">
+        <div class="card ">
             <div class="card-header" style="color:black">
                 <h1>
                    Empleados
                 </h1>
             </div>
-            <div class="card-body" style="background-color: #DCDCDC">
-                    <div class="row float-left col-md-10">
-                        <div class="form-group">
-                            <div class="card">
-                        <form class="form-inline" action="{{ url('/buscarEmpleado')}}" method="get">
-                            <select class="form-control" id="seleccion" name="seleccion">
-                                <option value="id">
-                                    N° de Trabajador
-                                </option>
-                                <option value="nombre">
-                                    Nombre
-                                </option>
-                                <option value="RFC">
-                                    RFC
-                                </option>
-                                <option value="paterno">
-                                    Apellido Paterno
-                                </option>
-                                <option value="materno">
-                                    Apellido Materno
-                                </option>
-                            </select>
-                            <input class="form-control" id="search" name="search" type="text" ></input>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </button>
-                            <button method="get" action="{{ url('/IndexEmpleado')}}" class="btn btn-success">
-                                <i class="fas fa-sync-alt"></i>
+            <div class="form-group">
+                <div class="card-body" style="background-color: #DCDCDC">
+                        <form class="row float-right" style="margin-top: -15px;" action="{{ url('/createEmpleado')}}" method="get">
+                            <button class="btn btn-primary" type="submit">
+                                + Agregar
                             </button>
                         </form>
-                    </div>
-                </div>
-            </div>
-            <form action="{{ url('/createEmpleado')}}" method="get">
-                <button class="btn btn-primary btn-sm float-left" type="submit">
-                    + Agregar
-                </button>
-            </form>
-        <br>
-        <br>
-        <br>
-        @if(session('verifi'))
-            <div class="alert alert-danger" role="alert">
-                    {{session('verifi')}}
-            </div>
-        @endif
-        <h2 class="text-center" style="color:black">
-        Activos
-        </h2>
+                                        <form class="row form-inline float-right" style="margin-top: 5px;margin-left: 650px;" action="{{ url('/buscarEmpleado')}}" method="get">
+                                            <select class="form-control" id="seleccion" name="seleccion">
+                                                <option value="id">
+                                                    N° de Trabajador
+                                                </option>
+                                                <option value="nombre">
+                                                    Nombre
+                                                </option>
+                                                <option value="RFC">
+                                                    RFC
+                                                </option>
+                                                <option value="paterno">
+                                                    Apellido Paterno
+                                                </option>
+                                                <option value="materno">
+                                                    Apellido Materno
+                                                </option>
+                                            </select>
+                                            <input class="form-control" id="search" name="search" type="text" ></input>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                            <button method="get" action="{{ url('/IndexEmpleado')}}" class="btn btn-success">
+                                                <i class="fas fa-sync-alt"></i>
+                                            </button>
+                                        </form>
+                    <br>
+                    <br>
+                    <br>
+                    @if(session('verifi'))
+                        <div class="alert alert-danger" role="alert">
+                                {{session('verifi')}}
+                        </div>
+                    @endif
+                    <h2 class="text-center" style="color:black">
+                    Activos
+                    </h2>
                     <div class="table-responsive" style="width:100%;overflow:auto; max-height:430px;">
-                        <table class="table table-dark ">
-                            <thead class="thead-light">
+                        <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">
                                         N° de trabajador
@@ -179,15 +174,13 @@
                             </tbody>
                         </table>
                     </div>
-                </br>
-            </br>
                                     {{-- Tabla de empleados inactivos --}}
-        <h2 class="text-center" style="color: black">
-            Inactivos
-        </h2>
+                <h2 class="text-center" style="color: black">
+                    Inactivos
+                </h2>
                     <div class="table-responsive" style="width:100%;overflow:auto; max-height:430px;">
-                        <table class="table table-dark ">
-                            <thead class="thead-light">
+                        <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">
                                         N° de Trabajador
